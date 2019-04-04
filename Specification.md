@@ -871,9 +871,9 @@ In the absence of outside changes to the resource, the PATCH operation should be
 
 #### PATCH on array properties
 
-There are three possible forms of array properties in a Resource, which are detailed in the [Array properties](#array-properties) clause.
+There are three possible styles of array properties in a Resource, which are detailed in the [Array properties](#array-properties) clause.
 
-Within a PATCH request, the service shall accept `null` to remove an element, and accept an empty object `{}` to leave an element unchanged.  Array properties using the sparse array form will replace removed elements with `null` elements, while fixed or variable length form arrays will remove those elements and adjust the index of remaining elements accordingly.  A service may indicate the maximum size of an array by padding `null` elements at the end of the array sequence. 
+Within a PATCH request, the service shall accept `null` to remove an element, and accept an empty object `{}` to leave an element unchanged.  Array properties using the fixed or variable length array style will remove those elements, while array properties using the rigid array style will replace removed elements with `null` elements.  A service may indicate the maximum size of an array by padding `null` elements at the end of the array sequence.
 
 When processing a PATCH request, the order of operations shall be:
 * Modifications
@@ -1831,7 +1831,7 @@ where
 * *OemName* is the name of the OEM, that follows the same naming as defined in the [`Oem` property format and content](#oem-property-format-and-content) section.
 * *ResourceName* is the name of the resource defined by the OEM.
 
-For example, if Contoso defined a new resource called "ContosoAccountServiceMetrics" to be linked via the "Oem" property found at the URI "/redfish/v1/AccountService", the OEM resource would have the URI "/redfish/v1/AccountService/Oem/Contoso/AccountServiceMetrics".
+For example, if Contoso defined a new resource called `ContosoAccountServiceMetrics` to be linked via the `Oem` property found at the URI `/redfish/v1/AccountService`, the OEM resource would have the URI `/redfish/v1/AccountService/Oem/Contoso/AccountServiceMetrics`.
 
 #### OEM property examples
 
