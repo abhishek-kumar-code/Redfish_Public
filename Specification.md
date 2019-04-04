@@ -231,9 +231,9 @@ The following design tenets and technologies are used to help deliver the previo
 
 Redfish minimizes the need for clients to complete upgrades by using strict versioning and forward-compatibility rules, and separation of the protocols from the data model.  However, Redfish does not guarantee that clients never need to update their software.  For example, clients might need to upgrade for managing new types of systems or components, as well as updates to the data model.
 
-Interoperable does not mean identical.  Many elements of Redfish are optional.  Clients must be prepared to discover the optional elements using the built in discovery methods.
+Interoperable does not mean identical.  Many elements of Redfish are optional.  Clients should be prepared to discover the optional elements using the built in discovery methods.
 
-The resource tree reflects the topology of the system and its devices.  Consequently, different hardware or device types result in different resource trees, even for identical systems from the same manufacturer.  References between resources may result in graph instead of a tree.  Clients that traverse the resource tree must provide logic to avoid infinite loops.
+The resource tree reflects the topology of the system and its devices.  Consequently, different hardware or device types result in different resource trees, even for identical systems from the same manufacturer.  References between resources may result in graph instead of a tree.  Clients that traverse the resource tree should provide logic to avoid infinite loops.
 
 Additionally, not all Redfish resources use simple REST read-and-write semantics.  Different use cases may follow other types of client logic.  For example, clients cannot simply read user credentials or certificates from one service and write them to another service.
 
