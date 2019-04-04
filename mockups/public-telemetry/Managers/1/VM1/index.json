@@ -14,5 +14,5 @@
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#VirtualMediaCollection.VirtualMediaCollection",
     "@odata.id": "/redfish/v1/Managers/1/VM1",
-    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved."
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved."
 }
