@@ -16,5 +16,5 @@
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#SoftwareInventoryCollection.SoftwareInventoryCollection",
     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory",
-    "@Redfish.Copyright": "Copyright 2016 DMTF. All rights reserved."
+    "@Redfish.Copyright": "Copyright 2016-2019 DMTF. All rights reserved."
 }
