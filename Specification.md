@@ -1487,14 +1487,14 @@ Reference properties are used to provide a reference to another Resource in the 
 
 #### Array properties
 
-Array properties contain a set of values or objects, and appear as JSON arrays within a response body.  Array elements shall all contain values of the same primitive type.  Arrays of string type may specify a format or pattern in order to restrict the structure of the string.  
+Array properties contain a set of values or objects, and appear as JSON arrays within a response body.  Array elements shall all contain values of the same data type.
 
-There are three methods to implement arrays, regardless of the primitive type of the elements:
-* A fixed length array has a static number of elements, with the array size either specified in the property definition, or chosen by the implementation.
-* A variable length array, where the array size is not specified, will vary in size among instances, and may change in size.  This is the most common form.
-* A sparse array, where the array index is meaningful and therefore elements do not change position (index) in the array when elements are added or removed.  Empty elements within a sparse array property shall be represented by `null` elements.  An element removed from a sparse array shall be replaced by a `null` element and all other elements shall remain at their current index.  Any array property using this form shall indicate the sparse form in its schema definition. 
+There are three styles of arrays, regardless of the data type of the elements:
+* A fixed length array has a static number of elements, with the array size specified in the property definition or chosen by the implementation.
+* A variable length array, where the array size is not specified, will vary in size among instances, and may change in size.  This is the most common style.
+* A rigid array, where the array index is meaningful and therefore elements do not change position (index) in the array when elements are added or removed.  Empty elements within a rigid array property shall be represented by `null` elements.  An element removed from a rigid array shall be replaced by a `null` element and all other elements shall remain at their current index.  Any array property using this style shall indicate the rigid style in the [long description](#long-description-annotation) of its schema definition.
 
-Services may pad an array property with `null` elements at the end of the sequence to indicate the array size to clients.  This is useful for small fixed size arrays, and for variable or sparse arrays with a restrictive maximum size.  Services should not pad array properties if the maximum array size is not restrictive.  For example, an array property typically populated with two elements, that a service limits to a maximum of 16 elements, should not pad the array with 14 `null` elements.
+Services may pad an array property with `null` elements at the end of the sequence to indicate the array size to clients.  This is useful for small fixed length arrays, and for variable or rigid arrays with a restrictive maximum size.  Services should not pad array properties if the maximum array size is not restrictive.  For example, an array property typically populated with two elements, that a service limits to a maximum of 16 elements, should not pad the array with 14 `null` elements.
 
 
 #### Structured properties
@@ -1538,7 +1538,7 @@ A `Message` object is a JSON object with the following properties:
 
 Each instance of a `Message` object shall contain at least a `MessageId`, together with any applicable `MessageArgs`, or a `Message` property that defines the complete human-readable error message.
 
-`MessageIds` identify specific messages that a message registry defines.
+`MessageIds` identify specific messages that a [message registry](#registries) defines.
 
 The `MessageId` property value shall be in the format:
 
