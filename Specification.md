@@ -1507,7 +1507,7 @@ Structured properties are JSON objects within a response body.
 
 Some structured properties inherit from the `Resource.v1_0_0.ReferenceableMember` definition.  Structured properties that follow this definition shall contain the [`MemberId`](#memberid-property) and [Resource identifier](#identifier-property) properties.
 
-Because the definition of structured properties can evolve over time, clients need to be be aware of the inheritance model that the different structured property definitions use.  
+Because the definition of structured properties can evolve over time, clients need to be aware of the inheritance model that the different structured property definitions use.  
 
 For example, the `Location` definition in the `Resource` schema has gone through several iterations since the `Resource.v1_1_0` namespace was introduced, and each iteration inherits from the previous version so that existing references in other schemas can leverage the new additions.
 
@@ -4187,7 +4187,7 @@ A service that supports updating a composed resource shall provide one or more o
 |         |            | Added definition for the value of the Units annotation, using the definitions from the UCUM specification.  Updated examples throughout to use this standardized form. |
 |         |            | Modified the naming requirements for Oem Property Naming to avoid future use of colon ':' and period '.' in property names, which can produce invalid or problematic variable names when used in some programming languages or environments.  Both separators have been replaced with underscore '_', with colon and period usage now deprecated (but valid). |
 |         |            | Removed duplicative or out-of-scope sub-clauses from the Security clause, which made unintended requirements on Redfish service implementations. |
-|         |            | Added missing requirement that property names in Resource Responses matches the casing (capitalization) as specified in schema. |
+|         |            | Added missing requirement that property names in Resource Responses match the casing (capitalization) as specified in schema. |
 |         |            | Updated normative references to current HTTP RFCs and added clause references throughout the document where applicable. |
 |         |            | Clarified ETag header requirements. |
 |         |            | Clarified that no authentication is required for accessing the Service Root resource. |
