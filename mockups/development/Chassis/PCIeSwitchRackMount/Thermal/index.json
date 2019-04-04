@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright © 2014-2015 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount/Thermal",
     "@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
     "@odata.type": "#Thermal.v1_1_0.Thermal",

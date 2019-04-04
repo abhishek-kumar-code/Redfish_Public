@@ -2,11 +2,11 @@
 DocTitle: Redfish Standard Registries
 DocNumber: '8011'
 DocClass: Normative
-DocVersion: '2018.2'
-modified: '2018-12-17'
+DocVersion: '2019.1'
+modified: '2019-04-03'
 status: published
 released: true
-copyright: '2015-2018'
+copyright: '2015-2019'
 ---
 
 # Foreword
@@ -25,8 +25,9 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 
 # Redfish Registry Change log
 
-| Schema File                | Version | Date       | Description |
+| Registry File              | Version | Date       | Description |
 | ---                        | ---     | ---        | ---         |
+| Base                       | 1.5.0   | 2019-04-03 | Added 'SubscriptionTerminated' and 'PasswordChangeRequired' messages. |
 | ResourceEvent              | 1.0.1   | 2018-11-29 | Corrected '@odata.type' and 'Id' property formats.  Corrected cases where 'ParamTypes' was incorrectly using 'value'. |
 | TaskEvent                  | 1.0.1   | 2018-11-29 | Corrected '@odata.type' and 'Id' property formats.  Corrected cases where 'ParamTypes' was incorrectly using 'value'.  Fixed spelling of the 'TaskProgressChanged' event. |
 | ResourceEvent              | 1.0.0   | 2018-08-10 | Initial release.  Defines messages to use for resource events. |

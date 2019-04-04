@@ -28,5 +28,5 @@
     "Oem": {},
     "Id": "nvdimm-example",
     "@odata.id": "/redfish/v1/Systems/nvdimm-example",
-    "@Redfish.Copyright": "Copyright 2016-2018 DMTF. All rights reserved."
+    "@Redfish.Copyright": "Copyright 2016-2019 DMTF. All rights reserved."
 }
