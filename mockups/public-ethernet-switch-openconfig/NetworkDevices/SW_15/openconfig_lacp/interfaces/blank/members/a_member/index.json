@@ -1,6 +1,6 @@
 {
-    "@odata.type": "#openconfig_lldp.lldp.interfaces.interface.members.member.v1_0_0.member",
-    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_lldp/interfaces/blank/members/a_member",
+    "@odata.type": "#openconfig_lacp.lacp.interfaces.interface.members.member.v1_0_0.member",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_lacp/interfaces/blank/members/a_member",
     "Id": "a_member",
 
     "interface": "a_member",
@@ -28,6 +28,6 @@
         "oper-key": 0
     },
     
-    "@odata.context": "/redfish/v1/$metadata#openconfig_lldp.interfaces.interface.members.member.member",
+    "@odata.context": "/redfish/v1/$metadata#openconfig_lacp.interfaces.interface.members.member.member",
     "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

@@ -23,7 +23,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
-    <edmx:Include Namespace="Resource.v1_1_0"/>
+    <edmx:Include Namespace="Resource.v1_1_5"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
     <edmx:Include Namespace="Chassis"/>
@@ -42,6 +42,30 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7317/ietf_system_v1.xml">
     <edmx:Include Namespace="ietf_system"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/openconfig_acl_v1.xml">
+    <edmx:Include Namespace="openconfig_acl"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/openconfig_interfaces_v1.xml">
+    <edmx:Include Namespace="openconfig_interfaces"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/openconfig_lacp_v1.xml">
+    <edmx:Include Namespace="openconfig_lacp"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/openconfig_lldp_v1.xml">
+    <edmx:Include Namespace="openconfig_lldp"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/openconfig_local_routing_v1.xml">
+    <edmx:Include Namespace="openconfig_local_routing"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/openconfig_network_instance_v1.xml">
+    <edmx:Include Namespace="openconfig_network_instance"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/openconfig_qos_v1.xml">
+    <edmx:Include Namespace="openconfig_qos"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/openconfig_vlan_v1.xml">
+    <edmx:Include Namespace="openconfig_vlan"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -133,13 +157,13 @@
           <Annotation Term="OData.LongDescription" String="The property shall be the version of the currently installed and running firmware."/>
         </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
-
         <NavigationProperty Name="LogServices" Type="LogServiceCollection.LogServiceCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the collection of Log Services associated with this system."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type LogServiceCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
+
         <NavigationProperty Name="IetfSystem" Type="ietf_system.ietf_system" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the ietf_system YANG module."/>
@@ -152,6 +176,56 @@
           <Annotation Term="OData.LongDescription" String="This property shall specify a reference to the ietf_interfaces YANG module, specified in IETF RFC7223."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
+
+        <NavigationProperty Name="Acl" Type="openconfig_acl.acl.acl" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the openconfig_acl YANG module."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify a reference to the openconfig_acl YANG module."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="Interfaces" Type="openconfig_interfaces.interfaces.interfaces" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the openconfig_interfaces l YANG module."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify a reference to the openconfig_interfaces YANG module."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="Lacp" Type="openconfig_lacp.lacp.lacp" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the openconfig_lacp YANG module."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify a reference to the openconfig_lacp YANG module."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="Lldp" Type="openconfig_lldp.lldp.lldp" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the openconfig_lldp YANG module."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify a reference to the openconfig_lldp YANG module."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="Local_Routing" Type="openconfig_local_routing.local_routes.local_routes" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the openconfig_local_routing YANG module."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify a reference to the openconfig_local_routing YANG module."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="Network_Instance" Type="openconfig_network_instance.network_instances.network_instances" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the openconfig_network_instance YANG module."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify a reference to the openconfig_network_instance YANG module."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="Qos" Type="openconfig_qos.qos.qos" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the openconfig_qos YANG module."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify a reference to the openconfig_qos YANG module."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="Vlan" Type="openconfig_vlan.vlan.vlan" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the openconfig_vlan YANG module."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify a reference to the openconfig_vlan YANG module."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+
         <Property Name="Links" Type="NetworkDevice.v1_0_0.Links" Nullable="false">
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>

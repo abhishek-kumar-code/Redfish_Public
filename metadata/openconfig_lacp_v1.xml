@@ -21,12 +21,248 @@
 	<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/openconfig_yang_types_v1.xml">
 		<edmx:Include Namespace="openconfig_yang_types.v1_0_0" Alias="oc_yang"/>
 	</edmx:Reference>
-	<edmx:DataServices>
-		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.interfaces.interface.members.member.state.counters">
+  <edmx:DataServices>
+ 
+ 
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.v1_0_0">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-			<EntityType Name="counters" Abstract="true" BaseType="Resource.v1_0_0.Resource">
-				<Annotation Term="OData.Description" String="Parameters for counters."/>
-				<Annotation Term="OData.LongDescription" String="Parameters for counters."/>
+			<Annotation Term="Redfish.Release" String="TBD"/>
+			<Annotation Term="OData.Description" String="Configuration and operational state data for LACP protocol operation on the aggregate interface."/>
+			<Annotation Term="OData.LongDescription" String="Configuration and operational state data for LACP protocol operation on the aggregate interface."/>
+			<Annotation Term="RedfishYang.uses" String="lacp-interfaces-top"/>
+			<EntityType Name="lacp" BaseType="openconfig_lacp.lacp.lacp">
+				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
+        <Property Name="lacp" Type="openconfig_lacp.lacp.v1_0_0.lacpType" Nullable="false">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="config property."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+        </Property>
+      </EntityType>
+
+			<ComplexType Name="lacpType">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="Configuration data for LACP."/>
+        <Annotation Term="OData.LongDescription" String="Automatically generated."/>
+        <Property Name="config" Type="openconfig_lacp.lacp.v1_0_0.configType" Nullable="false">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="config property."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+        </Property>
+        <Property Name="state" Type="openconfig_lacp.lacp.v1_0_0.stateType" Nullable="false">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="state property."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+        </Property>
+				<NavigationProperty Name="interfaces" Type="openconfig_lacp.lacp.interfacesCollection.interfacesCollection" ContainsTarget="true">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of interfaces."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.AutoExpandReferences"/>
+				</NavigationProperty>
+      </ComplexType>
+
+      <ComplexType Name="configType">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="Configuration data for LACP."/>
+        <Annotation Term="OData.LongDescription" String="Automatically generated."/>
+        <Property Name="system_priority" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="System priority used by the node on this LAG interface. Lower value is higher priority for determining which node is the controlling system."/>
+          <Annotation Term="OData.LongDescription" String="Automatically generated."/>
+        </Property>
+      </ComplexType>
+      <ComplexType Name="stateType">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="Operational state data for LACP."/>
+        <Annotation Term="OData.LongDescription" String="Automatically generated."/>
+        <Property Name="system_priority" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="System priority used by the node on this LAG interface. Lower value is higher priority for determining which node is the controlling system."/>
+          <Annotation Term="OData.LongDescription" String="Automatically generated."/>
+        </Property>
+      </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.interfacesCollection">
+      <EntityType Name="interfacesCollection" BaseType="Resource.v1_0_0.ResourceCollection" >
+        <Annotation Term="OData.Description" String="A Collection of openconfig_lacp.interface resource instances."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <NavigationProperty Name="Members" Type="Collection(openconfig_lacp.lacp.interfaces.interface.interface)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Contains members of this collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="Redfish.Required"/>
+       </NavigationProperty>
+      </EntityType>
+    </Schema>
+
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.interfaces.interface">
+			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+			<EntityType Name="interface" Abstract="true" BaseType="Resource.v1_0_0.Resource">
+				<Annotation Term="OData.Description" String="Parameters for interface."/>
+				<Annotation Term="OData.LongDescription" String="Parameters for interface."/>
+				<Annotation Term="Capabilities.InsertRestrictions">
+					<Record>
+						<PropertyValue Property="Insertable" Bool="false"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.UpdateRestrictions">
+					<Record>
+						<PropertyValue Property="Updatable" Bool="false"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.DeleteRestrictions">
+					<Record>
+						<PropertyValue Property="Deletable" Bool="false"/>
+					</Record>
+				</Annotation>
+			</EntityType>
+			<EnumType Name="lacp_period_type">
+				<Member Name="FAST">
+					<Annotation Term="RedfishYang.enum" String="FAST"/>
+					<Annotation Term="OData.Description" String="Send LACP packets every second."/>
+					<Annotation Term="OData.LongDescription" String="Send LACP packets every second."/>
+				</Member>
+				<Member Name="SLOW">
+					<Annotation Term="RedfishYang.enum" String="SLOW"/>
+					<Annotation Term="OData.Description" String="Send LACP packets every 30 seconds."/>
+					<Annotation Term="OData.LongDescription" String="Send LACP packets every 30 seconds."/>
+				</Member>
+				<Annotation Term="OData.Description" String="Defines the period options for the time between sending LACP messages."/>
+				<Annotation Term="OData.LongDescription" String="Defines the period options for the time between sending LACP messages."/>
+				<Annotation Term="RedfishYang.reference" String="IEEE 802.3ad"/>
+			</EnumType>
+			<Term Name="YangType" Type="openconfig_lacp.lacp.interfaces.v1_0_0.YangTypes">
+				<Annotation Term="OData.Description" String="A extension of openconfig_lacp.lacp.interfaces resource instances."/>
+			</Term>
+			<EnumType Name="YangTypes">
+				<Member Name="lacp_activity_type"/>
+				<Member Name="lacp_period_type"/>
+				<Member Name="lacp_synchronization_type"/>
+				<Member Name="lacp_timeout_type"/>
+			</EnumType>
+			<EnumType Name="lacp_activity_type">
+				<Member Name="ACTIVE">
+					<Annotation Term="RedfishYang.enum" String="ACTIVE"/>
+					<Annotation Term="OData.Description" String="Interface is an active member, i.e., will detect and maintain aggregates."/>
+					<Annotation Term="OData.LongDescription" String="Interface is an active member, i.e., will detect and maintain aggregates."/>
+				</Member>
+				<Member Name="PASSIVE">
+					<Annotation Term="RedfishYang.enum" String="PASSIVE"/>
+					<Annotation Term="OData.Description" String="Interface is a passive member, i.e., it participates with an active partner."/>
+					<Annotation Term="OData.LongDescription" String="Interface is a passive member, i.e., it participates with an active partner."/>
+				</Member>
+				<Annotation Term="OData.Description" String="Describes the LACP membership type, active or passive, of the interface in the aggregate."/>
+				<Annotation Term="OData.LongDescription" String="Describes the LACP membership type, active or passive, of the interface in the aggregate."/>
+				<Annotation Term="RedfishYang.reference" String="IEEE 802.1AX-2008"/>
+			</EnumType>
+    </Schema>
+
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.interfaces.interface.v1_0_0">
+			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+			<Annotation Term="Redfish.Release" String="TBD"/>
+			<Annotation Term="RedfishYang.key" String="name"/>
+			<Annotation Term="OData.Description" String="List of aggregate interfaces managed by LACP."/>
+			<Annotation Term="OData.LongDescription" String="List of aggregate interfaces managed by LACP."/>
+			<Annotation Term="RedfishYang.uses" String="aggregation-lacp-members-top"/>
+      <EntityType Name="interface" BaseType="openconfig_lacp.lacp.interfaces.interface.interface">
+				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list"/>
+				<Property Name="name" Type="Edm.String">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/leafref">
+						<Annotation Term="RedfishYang.path" String="../config/name"/>
+					</Annotation>
+					<Annotation Term="OData.Description" String="Reference to the list key."/>
+					<Annotation Term="OData.LongDescription" String="Reference to the list key."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="config" Type="openconfig_lacp.lacp.interfaces.interface.v1_0_0.configType" Nullable="false">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="config property."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+				</Property>
+				<NavigationProperty Name="state" Type="openconfig_lacp.lacp.interfaces.interface.v1_0_0.stateType" Nullable="false">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="state property."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.AutoExpandReferences"/>
+				</NavigationProperty>
+				<NavigationProperty Name="members" Type="openconfig_lacp.lacp.interfaces.interface.membersCollection.membersCollection" ContainsTarget="true">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of members."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.AutoExpandReferences"/>
+				</NavigationProperty>
+			</EntityType>
+
+      <ComplexType Name="configType">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="Configuration data for LACP."/>
+        <Annotation Term="OData.LongDescription" String="Automatically generated."/>
+        <Property Name="system_priority" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="System priority used by the node on this LAG interface. Lower value is higher priority for determining which node is the controlling system."/>
+          <Annotation Term="OData.LongDescription" String="Automatically generated."/>
+        </Property>
+      </ComplexType>
+      <ComplexType Name="stateType">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="Operational state data for LACP."/>
+        <Annotation Term="OData.LongDescription" String="Automatically generated."/>
+        <Property Name="system_priority" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="System priority used by the node on this LAG interface. Lower value is higher priority for determining which node is the controlling system."/>
+          <Annotation Term="OData.LongDescription" String="Automatically generated."/>
+        </Property>
+      </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.interfaces.interface.membersCollection">
+      <EntityType Name="membersCollection" BaseType="Resource.v1_0_0.ResourceCollection" >
+        <Annotation Term="OData.Description" String="A Collection of openconfig_lacp.interface member resource instances."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <NavigationProperty Name="Members" Type="Collection(openconfig_lacp.lacp.interfaces.interface.members.member)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Contains members of this collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.interfaces.interface.members.member">
+			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+			<EntityType Name="member" Abstract="true" BaseType="Resource.v1_0_0.Resource">
+				<Annotation Term="OData.Description" String="Parameters for members."/>
+				<Annotation Term="OData.LongDescription" String="Parameters for members."/>
 				<Annotation Term="Capabilities.InsertRestrictions">
 					<Record>
 						<PropertyValue Property="Insertable" Bool="false"/>
@@ -44,6 +280,181 @@
 				</Annotation>
 			</EntityType>
 		</Schema>
+
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.interfaces.interface.members.member.v1_0_0">
+			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+			<Annotation Term="Redfish.Release" String="TBD"/>
+			<Annotation Term="RedfishYang.key" String="member"/>
+			<Annotation Term="OData.Description" String="List of member interfaces and their associated status for a LACP-controlled aggregate interface."/>
+			<Annotation Term="OData.LongDescription" String="List of member interfaces and their associated status for a LACP-controlled aggregate interface.  Member list is not configurable here -- each interface indicates items its participation in the LAG."/>
+			<EntityType Name="member" BaseType="openconfig_lacp.lacp.interfaces.interface.members.member.member">
+				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list"/>
+				<Property Name="interface" Type="Edm.String">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/leafref">
+						<Annotation Term="RedfishYang.path" String="../state/interface"/>
+					</Annotation>
+					<Annotation Term="OData.Description" String="Reference to aggregate member interface."/>
+					<Annotation Term="OData.LongDescription" String="Reference to aggregate member interface."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<NavigationProperty Name="state" Type="openconfig_lacp.lacp.interfaces.interface.v1_0_0.stateType">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of state."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.AutoExpandReferences"/>
+				</NavigationProperty>
+			</EntityType>
+
+    <ComplexType Name="stateType"> 
+      <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
+				<Property Name="interface" Type="oc_if.base_interface_ref">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="oc_if.YangType" EnumMember="oc_if.YangTypes/base_interface_ref"/>
+					<Annotation Term="OData.Description" String="Reference to interface member of the LACP aggregate."/>
+					<Annotation Term="OData.LongDescription" String="Reference to interface member of the LACP aggregate."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="activity" Type="openconfig_lacp.lacp.interfaces.interface.members.member.lacp_activity_type">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="openconfig_lacp.lacp.interfaces.interface.members.member.YangTypes/lacp_activity_type"/>
+					<Annotation Term="OData.Description" String="Indicates participant is active or passive."/>
+					<Annotation Term="OData.LongDescription" String="Indicates participant is active or passive."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="timeout" Type="openconfig_lacp.lacp.interfaces.interface.members.member.lacp_timeout_type">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="openconfig_lacp.lacp.interfaces.interface.members.member.YangTypes/lacp_timeout_type"/>
+					<Annotation Term="OData.Description" String="The timeout type (short or long) used by the participant."/>
+					<Annotation Term="OData.LongDescription" String="The timeout type (short or long) used by the participant."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="synchronization" Type="openconfig_lacp.lacp.interfaces.interface.members.member.lacp_synchronization_type">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="openconfig_lacp.lacp.interfaces.interface.members.member.YangTypes/lacp_synchronization_type"/>
+					<Annotation Term="OData.Description" String="Indicates whether the participant is in-sync or out-of-sync."/>
+					<Annotation Term="OData.LongDescription" String="Indicates whether the participant is in-sync or out-of-sync."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="aggregatable" Type="Edm.Boolean">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/boolean"/>
+					<Annotation Term="OData.Description" String="A true value indicates that the participant will allow the link to be used as part of the aggregate."/>
+					<Annotation Term="OData.LongDescription" String="A true value indicates that the participant will allow the link to be used as part of the aggregate. A false value indicates the link should be used as an individual link."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="collecting" Type="Edm.Boolean">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/boolean"/>
+					<Annotation Term="OData.Description" String="If true, the participant is collecting incoming frames on the link, otherwise false."/>
+					<Annotation Term="OData.LongDescription" String="If true, the participant is collecting incoming frames on the link, otherwise false."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="distributing" Type="Edm.Boolean">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/boolean"/>
+					<Annotation Term="OData.Description" String="When true, the participant is distributing outgoing frames; when false, distribution is disabled."/>
+					<Annotation Term="OData.LongDescription" String="When true, the participant is distributing outgoing frames; when false, distribution is disabled."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="system_id" Type="oc_yang.mac_address">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="oc_yang.YangType" EnumMember="oc_yang.YangTypes/mac_address"/>
+					<Annotation Term="OData.Description" String="MAC address that defines the local system ID for the aggregate interface."/>
+					<Annotation Term="OData.LongDescription" String="MAC address that defines the local system ID for the aggregate interface."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="oper_key" Type="RedfishYang.uint16">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint16"/>
+					<Annotation Term="OData.Description" String="Current operational value of the key for the aggregate interface."/>
+					<Annotation Term="OData.LongDescription" String="Current operational value of the key for the aggregate interface."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="partner_id" Type="oc_yang.mac_address">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="oc_yang.YangType" EnumMember="oc_yang.YangTypes/mac_address"/>
+					<Annotation Term="OData.Description" String="MAC address representing the protocol partner's interface system ID."/>
+					<Annotation Term="OData.LongDescription" String="MAC address representing the protocol partner's interface system ID."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="partner_key" Type="RedfishYang.uint16">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint16"/>
+					<Annotation Term="OData.Description" String="Operational value of the protocol partner's key."/>
+					<Annotation Term="OData.LongDescription" String="Operational value of the protocol partner's key."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="port_num" Type="RedfishYang.uint16">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint16"/>
+					<Annotation Term="OData.Description" String="Port number of the local (actor) aggregation member."/>
+					<Annotation Term="OData.LongDescription" String="Port number of the local (actor) aggregation member."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="partner_port_num" Type="RedfishYang.uint16">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint16"/>
+					<Annotation Term="OData.Description" String="Port number of the partner (remote) port for this member port."/>
+					<Annotation Term="OData.LongDescription" String="Port number of the partner (remote) port for this member port."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="counters" Type="openconfig_lacp.lacp.interfaces.interface.v1_0_0.countersType">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of counters."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+				</Property>
+			</ComplexType>
+ 
+			<ComplexType Name="countersType">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+				<Annotation Term="OData.Description" String="Parameters for counters."/>
+				<Annotation Term="OData.LongDescription" String="Parameters for counters."/>
+				<Property Name="lacp-in-pkts" Type="RedfishYang.uint64">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint64"/>
+					<Annotation Term="OData.Description" String="Number of LACPDUs received."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="lacp-out-pkts" Type="RedfishYang.uint64">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint64"/>
+					<Annotation Term="OData.Description" String="Number of LACPDUs transmitted."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="lacp-rx-errors" Type="RedfishYang.uint64">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint64"/>
+					<Annotation Term="OData.Description" String="Number of LACPDU receive packet errors."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="lacp-tx-errors" Type="RedfishYang.uint64">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint64"/>
+					<Annotation Term="OData.Description" String="Number of LACPDU transmit packet errors."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="lacp-unknown-errors" Type="RedfishYang.uint64">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint64"/>
+					<Annotation Term="OData.Description" String="Number of LACPDU unknown packet errors."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="lacp-errors" Type="RedfishYang.uint64">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint64"/>
+					<Annotation Term="OData.Description" String="Number of LACPDU illegal packet errors."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+			</ComplexType>
+    </Schema>
+<!--
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.interfaces.interface.members.member.state">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="state" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -65,7 +476,8 @@
 					</Record>
 				</Annotation>
 			</EntityType>
-		</Schema>
+    </Schema>
+    -->
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.interfaces.interface.members.member">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="member" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -141,7 +553,8 @@
 				<Annotation Term="OData.LongDescription" String="Indicates LACP synchronization state of participant."/>
 				<Annotation Term="RedfishYang.reference" String="IEEE 802.1AX-2008"/>
 			</EnumType>
-		</Schema>
+    </Schema>
+
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.interfaces.interface.members">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="members" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -163,7 +576,8 @@
 					</Record>
 				</Annotation>
 			</EntityType>
-		</Schema>
+    </Schema>
+
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.interfaces.interface.state">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="state" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -246,7 +660,9 @@
 				<Annotation Term="OData.LongDescription" String="Describes the LACP membership type, active or passive, of the interface in the aggregate."/>
 				<Annotation Term="RedfishYang.reference" String="IEEE 802.1AX-2008"/>
 			</EnumType>
-		</Schema>
+    </Schema>
+
+    <!--
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.interfaces.interface">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="interface" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -307,7 +723,8 @@
 				<Annotation Term="OData.LongDescription" String="Describes the LACP membership type, active or passive, of the interface in the aggregate."/>
 				<Annotation Term="RedfishYang.reference" String="IEEE 802.1AX-2008"/>
 			</EnumType>
-		</Schema>
+    </Schema>
+
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.interfaces">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="interfaces" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -329,7 +746,8 @@
 					</Record>
 				</Annotation>
 			</EntityType>
-		</Schema>
+    </Schema>
+
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.state">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="state" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -351,7 +769,8 @@
 					</Record>
 				</Annotation>
 			</EntityType>
-		</Schema>
+    </Schema>
+
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.config">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="config" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -373,7 +792,8 @@
 					</Record>
 				</Annotation>
 			</EntityType>
-		</Schema>
+    </Schema>
+-->
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="lacp" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -395,7 +815,9 @@
 					</Record>
 				</Annotation>
 			</EntityType>
-		</Schema>
+    </Schema>
+    
+
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.aggregation_lacp_top.lacp.interfaces.interface.members.member.state.counters">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="counters" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -417,7 +839,8 @@
 					</Record>
 				</Annotation>
 			</EntityType>
-		</Schema>
+    </Schema>
+
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.aggregation_lacp_top.lacp.interfaces.interface.members.member.state">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="state" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -439,7 +862,8 @@
 					</Record>
 				</Annotation>
 			</EntityType>
-		</Schema>
+    </Schema>
+
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.aggregation_lacp_top.lacp.interfaces.interface.members.member">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="member" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -515,7 +939,8 @@
 				<Annotation Term="OData.LongDescription" String="Indicates LACP synchronization state of participant."/>
 				<Annotation Term="RedfishYang.reference" String="IEEE 802.1AX-2008"/>
 			</EnumType>
-		</Schema>
+    </Schema>
+
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.aggregation_lacp_top.lacp.interfaces.interface.members">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="members" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -537,7 +962,8 @@
 					</Record>
 				</Annotation>
 			</EntityType>
-		</Schema>
+    </Schema>
+
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.aggregation_lacp_top.lacp.interfaces.interface.state">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="state" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -559,7 +985,8 @@
 					</Record>
 				</Annotation>
 			</EntityType>
-		</Schema>
+    </Schema>
+
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.aggregation_lacp_top.lacp.interfaces.interface.config">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="config" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -620,7 +1047,8 @@
 				<Annotation Term="OData.LongDescription" String="Describes the LACP membership type, active or passive, of the interface in the aggregate."/>
 				<Annotation Term="RedfishYang.reference" String="IEEE 802.1AX-2008"/>
 			</EnumType>
-		</Schema>
+    </Schema>
+
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.aggregation_lacp_top.lacp.interfaces.interface">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="interface" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -703,7 +1131,8 @@
 					</Record>
 				</Annotation>
 			</EntityType>
-		</Schema>
+    </Schema>
+
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.aggregation_lacp_top.lacp.state">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="state" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -4026,7 +4455,8 @@
 					<Annotation Term="OData.AutoExpandReferences"/>
 				</NavigationProperty>
 			</EntityType>
-		</Schema>
+    </Schema>
+  <!--
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.v1_0_0">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<Annotation Term="Redfish.Release" String="TBD"/>
@@ -4054,7 +4484,8 @@
 					<Annotation Term="OData.AutoExpandReferences"/>
 				</NavigationProperty>
 			</EntityType>
-		</Schema>
+    </Schema>
+  -->
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.config.v1_0_0">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<Annotation Term="Redfish.Release" String="TBD"/>
@@ -4097,7 +4528,8 @@
 				</Property>
 			</EntityType>
 		</Schema>
-		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.interfaces.v1_0_0">
+    <!--
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.interfaces.v1_0_0">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="OData.Description" String="Enclosing container for the list of LACP-enabled interfaces."/>
@@ -4111,7 +4543,8 @@
 					<Annotation Term="OData.AutoExpandReferences"/>
 				</NavigationProperty>
 			</EntityType>
-		</Schema>
+    </Schema>
+    
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.interfaces.interface.v1_0_0">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<Annotation Term="Redfish.Release" String="TBD"/>
@@ -4121,7 +4554,7 @@
 			<Annotation Term="RedfishYang.uses" String="aggregation-lacp-members-top"/>
 			<EntityType Name="interface" BaseType="openconfig_lacp.lacp.interfaces.interface.interface">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list"/>
-				<Property Name="name" Type="Edm.String">
+		<Mouse>C!!9<Mouse>C!!:		<Property Name="name" Type="Edm.String">
 					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
 					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/leafref">
 						<Annotation Term="RedfishYang.path" String="../config/name"/>
@@ -4149,7 +4582,8 @@
 					<Annotation Term="OData.AutoExpandReferences"/>
 				</NavigationProperty>
 			</EntityType>
-		</Schema>
+    </Schema>
+    -->
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_lacp.lacp.interfaces.interface.config.v1_0_0">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<Annotation Term="Redfish.Release" String="TBD"/>

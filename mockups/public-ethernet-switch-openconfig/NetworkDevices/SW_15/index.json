@@ -9,7 +9,6 @@
     "SKU": "67B",
     "SerialNumber": "2M220100SL",
     "PartNumber": "76-88883",
-    "IndicatorLED": "Off",
     "FirmwareVersion": "1.2.4",
     "Status": {
         "@odata.type": "#Resource.Status",
