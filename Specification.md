@@ -3,7 +3,7 @@ DocTitle: Redfish Specification
 DocNumber: '0266'
 DocClass: Normative
 DocVersion: '1.7.0'
-modified: '2019-02-26'
+modified: '2019-04-04'
 SupersedesVersion: '1.6.1'
 status: published
 released: true
@@ -4045,7 +4045,7 @@ A service that supports updating a composed resource shall provide one or more o
 
 | Version | Date       | Description |
 | ---     | ---        | ---         |
-| 1.7.0   | 2019-04-05 | The specification has been significantly re-written for clarity.  Except for the additions listed below, no normative changes were made.  Any clarifications that inadvertently altered the normative behavior are considered errata, and will be corrected in future revisions to the specification. |
+| 1.7.0   | 2019-04-04 | The specification has been significantly re-written for clarity.  Except for the additions listed below, no normative changes were made.  Any clarifications that inadvertently altered the normative behavior are considered errata, and will be corrected in future revisions to the specification. |
 |         |            | Added missing normative statements regarding handling of array properties and PATCH operations on arrays. |
 |         |            | Separated data model and schema clauses. |
 |         |            | Added missing clauses that describe how JSON Schema and OpenAPI files are formatted. |
