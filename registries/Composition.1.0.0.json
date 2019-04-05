@@ -11,9 +11,9 @@
     "Messages": {
         "ResourceZoneChanged": {
             "Description": "Indicates that a Resource Zone has changed due to Resource Blocks being added or removed from the Resource Zone.",
-            "Message": "The Resource Zone has been changed on the service.",
+            "Message": "The Resource Zone '%1' has been changed on the service.",
             "Severity": "Warning",
-            "NumberOfArgs": 0,
+            "NumberOfArgs": 1,
             "Resolution": "Refresh your cached version of the Resource Zone to get the updated information from the service."
         }
     }
