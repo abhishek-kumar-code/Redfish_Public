@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#openconfig_network_instance.network_instance.v1_0_0.network_instance",
+    "@odata.type": "#openconfig_network_instance.network_instances.network_instance.v1_0_0.network_instance",
     "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_network_instance/network_instances/a_network_instance",
     "Id": "a_network_instance",
 
@@ -27,7 +27,7 @@
     "fdb": {
         "mac-table": {
             "entries": {
-                "entry": {}
+                "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_network_instances/a_network_instance/entries"
             }
         },
         "config": {
@@ -52,27 +52,6 @@
             "control-word": false,
             "label-allocation-mode": ""
         }
-    },
-    "interfaces": {
-        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_network_instances/a_network_instance/interfaces"
-    },
-    "tables": {
-        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_network_instances/a_network_instance/tables"
-    },
-    "protocols": {
-        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_network_instances/a_network_instance/protocols"
-    },
-    "route-limits": {
-        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_network_instances/a_network_instance/route_limits"
-    },
-    "table-connections": {
-        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_network_instances/a_network_instance/table_connections"
-    },
-    "connection-points": {
-        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_network_instances/a_network_instance/connection_points"
-    },
-    "vlans": {
-        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_network_instances/a_network_instance/vlans"
     },
     "@odata.context": "/redfish/v1/$metadata#openconfig_network_instance.network_instance.network_instance",
     "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."

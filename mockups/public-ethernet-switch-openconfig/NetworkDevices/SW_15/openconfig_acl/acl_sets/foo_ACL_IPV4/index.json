@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#openconfig_acl.acl_set.v1_0_0.acl_set",
+    "@odata.type": "#openconfig_acl.acl.acl_sets.acl_set.v1_0_0.acl_set",
     "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_acl/acl_sets/foo_ACL_IPV4",
     "Id": "foo_ACL_IPV4",
 

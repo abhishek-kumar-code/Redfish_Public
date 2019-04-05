@@ -1,0 +1,32 @@
+{
+    "@odata.type": "#openconfig_network_instance.network_instances.network_instance.entries.entry.v1_0_0.entry",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_network_instance/network_instances/a_network_instance/entries/a_entry",
+    "Id": "a_entry",
+    
+    "mac-address": "00-14-22-01-23-45",
+    "config": {
+        "vlan": "",
+        "mac-address": "00-14-22-01-23-45"
+    },
+    "state": {
+        "age": 0,
+        "entry-type": "",
+        "vlan": "",
+        "mac-address": "00-14-22-01-23-45"
+    },
+    "interface": {
+        "interface-ref": {
+            "config": {
+                "interface": "",
+                "subinterface": ""
+            },
+            "state": {
+                "interface": "",
+                "subinterface": ""
+            }
+        }
+    },
+
+    "@odata.context": "/redfish/v1/$metadata#openconfig_network_instance.network_instances.network_instance.entries.entry.entry",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

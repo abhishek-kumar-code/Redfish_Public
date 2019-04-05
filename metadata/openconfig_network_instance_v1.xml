@@ -24,7 +24,655 @@
 	<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ietf_inet_types_v1.xml">
 		<edmx:Include Namespace="ietf_inet_types.v1_0_0" Alias="inet"/>
 	</edmx:Reference>
-	<edmx:DataServices>
+  <edmx:DataServices>
+
+
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance">
+			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+			<EntityType Name="openconfig_network_instance" Abstract="true" BaseType="Resource.v1_0_0.Resource">
+				<Annotation Term="OData.Description" String="Parameters for openconfig_network_instance."/>
+				<Annotation Term="OData.LongDescription" String="Parameters for openconfig_network_instance."/>
+				<Annotation Term="Capabilities.InsertRestrictions">
+					<Record>
+						<PropertyValue Property="Insertable" Bool="false"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.UpdateRestrictions">
+					<Record>
+						<PropertyValue Property="Updatable" Bool="false"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.DeleteRestrictions">
+					<Record>
+						<PropertyValue Property="Deletable" Bool="false"/>
+					</Record>
+				</Annotation>
+			</EntityType>
+    </Schema>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance.v1_0_0" Alias="oc_netinst">
+			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+			<Annotation Term="Redfish.Release" String="TBD"/>
+			<Annotation Term="RedfishYang.yang_version" String="1"/>
+			<Annotation Term="RedfishYang.namespace" String="http://openconfig.net/yang/network-instance"/>
+			<Annotation Term="RedfishYang.prefix" String="oc-netinst"/>
+			<Annotation Term="RedfishYang.organization" String="OpenConfig working group"/>
+			<Annotation Term="RedfishYang.contact" String="OpenConfig working group www.openconfig.net"/>
+			<Annotation Term="OData.Description" String="An OpenConfig description of a network-instance."/>
+			<Annotation Term="OData.LongDescription" String="An OpenConfig description of a network-instance. This may be a Layer 3 forwarding construct such as a virtual routing and forwarding (VRF) instance, or a Layer 2 instance such as a virtual switch instance (VSI). Mixed Layer 2 and Layer 3 instances are also supported."/>
+			<Annotation Term="RedfishYang.statement" String="oc-ext:openconfig-version"/>
+			<EntityType Name="openconfig_network_instance" BaseType="openconfig_network_instance.openconfig_network_instance">
+				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/module"/>
+				<NavigationProperty Name="network_instances" Type="openconfig_network_instance.network_instancesCollection.network_instancesCollection" ContainsTarget="true">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of network_instances."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.AutoExpandReferences"/>
+				</NavigationProperty>
+			</EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance.network_instanceCollection">
+      <EntityType Name="network_instanceCollection" BaseType="Resource.v1_0_0.ResourceCollection" >
+        <Annotation Term="OData.Description" String="A Collection of openconfig_network_instance.network_instance resource instances."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <NavigationProperty Name="Members" Type="Collection(openconfig_network_instances.network_instances.network_instance.network_instance)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Contains members of this collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="Redfish.Required"/>
+       </NavigationProperty>
+      </EntityType>
+    </Schema>
+
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance.network_instances.network_instance">
+			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+			<EntityType Name="network_instance" Abstract="true" BaseType="Resource.v1_0_0.Resource">
+				<Annotation Term="OData.Description" String="Parameters for network_instance."/>
+				<Annotation Term="OData.LongDescription" String="Parameters for network_instance."/>
+				<Annotation Term="Capabilities.InsertRestrictions">
+					<Record>
+						<PropertyValue Property="Insertable" Bool="false"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.UpdateRestrictions">
+					<Record>
+						<PropertyValue Property="Updatable" Bool="false"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.DeleteRestrictions">
+					<Record>
+						<PropertyValue Property="Deletable" Bool="false"/>
+					</Record>
+				</Annotation>
+			</EntityType>
+    </Schema>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance.network_instances.network_instance.v1_0_0">
+			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+			<Annotation Term="Redfish.Release" String="TBD"/>
+			<Annotation Term="RedfishYang.key" String="name"/>
+			<Annotation Term="OData.Description" String="Network instances configured on the local system."/>
+			<Annotation Term="OData.LongDescription" String="Network instances configured on the local system."/>
+			<Collection>
+				<Record>
+					<Annotation Term="RedfishYang.uses" String="l2ni-instance">
+						<Annotation Term="RedfishYang.when" String="config/type = 'L2VSI' or config/type = 'L2P2P' or config/type = 'L2L3' or config/type = 'DEFAULT_INSTANCE'">
+							<Annotation Term="RedfishYang.description" String="Layer 2 configuration parameters included when a network instance is a Layer 2 instance or a combined L2L3 instance"/>
+						</Annotation>
+					</Annotation>
+				</Record>
+				<Record>
+					<Annotation Term="RedfishYang.uses" String="oc-ni-l3:l3ni-route-limit-structural">
+						<Annotation Term="RedfishYang.when" String="type = 'L3VRF' or type = 'L2L3'">
+							<Annotation Term="RedfishYang.description" String="Layer 3 VRF or L2/L3 instances can have route limits applied. This is not supported for the default instance."/>
+						</Annotation>
+					</Annotation>
+				</Record>
+				<Record>
+					<Annotation Term="RedfishYang.uses" String="oc-vlan:vlan-top"/>
+				</Record>
+			</Collection>
+			<EntityType Name="network_instance" BaseType="openconfig_network_instance.network_instances.network_instance.network_instance">
+				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list"/>
+				<Property Name="name" Type="Edm.String">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/leafref">
+						<Annotation Term="RedfishYang.path" String="../config/name"/>
+					</Annotation>
+					<Annotation Term="OData.Description" String="A unique name identifying the network instance."/>
+					<Annotation Term="OData.LongDescription" String="A unique name identifying the network instance."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+        <Property Name="config" Type="openconfig_network_instance.network_instances.network_instance.v1_0_0.configType" Nullable="false">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="config property."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+        </Property>
+        <Property Name="state" Type="openconfig_network_instance.network_instances.network_instance.v1_0_0.stateType" >
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="state property."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+        </Property>
+				<Property Name="fdb" Type="openconfig_network_instance.network_instances.network_instance.v1_0_0.fdbType" Nullable="false">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of fdb."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+				<Property>
+				<NavigationProperty Name="interfaces" Type="openconfig_lacp.lacp.interfacesCollection.interfacesCollection" ContainsTarget="true">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of interfaces."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.AutoExpandReferences"/>
+				</NavigationProperty>
+
+				<NavigationProperty Name="encapsulationContainer" Type="encapsulation.encapsulation" ContainsTarget="true">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of encapsulation."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.AutoExpandReferences"/>
+				</NavigationProperty>
+				<NavigationProperty Name="inter_instance_policiesContainer" Type="inter_instance_policies.inter_instance_policies" ContainsTarget="true">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of inter_instance_policies."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.AutoExpandReferences"/>
+				</NavigationProperty>
+				<NavigationProperty Name="table_connectionsContainer" Type="table_connections.table_connections" ContainsTarget="true">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of table_connections."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.AutoExpandReferences"/>
+				</NavigationProperty>
+				<NavigationProperty Name="interfacesContainer" Type="interfaces.interfaces" ContainsTarget="true">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of interfaces."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.AutoExpandReferences"/>
+				</NavigationProperty>
+				<NavigationProperty Name="tablesContainer" Type="tables.tables" ContainsTarget="true">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of tables."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.AutoExpandReferences"/>
+				</NavigationProperty>
+				<NavigationProperty Name="connection_pointsContainer" Type="connection_points.connection_points" ContainsTarget="true">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of connection_points."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.AutoExpandReferences"/>
+				</NavigationProperty>
+				<NavigationProperty Name="protocolsContainer" Type="protocols.protocols" ContainsTarget="true">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of protocols."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.AutoExpandReferences"/>
+				</NavigationProperty>
+				<NavigationProperty Name="route_limitsContainer" Type="route_limits.route_limits" ContainsTarget="true">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of route_limits."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.AutoExpandReferences"/>
+				</NavigationProperty>
+				<NavigationProperty Name="vlansContainer" Type="vlans.vlans" ContainsTarget="true">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of vlans."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+					<Annotation Term="OData.AutoExpandReferences"/>
+				</NavigationProperty>
+      </EntityType>
+
+      <ComplexType Name="configType">
+      	<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
+			  <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+			  <Annotation Term="OData.Description" String="Configuration parameters relating to a network instance."/>
+			  <Annotation Term="OData.LongDescription" String="Configuration parameters relating to a network instance."/>
+				<Property Name="name" Type="Edm.String">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/string"/>
+					<Annotation Term="OData.Description" String="An operator-assigned unique name for the forwarding instance."/>
+					<Annotation Term="OData.LongDescription" String="An operator-assigned unique name for the forwarding instance."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="type" Type="RedfishYang.instance_identifier">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/identityref">
+						<Annotation Term="RedfishYang.base" String="oc-ni-types:NETWORK_INSTANCE_TYPE"/>
+					</Annotation>
+					<Annotation Term="OData.Description" String="The type of network instance."/>
+					<Annotation Term="OData.LongDescription" String="The type of network instance. The value of this leaf indicates the type of forwarding entries that should be supported by this network instance."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="enabled" Type="Edm.Boolean">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/boolean"/>
+					<Annotation Term="OData.Description" String="Whether the network instance should be configured to be active on the network element."/>
+					<Annotation Term="OData.LongDescription" String="Whether the network instance should be configured to be active on the network element."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="description" Type="Edm.String">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/string"/>
+					<Annotation Term="OData.Description" String="A free-form string to be used by the network operator to describe the function of this network instance."/>
+					<Annotation Term="OData.LongDescription" String="A free-form string to be used by the network operator to describe the function of this network instance."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="router_id" Type="yang.dotted_quad">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="yang.YangType" EnumMember="yang.YangTypes/dotted_quad"/>
+					<Annotation Term="OData.Description" String="A identifier for the local network instance - typically used within associated routing protocols or signalling routing information in another network instance."/>
+					<Annotation Term="OData.LongDescription" String="A identifier for the local network instance - typically used within associated routing protocols or signalling routing information in another network instance."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="route_distinguisher" Type="oc_ni_types.route_distinguisher">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="oc_ni_types.YangType" EnumMember="oc_ni_types.YangTypes/route_distinguisher"/>
+					<Annotation Term="OData.Description" String="The route distinguisher that should be used for the local VRF or VSI instance when it is signalled via BGP."/>
+					<Annotation Term="OData.LongDescription" String="The route distinguisher that should be used for the local VRF or VSI instance when it is signalled via BGP."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="enabled_address_families" Type="Collection(RedfishYang.instance_identifier)">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf_list"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/identityref">
+						<Annotation Term="RedfishYang.base" String="octypes:ADDRESS_FAMILY"/>
+					</Annotation>
+					<Annotation Term="OData.Description" String="The address families that are to be enabled for this network instance."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+					<Annotation Term="OData.LongDescription" String="List of the type enabled_address_families.  The address families that are to be enabled for this network instance."/>
+				</Property>
+				<Property Name="mtu" Type="RedfishYang.uint16">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint16"/>
+					<Annotation Term="OData.Description" String="The maximum frame size which should be supported for this instance for Layer 2 frames."/>
+					<Annotation Term="OData.LongDescription" String="The maximum frame size which should be supported for this instance for Layer 2 frames."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+			</ComplexType>
+
+      <ComplexType Name="stateType">
+				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
+			  <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+			  <Annotation Term="OData.Description" String="Operational state parameters relating to a network instance."/>
+			  <Annotation Term="OData.LongDescription" String="Operational state parameters relating to a network instance."/>
+				<Property Name="name" Type="Edm.String">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/string"/>
+					<Annotation Term="OData.Description" String="An operator-assigned unique name for the forwarding instance."/>
+					<Annotation Term="OData.LongDescription" String="An operator-assigned unique name for the forwarding instance."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="type" Type="RedfishYang.instance_identifier">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/identityref">
+						<Annotation Term="RedfishYang.base" String="oc-ni-types:NETWORK_INSTANCE_TYPE"/>
+					</Annotation>
+					<Annotation Term="OData.Description" String="The type of network instance."/>
+					<Annotation Term="OData.LongDescription" String="The type of network instance. The value of this leaf indicates the type of forwarding entries that should be supported by this network instance."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="enabled" Type="Edm.Boolean">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/boolean"/>
+					<Annotation Term="OData.Description" String="Whether the network instance should be configured to be active on the network element."/>
+					<Annotation Term="OData.LongDescription" String="Whether the network instance should be configured to be active on the network element."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="description" Type="Edm.String">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/string"/>
+					<Annotation Term="OData.Description" String="A free-form string to be used by the network operator to describe the function of this network instance."/>
+					<Annotation Term="OData.LongDescription" String="A free-form string to be used by the network operator to describe the function of this network instance."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="router_id" Type="yang.dotted_quad">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="yang.YangType" EnumMember="yang.YangTypes/dotted_quad"/>
+					<Annotation Term="OData.Description" String="A identifier for the local network instance - typically used within associated routing protocols or signalling routing information in another network instance."/>
+					<Annotation Term="OData.LongDescription" String="A identifier for the local network instance - typically used within associated routing protocols or signalling routing information in another network instance."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="route_distinguisher" Type="oc_ni_types.route_distinguisher">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="oc_ni_types.YangType" EnumMember="oc_ni_types.YangTypes/route_distinguisher"/>
+					<Annotation Term="OData.Description" String="The route distinguisher that should be used for the local VRF or VSI instance when it is signalled via BGP."/>
+					<Annotation Term="OData.LongDescription" String="The route distinguisher that should be used for the local VRF or VSI instance when it is signalled via BGP."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="enabled_address_families" Type="Collection(RedfishYang.instance_identifier)">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf_list"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/identityref">
+						<Annotation Term="RedfishYang.base" String="octypes:ADDRESS_FAMILY"/>
+					</Annotation>
+					<Annotation Term="OData.Description" String="The address families that are to be enabled for this network instance."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+					<Annotation Term="OData.LongDescription" String="List of the type enabled_address_families.  The address families that are to be enabled for this network instance."/>
+				</Property>
+				<Property Name="mtu" Type="RedfishYang.uint16">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint16"/>
+					<Annotation Term="OData.Description" String="The maximum frame size which should be supported for this instance for Layer 2 frames."/>
+					<Annotation Term="OData.LongDescription" String="The maximum frame size which should be supported for this instance for Layer 2 frames."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+      </ComplexType>
+
+      <ComplexType Name="fdbType">
+      	<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
+			  <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+			  <Annotation Term="OData.Description" String="Operational state and configuration parameters relating to the forwarding database of the network instance."/>
+			  <Annotation Term="OData.LongDescription" String="Operational state and configuration parameters relating to the forwarding database of the network instance."/>
+				<Property Name="config" Type="openconfig_network_instance.network_instances.network_instance.v1_0_0.fdbConfigType" Nullable="false">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="config property."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+				</Property>
+				<Property Name="state" Type="openconfig_network_instance.network_instances.network_instance.v1_0_0.fdbStateType" Nullable="false">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="state property."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+				</Property>
+				<Property Name="mac_table" Type="openconfig_network_instance.network_instances.network_instance.v1_0_0.fdbMac_tableType" Nullable="false">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="mac_table property."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+				</Property>
+     </ComplexType>
+     <ComplexType Name="fdbConfigType">
+				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
+			  <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+			  <Annotation Term="OData.Description" String="Configuration parameters relating to the FDB."/>
+			  <Annotation Term="OData.LongDescription" String="Configuration parameters relating to the FDB."/>
+				<Property Name="mac_learning" Type="Edm.Boolean">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/boolean"/>
+					<Annotation Term="OData.Description" String="When this leaf is set to true, MAC learning is enabled for the network instance, such that MAC addresses are learned from ingress frames and added to the FDB."/>
+					<Annotation Term="OData.LongDescription" String="When this leaf is set to true, MAC learning is enabled for the network instance, such that MAC addresses are learned from ingress frames and added to the FDB."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="mac_aging_time" Type="RedfishYang.uint16">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint16"/>
+					<Annotation Term="RedfishYang.units" String="seconds"/>
+					<Annotation Term="OData.Description" String="The number of seconds of inactivity after which the entry in the local FDB is timed out."/>
+					<Annotation Term="OData.LongDescription" String="The number of seconds of inactivity after which the entry in the local FDB is timed out."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="maximum_entries" Type="RedfishYang.uint16">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint16"/>
+					<Annotation Term="OData.Description" String="The maximum number of MAC address entries that should be accepted into the FDB."/>
+					<Annotation Term="OData.LongDescription" String="The maximum number of MAC address entries that should be accepted into the FDB."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+			</ComplexType>
+      <ComplexType Name="fdbStateType">
+				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
+			  <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+			  <Annotation Term="OData.Description" String="Operational state parameters relating to the FDB."/>
+			  <Annotation Term="OData.LongDescription" String="Operational state parameters relating to the FDB."/>
+				<Property Name="mac_learning" Type="Edm.Boolean">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/boolean"/>
+					<Annotation Term="OData.Description" String="When this leaf is set to true, MAC learning is enabled for the network instance, such that MAC addresses are learned from ingress frames and added to the FDB."/>
+					<Annotation Term="OData.LongDescription" String="When this leaf is set to true, MAC learning is enabled for the network instance, such that MAC addresses are learned from ingress frames and added to the FDB."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="mac_aging_time" Type="RedfishYang.uint16">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint16"/>
+					<Annotation Term="RedfishYang.units" String="seconds"/>
+					<Annotation Term="OData.Description" String="The number of seconds of inactivity after which the entry in the local FDB is timed out."/>
+					<Annotation Term="OData.LongDescription" String="The number of seconds of inactivity after which the entry in the local FDB is timed out."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="maximum_entries" Type="RedfishYang.uint16">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint16"/>
+					<Annotation Term="OData.Description" String="The maximum number of MAC address entries that should be accepted into the FDB."/>
+					<Annotation Term="OData.LongDescription" String="The maximum number of MAC address entries that should be accepted into the FDB."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+      </ComplexType>
+      <ComplexType Name="fdbMac_tableType">
+				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
+			  <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+				<Property Name="entries" Type="openconfig_network_instance.network_instances.network_instance.entriesCollection.entriesCollection">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+					<Annotation Term="OData.Description" String="collection of entries."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+				</NavigationProperty>
+      </ComplexType>
+		</Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance.network_instances.network_instance.entriesCollection">
+      <EntityType Name="entriesCollection" BaseType="Resource.v1_0_0.ResourceCollection" >
+				<Annotation Term="OData.Description" String="A collection of fdb resources."/>
+				<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <NavigationProperty Name="Members" Type="Collection(openconfig_network_instance.network_instances.network_instance.entries.entry)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Contains members of this collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="Redfish.Required"/>
+       </NavigationProperty>
+      </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance.network_instances.network_instance.entries.entry">
+			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+			<EntityType Name="entry" Abstract="true" BaseType="Resource.v1_0_0.Resource">
+				<Annotation Term="OData.Description" String="Parameters for entry."/>
+				<Annotation Term="OData.LongDescription" String="Parameters for entry."/>
+				<Annotation Term="Capabilities.InsertRestrictions">
+					<Record>
+						<PropertyValue Property="Insertable" Bool="false"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.UpdateRestrictions">
+					<Record>
+						<PropertyValue Property="Updatable" Bool="false"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.DeleteRestrictions">
+					<Record>
+						<PropertyValue Property="Deletable" Bool="false"/>
+					</Record>
+				</Annotation>
+			</EntityType>
+		</Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance.network_instances.network_instance.entries.entry.v1_0_0">
+			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+			<Annotation Term="Redfish.Release" String="TBD"/>
+			<Annotation Term="RedfishYang.key" String="mac-address"/>
+			<Annotation Term="OData.Description" String="List of learned MAC addresses."/>
+			<Annotation Term="OData.LongDescription" String="List of learned MAC addresses."/>
+			<EntityType Name="entry" BaseType="openconfig_network_instance.network_instance_top.network_instances.network_instance.entries.entry.entry">
+				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list"/>
+				<Property Name="mac_address" Type="Edm.String">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/leafref">
+						<Annotation Term="RedfishYang.path" String="../config/mac-address"/>
+					</Annotation>
+					<Annotation Term="OData.Description" String="Reference to mac-address list key."/>
+					<Annotation Term="OData.LongDescription" String="Reference to mac-address list key."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="config" Type="openconfig_network_instance.network_instances.network_instance.entries.entry.v1_0_0.configType">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of config."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+				</Property>
+				<Property Name="state" Type="openconfig_network_instance.network_instances.network_instance.entries.entry.v1_0_0.stateType">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of state."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+				</Property>
+				<Property Name="interface" Type="openconfig_network_instance.network_instances.network_instance.entries.entry.v1_0_0.interfaceType">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of interface."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+				</NavigationProperty>
+      </EntityType>
+
+			<ComplexType Name="configType">
+				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
+			  <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+			  <Annotation Term="OData.Description" String="Configuration data for MAC table entries."/>
+			  <Annotation Term="OData.LongDescription" String="Configuration data for MAC table entries."/>
+				<Property Name="mac_address" Type="yang.mac_address">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="yang.YangType" EnumMember="yang.YangTypes/mac_address"/>
+					<Annotation Term="OData.Description" String="MAC address for the dynamic or static MAC table entry."/>
+					<Annotation Term="OData.LongDescription" String="MAC address for the dynamic or static MAC table entry."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="vlan" Type="Edm.String">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/leafref">
+						<Annotation Term="RedfishYang.path" String="../../../../../../vlans/vlan/config/vlan-id"/>
+					</Annotation>
+					<Annotation Term="OData.Description" String="VLAN from which this MAC address was received."/>
+					<Annotation Term="OData.LongDescription" String="VLAN from which this MAC address was received."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+      </ComplexType>
+      <ComplexType Name="stateType">
+				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
+			  <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+				<Annotation Term="OData.Description" String="MAC address for the dynamic or static MAC table entry."/>
+				<Annotation Term="OData.LongDescription" String="MAC address for the dynamic or static MAC table entry."/>
+				<Property Name="mac_address" Type="yang.mac_address">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="yang.YangType" EnumMember="yang.YangTypes/mac_address"/>
+					<Annotation Term="OData.Description" String="MAC address for the dynamic or static MAC table entry."/>
+					<Annotation Term="OData.LongDescription" String="MAC address for the dynamic or static MAC table entry."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="vlan" Type="Edm.String">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/leafref">
+						<Annotation Term="RedfishYang.path" String="../../../../../../vlans/vlan/config/vlan-id"/>
+					</Annotation>
+					<Annotation Term="OData.Description" String="VLAN from which this MAC address was received."/>
+					<Annotation Term="OData.LongDescription" String="VLAN from which this MAC address was received."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="age" Type="RedfishYang.uint64">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint64"/>
+					<Annotation Term="RedfishYang.units" String="seconds"/>
+					<Annotation Term="OData.Description" String="The time in seconds since the MAC address has been in the table."/>
+					<Annotation Term="OData.LongDescription" String="The time in seconds since the MAC address has been in the table."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="entry_type">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/enumeration"/>
+					<Annotation Term="OData.Description" String="Indicates whether the entry was statically configured, or dynamically learned."/>
+					<Annotation Term="OData.LongDescription" String="Indicates whether the entry was statically configured, or dynamically learned."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+			</ComplexType>
+    	<ComplexType Name="interfaceType">
+				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
+			  <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+			  <Annotation Term="OData.Description" String="Reference to an interface or subinterface."/>
+			  <Annotation Term="OData.LongDescription" String="Reference to an interface or subinterface."/>
+				<Property Name="configContainer" Type="openconfig_network_instance.network_instances.network_instance.entries.entry.v1_0_0.interfaceConfigType">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of config."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+				</Property>
+				<Property Name="stateContainer" Type="openconfig_network_instance.network_instances.network_instance.entries.entry.v1_0_0.interfaceStateType">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+					<Annotation Term="OData.Description" String="Navigation property that points to a resource of state."/>
+					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
+				</Property>
+			</ComplexType>
+
+      <ComplexType Name="interfaceConfigType">
+				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
+		    <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+			  <Annotation Term="OData.Description" String="Configured reference to interface / subinterface."/>
+			  <Annotation Term="OData.LongDescription" String="Configured reference to interface / subinterface."/>
+				<Property Name="interface" Type="Edm.String">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/leafref">
+						<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface/oc-if:name"/>
+					</Annotation>
+					<Annotation Term="OData.Description" String="Reference to a base interface."/>
+					<Annotation Term="OData.LongDescription" String="Reference to a base interface.  If a reference to a subinterface is required, this leaf must be specified to indicate the base interface."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="subinterface" Type="Edm.String">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/leafref">
+						<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
+					</Annotation>
+					<Annotation Term="OData.Description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container."/>
+					<Annotation Term="OData.LongDescription" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+			</ComplexType>
+
+      <ComplexType Name="interfaceStateType">
+				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
+		    <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+			  <Annotation Term="OData.Description" String="Operational state for interface-ref."/>
+			  <Annotation Term="OData.LongDescription" String="Operational state for interface-ref."/>
+				<Property Name="interface" Type="Edm.String">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/leafref">
+						<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface/oc-if:name"/>
+					</Annotation>
+					<Annotation Term="OData.Description" String="Reference to a base interface."/>
+					<Annotation Term="OData.LongDescription" String="Reference to a base interface.  If a reference to a subinterface is required, this leaf must be specified to indicate the base interface."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+				<Property Name="subinterface" Type="Edm.String">
+					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/leafref">
+						<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
+					</Annotation>
+					<Annotation Term="OData.Description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container."/>
+					<Annotation Term="OData.LongDescription" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				</Property>
+			</ComplexType>
+
+		</Schema>
+
+
+    <!-- -->
+
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance.network_instances.network_instance.vlans.vlan.members.member.state">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="state" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -552,7 +1200,8 @@
 					</Record>
 				</Annotation>
 			</EntityType>
-		</Schema>
+    </Schema>
+    <!--
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance.network_instances.network_instance.fdb">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="fdb" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -574,7 +1223,8 @@
 					</Record>
 				</Annotation>
 			</EntityType>
-		</Schema>
+    </Schema>
+-->
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance.network_instances.network_instance.protocols.protocol.local_aggregates.aggregate.state">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="state" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -1696,7 +2346,8 @@
 					</Record>
 				</Annotation>
 			</EntityType>
-		</Schema>
+    </Schema>
+    <!--
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance.network_instances.network_instance">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="network_instance" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -1718,7 +2369,7 @@
 					</Record>
 				</Annotation>
 			</EntityType>
-		</Schema>
+    </Schema>
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance.network_instances">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="network_instances" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -1740,7 +2391,8 @@
 					</Record>
 				</Annotation>
 			</EntityType>
-		</Schema>
+    </Schema>
+-->
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance.encapsulation_config">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="encapsulation_config" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -3852,7 +4504,8 @@
 					</Record>
 				</Annotation>
 			</EntityType>
-		</Schema>
+    </Schema>
+<!--
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<EntityType Name="openconfig_network_instance" Abstract="true" BaseType="Resource.v1_0_0.Resource">
@@ -3874,7 +4527,8 @@
 					</Record>
 				</Annotation>
 			</EntityType>
-		</Schema>
+    </Schema>
+
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance.v1_0_0" Alias="oc_netinst">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<Annotation Term="Redfish.Release" String="TBD"/>
@@ -4430,7 +5084,7 @@
 																		<Annotation Term="RedfishYang.type" String="leafref">
 																			<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 																		</Annotation>
-																		<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+																		<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 																	</Annotation>
 																</Record>
 															</Collection>
@@ -4474,7 +5128,7 @@
 																		<Annotation Term="RedfishYang.type" String="leafref">
 																			<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 																		</Annotation>
-																		<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+																		<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 																	</Annotation>
 																</Record>
 															</Collection>
@@ -4489,7 +5143,7 @@
 											<Annotation Term="RedfishYang.description" String="The routing tables that are managed by this network instance"/>
 											<Annotation Term="RedfishYang.list" String="table">
 												<Annotation Term="RedfishYang.key" String="protocol address-family"/>
-												<Annotation Term="RedfishYang.description" String="A network instance manages one or more forwarding or routing tables. These may reflect a Layer 2 forwarding information base, a Layer 3 routing table, or an MPLS LFIB.  The table populated by a protocol within an instance is identified by the protocol identifier (e.g., BGP, IS-IS) and the address family (e.g., IPv4, IPv6) supported by that protocol. Multiple instances of the same protocol populate a single table -- such that a single IS-IS or OSPF IPv4 table exists per network instance.  An implementation is expected to create entries within this list when the relevant protocol context is enabled. i.e., when a BGP instance is created with IPv4 and IPv6 address families enabled, the protocol=BGP, address-family=IPv4 table is created by the system."/>
+												<Annotation Term="RedfishYang.description" String="A network instance manages one or more forwarding or routing tables. These may reflect a Layer 2 forwarding information base, a Layer 3 routing table, or an MPLS LFIB.  The table populated by a protocol within an instance is identified by the protocol identifier (e.g., BGP, IS-IS) and the address family (e.g., IPv4, IPv6) supported by that protocol. Multiple instances of the same protocol populate a single table - such that a single IS-IS or OSPF IPv4 table exists per network instance.  An implementation is expected to create entries within this list when the relevant protocol context is enabled. i.e., when a BGP instance is created with IPv4 and IPv6 address families enabled, the protocol=BGP, address-family=IPv4 table is created by the system."/>
 												<Collection>
 													<Record>
 														<Annotation Term="RedfishYang.container" String="config">
@@ -4714,7 +5368,7 @@
 																									<Annotation Term="RedfishYang.type" String="leafref">
 																										<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 																									</Annotation>
-																									<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+																									<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 																								</Annotation>
 																							</Record>
 																						</Collection>
@@ -4739,7 +5393,7 @@
 																									<Annotation Term="RedfishYang.type" String="leafref">
 																										<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 																									</Annotation>
-																									<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+																									<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 																								</Annotation>
 																							</Record>
 																						</Collection>
@@ -5098,7 +5752,7 @@
 																													<Annotation Term="RedfishYang.type" String="leafref">
 																														<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 																													</Annotation>
-																													<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+																													<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 																												</Annotation>
 																											</Record>
 																										</Collection>
@@ -5123,7 +5777,7 @@
 																													<Annotation Term="RedfishYang.type" String="leafref">
 																														<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 																													</Annotation>
-																													<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+																													<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 																												</Annotation>
 																											</Record>
 																										</Collection>
@@ -5168,7 +5822,7 @@
 																					<Annotation Term="RedfishYang.leaf" String="discard">
 																						<Annotation Term="RedfishYang.type" String="boolean"/>
 																						<Annotation Term="RedfishYang.default" String="false"/>
-																						<Annotation Term="RedfishYang.description" String="When true, install the aggregate route with a discard next-hop -- traffic destined to the aggregate will be discarded with no ICMP message generated.  When false, traffic destined to an aggregate address when no constituent routes are present will generate an ICMP unreachable message."/>
+																						<Annotation Term="RedfishYang.description" String="When true, install the aggregate route with a discard next-hop - traffic destined to the aggregate will be discarded with no ICMP message generated.  When false, traffic destined to an aggregate address when no constituent routes are present will generate an ICMP unreachable message."/>
 																					</Annotation>
 																				</Record>
 																				<Record>
@@ -5203,7 +5857,7 @@
 																					<Annotation Term="RedfishYang.leaf" String="discard">
 																						<Annotation Term="RedfishYang.type" String="boolean"/>
 																						<Annotation Term="RedfishYang.default" String="false"/>
-																						<Annotation Term="RedfishYang.description" String="When true, install the aggregate route with a discard next-hop -- traffic destined to the aggregate will be discarded with no ICMP message generated.  When false, traffic destined to an aggregate address when no constituent routes are present will generate an ICMP unreachable message."/>
+																						<Annotation Term="RedfishYang.description" String="When true, install the aggregate route with a discard next-hop - traffic destined to the aggregate will be discarded with no ICMP message generated.  When false, traffic destined to an aggregate address when no constituent routes are present will generate an ICMP unreachable message."/>
 																					</Annotation>
 																				</Record>
 																				<Record>
@@ -5420,7 +6074,7 @@
 																										<Annotation Term="RedfishYang.type" String="leafref">
 																											<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 																										</Annotation>
-																										<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+																										<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 																									</Annotation>
 																								</Record>
 																							</Collection>
@@ -5445,7 +6099,7 @@
 																										<Annotation Term="RedfishYang.type" String="leafref">
 																											<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 																										</Annotation>
-																										<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+																										<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 																									</Annotation>
 																								</Record>
 																							</Collection>
@@ -5775,7 +6429,7 @@
 									<Annotation Term="RedfishYang.type" String="leafref">
 										<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 									</Annotation>
-									<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+									<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 								</Annotation>
 							</Record>
 						</Collection>
@@ -5876,7 +6530,7 @@
 									<Annotation Term="RedfishYang.type" String="leafref">
 										<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 									</Annotation>
-									<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+									<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 								</Annotation>
 							</Record>
 						</Collection>
@@ -6056,7 +6710,8 @@
 			<EnumType Name="YangTypes">
 				<Member Name="network_instance_ref"/>
 			</EnumType>
-		</Schema>
+    </Schema>
+    -->
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance.network_instance_top.v1_0_0">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<Annotation Term="Redfish.Release" String="TBD"/>
@@ -9381,7 +10036,8 @@
 					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
 				</Property>
 			</EntityType>
-		</Schema>
+    </Schema>
+    <!--
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance.network_instances.v1_0_0">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<Annotation Term="Redfish.Release" String="TBD"/>
@@ -9396,7 +10052,8 @@
 					<Annotation Term="OData.AutoExpandReferences"/>
 				</NavigationProperty>
 			</EntityType>
-		</Schema>
+    </Schema>
+-->
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance.network_instances.network_instance.v1_0_0">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<Annotation Term="Redfish.Release" String="TBD"/>
@@ -9506,7 +10163,8 @@
 					<Annotation Term="OData.AutoExpandReferences"/>
 				</NavigationProperty>
 			</EntityType>
-		</Schema>
+    </Schema>
+    <!--
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance.network_instances.network_instance.config.v1_0_0">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<Annotation Term="Redfish.Release" String="TBD"/>
@@ -9664,7 +10322,8 @@
 					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
 				</Property>
 			</EntityType>
-		</Schema>
+    </Schema>
+-->
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_network_instance.network_instances.network_instance.encapsulation.v1_0_0">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<Annotation Term="Redfish.Release" String="TBD"/>
