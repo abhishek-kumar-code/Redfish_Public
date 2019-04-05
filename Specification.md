@@ -2859,7 +2859,7 @@ The YAML file `openapi.yaml` is the starting point for clients to understand the
 The `paths` term contains an array of the [possible URIs](#resource-uri-patterns-annotation).  For each URI, it also lists the [possible methods](#resource-capabilities-annotation).  For each method, it lists the possible response bodies and request bodies.
 
 Example `paths` entry for a Resource:
-```yaml
+```
   /redfish/v1/Systems/{ComputerSystemId}:
     get:
       parameters:
@@ -2886,7 +2886,7 @@ Example `paths` entry for a Resource:
 ```
 
 Example `paths` entry for an action:
-```yaml
+```
   /redfish/v1/Systems/{ComputerSystemId}/Actions/ComputerSystem.Reset:
     post:
       parameters:
@@ -2948,7 +2948,7 @@ The unversioned definition of a Resource also uses `uris` term it express the [a
 
 Example unversioned Resource definition in OpenAPI:
 
-```yaml
+```
     ComputerSystem:
       anyOf:
       - $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
@@ -2973,7 +2973,7 @@ Definitions for enumerations can consist of the following terms:
 
 Example enumeration definition in OpenAPI:
 
-```yaml
+```
     IndicatorLED:
       enum:
       - Lit
@@ -2996,7 +2996,7 @@ Example enumeration definition in OpenAPI:
 Versioned definitions of [Resources](#resources) contain a definition called `Actions`.  This definition is a container with a set of terms that point to the different [actions](#post-action) supported by the resource.
 
 Example `Actions` definition:
-```yaml
+```
     Actions:
       additionalProperties: false
       description: The available actions for this resource.
@@ -3010,7 +3010,7 @@ Example `Actions` definition:
 Another definition within the same schema file is used to describe the action itself.  This definition contains property definitions for the `target` and `title` properties shown in service response payloads for the Resource.
 
 Example definition of an action:
-```yaml
+```
     Reset:
       additionalProperties: false
       description: This action is used to reset the system.
@@ -3029,7 +3029,7 @@ Example definition of an action:
 The parameters for the action are shown in another definition with `RequestBody` appended to the name of the action.  This gets mapped from the `openapi.yaml` file for expressing the POST method for the URI of the action.
 
 Example definition of parameters of an action:
-```yaml
+```
     ResetRequestBody:
       additionalProperties: false
       description: This action is used to reset the system.
