@@ -14,6 +14,9 @@
             "Message": "The Resource Zone '%1' has been changed on the service.",
             "Severity": "Warning",
             "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
             "Resolution": "Refresh your cached version of the Resource Zone to get the updated information from the service."
         }
     }
