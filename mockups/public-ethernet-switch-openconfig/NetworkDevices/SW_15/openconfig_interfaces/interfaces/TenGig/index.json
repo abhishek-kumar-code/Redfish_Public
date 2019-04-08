@@ -1,5 +1,6 @@
 {
-    "@odata.type": "#openconfig_interfaces.interfaces.v1_0_0.interfaces",
+    "@odata.type": "#openconfig_interfaces.interfaces.interface.v1_0_0.interface",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_interfaces/interfaces/TenGig",
     "Id": "TenGig",
     "Name": "TenGigE0/4/2/0",
     "description": "Ethernet interface on slot 1",
@@ -39,6 +40,5 @@
         }
     },
     "@odata.context": "/redfish/v1/$metadata#ietf_interfaces.interfaces",
-    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_interfaces/interfaces/ethernet_v4_v6",
     "@Redfish.Copyright": "Copyright 2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

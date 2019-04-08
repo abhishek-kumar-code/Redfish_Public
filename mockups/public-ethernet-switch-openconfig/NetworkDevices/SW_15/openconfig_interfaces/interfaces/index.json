@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#openconfig_interfaces.interfacesCollection.interfacesCollection",
+    "@odata.type": "#openconfig_interfaces.interfaces.interfacesCollection.interfacesCollection",
     "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_interfaces/interfaces",
 
     "Name": "Interface Collection",

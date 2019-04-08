@@ -201,7 +201,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall specify a reference to the openconfig_lldp YANG module."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Local_Routing" Type="openconfig_local_routing.local_routes.local_routes" ContainsTarget="true" Nullable="false">
+        <NavigationProperty Name="LocalRouting" Type="openconfig_local_routing.local_routes.local_routes" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the openconfig_local_routing YANG module."/>
           <Annotation Term="OData.LongDescription" String="This property shall specify a reference to the openconfig_local_routing YANG module."/>

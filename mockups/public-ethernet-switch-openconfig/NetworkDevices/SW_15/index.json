@@ -28,17 +28,8 @@
     "Lacp": {
         "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_lacp"
     },
-    "Lldp": {
-        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_lldp"
-    },
-    "Local_Routing": {
-        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_local_routing"
-    },
     "Network_Instance": {
         "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_network_instance"
-    },
-    "Qos": {
-        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_qos"
     },
     "Links": {
         "@odata.type": "#NetworkDevice.v1_0_0.Links",

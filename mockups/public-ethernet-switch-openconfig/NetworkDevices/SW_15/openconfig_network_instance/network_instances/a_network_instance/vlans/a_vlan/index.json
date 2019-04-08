@@ -15,7 +15,7 @@
         "status": "ACTIVE"
     },
     "members": {
-        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_network_instances/a_network_instance/vlans/a_vlan/members"
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_network_instance/network_instances/a_network_instance/vlans/a_vlan/members"
     },
 
     "@odata.context": "/redfish/v1/$metadata#openconfig_network_instance.network_instances.network_instance.vlans.vlan.vlan",

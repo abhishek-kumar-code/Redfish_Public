@@ -1,44 +1,44 @@
 {
-    "@odata.type": "#openconfig_interfaces.interfaces.v1_0_0.interfaces",
-    "Id": "trunk1_vlan2",
-    "Name": "VLAN2",
-    "Description": "Trunk with multiple VLANs",
+    "@odata.type": "#openconfig_interfaces.interfaces.interface.v1_0_0.interface",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_interfaces/interfaces/trunk1_vlan1",
+    "Id": "trunk1_vlan1",
+    "Name": "VLAN388",
+    "Description": "VLAN 1 of Trunk 1",
 
     "config": {
-        "name": "VLAN2"
+        "name": "VLAN388"
     }, 
     "routed-vlan": {
         "config": {
-            "vlan": 2
+            "vlan": 388
         }, 
         "ipv4": {
             "address": {
-                "10.0.4.3": {
-                    "ip": "10.0.4.3", 
+                "10.0.5.3": {
+                    "ip": "10.0.5.3", 
                     "vrrp": {
                         "vrrp-group": {
-                            "2": {
+                            "15": {
                                 "config": {
                                     "priority": 210, 
                                     "virtual-address": [
-                                        "10.0.4.1"
+                                        "10.0.5.19"
                                     ], 
-                                    "virtual-router-id": 2
+                                    "virtual-router-id": 15
                                 }, 
-                                "virtual-router-id": "2"
+                                "virtual-router-id": "15"
                             }
                         }
                     }, 
                     "config": {
-                        "ip": "10.0.4.3", 
-                        "prefix-length": 24
+                        "ip": "10.0.5.3", 
+                        "prefix-length": 28
                     }
                 }
             }
         }
-    },
-
+    }, 
+ 
     "@odata.context": "/redfish/v1/$metadata#ietf_interfaces.interfaces.interfaces",
-    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_interfaces/interfaces/trunk1_vlan2",
     "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
