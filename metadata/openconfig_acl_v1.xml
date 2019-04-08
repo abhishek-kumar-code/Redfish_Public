@@ -5213,7 +5213,8 @@
 					</Record>
 				</Annotation>
 			</EntityType>
-		</Schema>
+    </Schema>
+    <!--
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_acl.v1_0_0" Alias="oc_acl">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<Annotation Term="Redfish.Release" String="TBD"/>
@@ -5225,7 +5226,7 @@
 			<Annotation Term="OData.Description" String="This module defines configuration and operational state data for network access control lists (i.e., filters, rules, etc.)."/>
 			<Annotation Term="OData.LongDescription" String="This module defines configuration and operational state data for network access control lists (i.e., filters, rules, etc.).  ACLs are organized into ACL sets, with each set containing one or more ACL entries.  ACL sets are identified by a unique name, while each entry within a set is assigned a sequence-id that determines the order in which the ACL rules are applied to a packet.  Note that ACLs are evaluated in ascending order based on the sequence-id (low to high).  Individual ACL rules specify match criteria based on fields in the packet, along with an action that defines how matching packets should be handled. Entries have a type that indicates the type of match criteria, e.g., MAC layer, IPv4, IPv6, etc."/>
 			<Annotation Term="RedfishYang.statement" String="oc-ext:openconfig-version"/>
-			<Annotation Term="RedfishYang.uses" String="acl-top"/>
+			<Annotation Term="RedfishYang.uses" String="acl-top">
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.identity" String="ACL_TYPE">
@@ -5397,7 +5398,7 @@
 																<Annotation Term="RedfishYang.type" String="leafref">
 																	<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 																</Annotation>
-																<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+																<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 															</Annotation>
 														</Record>
 													</Collection>
@@ -5422,7 +5423,7 @@
 																<Annotation Term="RedfishYang.type" String="leafref">
 																	<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 																</Annotation>
-																<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+																<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 															</Annotation>
 														</Record>
 													</Collection>
@@ -5431,7 +5432,8 @@
 										</Collection>
 									</Annotation>
 								</Record>
-							</Collection>
+              </Collection>
+              </Annotation>
 						</Annotation>
 					</Annotation>
 				</Record>
@@ -5542,13 +5544,13 @@
 							<Record>
 								<Annotation Term="RedfishYang.leaf" String="matched-packets">
 									<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-									<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+									<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 								</Annotation>
 							</Record>
 							<Record>
 								<Annotation Term="RedfishYang.leaf" String="matched-octets">
 									<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-									<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+									<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 								</Annotation>
 							</Record>
 						</Collection>
@@ -5581,13 +5583,13 @@
 							<Record>
 								<Annotation Term="RedfishYang.leaf" String="matched-packets">
 									<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-									<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+									<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 								</Annotation>
 							</Record>
 							<Record>
 								<Annotation Term="RedfishYang.leaf" String="matched-octets">
 									<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-									<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+									<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 								</Annotation>
 							</Record>
 						</Collection>
@@ -5648,13 +5650,13 @@
 												<Record>
 													<Annotation Term="RedfishYang.leaf" String="matched-packets">
 														<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-														<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+														<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 													</Annotation>
 												</Record>
 												<Record>
 													<Annotation Term="RedfishYang.leaf" String="matched-octets">
 														<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-														<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+														<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 													</Annotation>
 												</Record>
 											</Collection>
@@ -5797,7 +5799,7 @@
 																	<Annotation Term="RedfishYang.type" String="uint8">
 																		<Annotation Term="RedfishYang.range" String="0..255"/>
 																	</Annotation>
-																	<Annotation Term="RedfishYang.description" String="The IP packet's hop limit -- known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
+																	<Annotation Term="RedfishYang.description" String="The IP packet's hop limit - known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
 																</Annotation>
 															</Record>
 														</Collection>
@@ -5837,7 +5839,7 @@
 																	<Annotation Term="RedfishYang.type" String="uint8">
 																		<Annotation Term="RedfishYang.range" String="0..255"/>
 																	</Annotation>
-																	<Annotation Term="RedfishYang.description" String="The IP packet's hop limit -- known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
+																	<Annotation Term="RedfishYang.description" String="The IP packet's hop limit - known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
 																</Annotation>
 															</Record>
 														</Collection>
@@ -5904,7 +5906,7 @@
 																	<Annotation Term="RedfishYang.type" String="uint8">
 																		<Annotation Term="RedfishYang.range" String="0..255"/>
 																	</Annotation>
-																	<Annotation Term="RedfishYang.description" String="The IP packet's hop limit -- known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
+																	<Annotation Term="RedfishYang.description" String="The IP packet's hop limit - known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
 																</Annotation>
 															</Record>
 														</Collection>
@@ -5956,7 +5958,7 @@
 																	<Annotation Term="RedfishYang.type" String="uint8">
 																		<Annotation Term="RedfishYang.range" String="0..255"/>
 																	</Annotation>
-																	<Annotation Term="RedfishYang.description" String="The IP packet's hop limit -- known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
+																	<Annotation Term="RedfishYang.description" String="The IP packet's hop limit - known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
 																</Annotation>
 															</Record>
 														</Collection>
@@ -6088,7 +6090,7 @@
 																				<Annotation Term="RedfishYang.type" String="leafref">
 																					<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 																				</Annotation>
-																				<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+																				<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 																			</Annotation>
 																		</Record>
 																	</Collection>
@@ -6113,7 +6115,7 @@
 																				<Annotation Term="RedfishYang.type" String="leafref">
 																					<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 																				</Annotation>
-																				<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+																				<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 																			</Annotation>
 																		</Record>
 																	</Collection>
@@ -6392,13 +6394,13 @@
 																<Record>
 																	<Annotation Term="RedfishYang.leaf" String="matched-packets">
 																		<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-																		<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+																		<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 																	</Annotation>
 																</Record>
 																<Record>
 																	<Annotation Term="RedfishYang.leaf" String="matched-octets">
 																		<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-																		<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+																		<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 																	</Annotation>
 																</Record>
 															</Collection>
@@ -6541,7 +6543,7 @@
 																					<Annotation Term="RedfishYang.type" String="uint8">
 																						<Annotation Term="RedfishYang.range" String="0..255"/>
 																					</Annotation>
-																					<Annotation Term="RedfishYang.description" String="The IP packet's hop limit -- known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
+																					<Annotation Term="RedfishYang.description" String="The IP packet's hop limit - known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
 																				</Annotation>
 																			</Record>
 																		</Collection>
@@ -6581,7 +6583,7 @@
 																					<Annotation Term="RedfishYang.type" String="uint8">
 																						<Annotation Term="RedfishYang.range" String="0..255"/>
 																					</Annotation>
-																					<Annotation Term="RedfishYang.description" String="The IP packet's hop limit -- known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
+																					<Annotation Term="RedfishYang.description" String="The IP packet's hop limit - known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
 																				</Annotation>
 																			</Record>
 																		</Collection>
@@ -6648,7 +6650,7 @@
 																					<Annotation Term="RedfishYang.type" String="uint8">
 																						<Annotation Term="RedfishYang.range" String="0..255"/>
 																					</Annotation>
-																					<Annotation Term="RedfishYang.description" String="The IP packet's hop limit -- known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
+																					<Annotation Term="RedfishYang.description" String="The IP packet's hop limit - known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
 																				</Annotation>
 																			</Record>
 																		</Collection>
@@ -6700,7 +6702,7 @@
 																					<Annotation Term="RedfishYang.type" String="uint8">
 																						<Annotation Term="RedfishYang.range" String="0..255"/>
 																					</Annotation>
-																					<Annotation Term="RedfishYang.description" String="The IP packet's hop limit -- known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
+																					<Annotation Term="RedfishYang.description" String="The IP packet's hop limit - known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
 																				</Annotation>
 																			</Record>
 																		</Collection>
@@ -6832,7 +6834,7 @@
 																								<Annotation Term="RedfishYang.type" String="leafref">
 																									<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 																								</Annotation>
-																								<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+																								<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 																							</Annotation>
 																						</Record>
 																					</Collection>
@@ -6857,7 +6859,7 @@
 																								<Annotation Term="RedfishYang.type" String="leafref">
 																									<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 																								</Annotation>
-																								<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+																								<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 																							</Annotation>
 																						</Record>
 																					</Collection>
@@ -7020,13 +7022,13 @@
 							<Record>
 								<Annotation Term="RedfishYang.leaf" String="matched-packets">
 									<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-									<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+									<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 								</Annotation>
 							</Record>
 							<Record>
 								<Annotation Term="RedfishYang.leaf" String="matched-octets">
 									<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-									<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+									<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 								</Annotation>
 							</Record>
 						</Collection>
@@ -7062,13 +7064,13 @@
 										<Record>
 											<Annotation Term="RedfishYang.leaf" String="matched-packets">
 												<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-												<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+												<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 											</Annotation>
 										</Record>
 										<Record>
 											<Annotation Term="RedfishYang.leaf" String="matched-octets">
 												<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-												<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+												<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 											</Annotation>
 										</Record>
 									</Collection>
@@ -7114,7 +7116,7 @@
 					</Annotation>
 				</Record>
 				<Record>
-					<Annotation Term="RedfishYang.grouping" String="interface-ingress-acl-top">
+          <Annotation Term="RedfishYang.grouping" String="interface-ingress-acl-top"/>
 						<Annotation Term="RedfishYang.description" String="Top-level grouping for per-interface ingress ACL data"/>
 						<Annotation Term="RedfishYang.container" String="ingress-acl-sets">
 							<Annotation Term="RedfishYang.description" String="Enclosing container the list of ingress ACLs on the interface"/>
@@ -7207,13 +7209,13 @@
 														<Record>
 															<Annotation Term="RedfishYang.leaf" String="matched-packets">
 																<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-																<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+																<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 															</Annotation>
 														</Record>
 														<Record>
 															<Annotation Term="RedfishYang.leaf" String="matched-octets">
 																<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-																<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+																<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 															</Annotation>
 														</Record>
 													</Collection>
@@ -7281,7 +7283,7 @@
 					</Annotation>
 				</Record>
 				<Record>
-					<Annotation Term="RedfishYang.grouping" String="interface-egress-acl-top">
+          <Annotation Term="RedfishYang.grouping" String="interface-egress-acl-top"/>
 						<Annotation Term="RedfishYang.description" String="Top-level grouping for per-interface egress ACL data"/>
 						<Annotation Term="RedfishYang.container" String="egress-acl-sets">
 							<Annotation Term="RedfishYang.description" String="Enclosing container the list of egress ACLs on the interface"/>
@@ -7374,13 +7376,13 @@
 														<Record>
 															<Annotation Term="RedfishYang.leaf" String="matched-packets">
 																<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-																<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+																<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 															</Annotation>
 														</Record>
 														<Record>
 															<Annotation Term="RedfishYang.leaf" String="matched-octets">
 																<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-																<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+																<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 															</Annotation>
 														</Record>
 													</Collection>
@@ -7424,7 +7426,7 @@
 						<Annotation Term="RedfishYang.description" String="Configuration data for interface references"/>
 						<Annotation Term="RedfishYang.leaf" String="id">
 							<Annotation Term="RedfishYang.type" String="oc-if:interface-id"/>
-							<Annotation Term="RedfishYang.description" String="User-defined identifier for the interface -- a common convention could be '&lt;if name&gt;.&lt;subif index&gt;'"/>
+							<Annotation Term="RedfishYang.description" String="User-defined identifier for the interface - a common convention could be '&lt;if name&gt;.&lt;subif index&gt;'"/>
 						</Annotation>
 					</Annotation>
 				</Record>
@@ -7454,7 +7456,7 @@
 											<Annotation Term="RedfishYang.uses" String="acl-interfaces-config"/>
 											<Annotation Term="RedfishYang.leaf" String="id">
 												<Annotation Term="RedfishYang.type" String="oc-if:interface-id"/>
-												<Annotation Term="RedfishYang.description" String="User-defined identifier for the interface -- a common convention could be '&lt;if name&gt;.&lt;subif index&gt;'"/>
+												<Annotation Term="RedfishYang.description" String="User-defined identifier for the interface - a common convention could be '&lt;if name&gt;.&lt;subif index&gt;'"/>
 											</Annotation>
 										</Annotation>
 									</Record>
@@ -7464,7 +7466,7 @@
 											<Annotation Term="RedfishYang.description" String="Operational state for ACL per-interface data"/>
 											<Annotation Term="RedfishYang.leaf" String="id">
 												<Annotation Term="RedfishYang.type" String="oc-if:interface-id"/>
-												<Annotation Term="RedfishYang.description" String="User-defined identifier for the interface -- a common convention could be '&lt;if name&gt;.&lt;subif index&gt;'"/>
+												<Annotation Term="RedfishYang.description" String="User-defined identifier for the interface - a common convention could be '&lt;if name&gt;.&lt;subif index&gt;'"/>
 											</Annotation>
 											<Collection>
 												<Record>
@@ -7499,7 +7501,7 @@
 																	<Annotation Term="RedfishYang.type" String="leafref">
 																		<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 																	</Annotation>
-																	<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+																	<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 																</Annotation>
 															</Record>
 														</Collection>
@@ -7524,7 +7526,7 @@
 																	<Annotation Term="RedfishYang.type" String="leafref">
 																		<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 																	</Annotation>
-																	<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+																	<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 																</Annotation>
 															</Record>
 														</Collection>
@@ -7625,13 +7627,13 @@
 																		<Record>
 																			<Annotation Term="RedfishYang.leaf" String="matched-packets">
 																				<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-																				<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+																				<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 																			</Annotation>
 																		</Record>
 																		<Record>
 																			<Annotation Term="RedfishYang.leaf" String="matched-octets">
 																				<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-																				<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+																				<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 																			</Annotation>
 																		</Record>
 																	</Collection>
@@ -7761,13 +7763,13 @@
 																		<Record>
 																			<Annotation Term="RedfishYang.leaf" String="matched-packets">
 																				<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-																				<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+																				<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 																			</Annotation>
 																		</Record>
 																		<Record>
 																			<Annotation Term="RedfishYang.leaf" String="matched-octets">
 																				<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-																				<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+																				<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 																			</Annotation>
 																		</Record>
 																	</Collection>
@@ -7838,7 +7840,7 @@
 					</Annotation>
 				</Record>
 				<Record>
-					<Annotation Term="RedfishYang.grouping" String="acl-top">
+          <Annotation Term="RedfishYang.grouping" String="acl-top"/>
 						<Annotation Term="RedfishYang.description" String="Top level grouping for ACL data and structure"/>
 						<Annotation Term="RedfishYang.container" String="acl">
 							<Annotation Term="RedfishYang.description" String="Top level enclosing container for ACL model config and operational state data"/>
@@ -8002,13 +8004,13 @@
 																			<Record>
 																				<Annotation Term="RedfishYang.leaf" String="matched-packets">
 																					<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-																					<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+																					<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 																				</Annotation>
 																			</Record>
 																			<Record>
 																				<Annotation Term="RedfishYang.leaf" String="matched-octets">
 																					<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-																					<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+																					<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 																				</Annotation>
 																			</Record>
 																		</Collection>
@@ -8151,7 +8153,7 @@
 																								<Annotation Term="RedfishYang.type" String="uint8">
 																									<Annotation Term="RedfishYang.range" String="0..255"/>
 																								</Annotation>
-																								<Annotation Term="RedfishYang.description" String="The IP packet's hop limit -- known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
+																								<Annotation Term="RedfishYang.description" String="The IP packet's hop limit - known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
 																							</Annotation>
 																						</Record>
 																					</Collection>
@@ -8191,7 +8193,7 @@
 																								<Annotation Term="RedfishYang.type" String="uint8">
 																									<Annotation Term="RedfishYang.range" String="0..255"/>
 																								</Annotation>
-																								<Annotation Term="RedfishYang.description" String="The IP packet's hop limit -- known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
+																								<Annotation Term="RedfishYang.description" String="The IP packet's hop limit - known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
 																							</Annotation>
 																						</Record>
 																					</Collection>
@@ -8258,7 +8260,7 @@
 																								<Annotation Term="RedfishYang.type" String="uint8">
 																									<Annotation Term="RedfishYang.range" String="0..255"/>
 																								</Annotation>
-																								<Annotation Term="RedfishYang.description" String="The IP packet's hop limit -- known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
+																								<Annotation Term="RedfishYang.description" String="The IP packet's hop limit - known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
 																							</Annotation>
 																						</Record>
 																					</Collection>
@@ -8310,7 +8312,7 @@
 																								<Annotation Term="RedfishYang.type" String="uint8">
 																									<Annotation Term="RedfishYang.range" String="0..255"/>
 																								</Annotation>
-																								<Annotation Term="RedfishYang.description" String="The IP packet's hop limit -- known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
+																								<Annotation Term="RedfishYang.description" String="The IP packet's hop limit - known as TTL (in hops) in IPv4 packets, and hop limit in IPv6"/>
 																							</Annotation>
 																						</Record>
 																					</Collection>
@@ -8442,7 +8444,7 @@
 																											<Annotation Term="RedfishYang.type" String="leafref">
 																												<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 																											</Annotation>
-																											<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+																											<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 																										</Annotation>
 																									</Record>
 																								</Collection>
@@ -8467,7 +8469,7 @@
 																											<Annotation Term="RedfishYang.type" String="leafref">
 																												<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 																											</Annotation>
-																											<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+																											<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 																										</Annotation>
 																									</Record>
 																								</Collection>
@@ -8627,7 +8629,7 @@
 														<Annotation Term="RedfishYang.uses" String="acl-interfaces-config"/>
 														<Annotation Term="RedfishYang.leaf" String="id">
 															<Annotation Term="RedfishYang.type" String="oc-if:interface-id"/>
-															<Annotation Term="RedfishYang.description" String="User-defined identifier for the interface -- a common convention could be '&lt;if name&gt;.&lt;subif index&gt;'"/>
+															<Annotation Term="RedfishYang.description" String="User-defined identifier for the interface - a common convention could be '&lt;if name&gt;.&lt;subif index&gt;'"/>
 														</Annotation>
 													</Annotation>
 												</Record>
@@ -8637,7 +8639,7 @@
 														<Annotation Term="RedfishYang.description" String="Operational state for ACL per-interface data"/>
 														<Annotation Term="RedfishYang.leaf" String="id">
 															<Annotation Term="RedfishYang.type" String="oc-if:interface-id"/>
-															<Annotation Term="RedfishYang.description" String="User-defined identifier for the interface -- a common convention could be '&lt;if name&gt;.&lt;subif index&gt;'"/>
+															<Annotation Term="RedfishYang.description" String="User-defined identifier for the interface - a common convention could be '&lt;if name&gt;.&lt;subif index&gt;'"/>
 														</Annotation>
 														<Collection>
 															<Record>
@@ -8672,7 +8674,7 @@
 																				<Annotation Term="RedfishYang.type" String="leafref">
 																					<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 																				</Annotation>
-																				<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+																				<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 																			</Annotation>
 																		</Record>
 																	</Collection>
@@ -8697,7 +8699,7 @@
 																				<Annotation Term="RedfishYang.type" String="leafref">
 																					<Annotation Term="RedfishYang.path" String="/oc-if:interfaces/oc-if:interface[oc-if:name=current()/../interface]/oc-if:subinterfaces/oc-if:subinterface/oc-if:index"/>
 																				</Annotation>
-																				<Annotation Term="RedfishYang.description" String="Reference to a subinterface -- this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
+																				<Annotation Term="RedfishYang.description" String="Reference to a subinterface - this requires the base interface to be specified using the interface leaf in this container.  If only a reference to a base interface is requuired, this leaf should not be set."/>
 																			</Annotation>
 																		</Record>
 																	</Collection>
@@ -8798,13 +8800,13 @@
 																					<Record>
 																						<Annotation Term="RedfishYang.leaf" String="matched-packets">
 																							<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-																							<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+																							<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 																						</Annotation>
 																					</Record>
 																					<Record>
 																						<Annotation Term="RedfishYang.leaf" String="matched-octets">
 																							<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-																							<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+																							<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 																						</Annotation>
 																					</Record>
 																				</Collection>
@@ -8934,13 +8936,13 @@
 																					<Record>
 																						<Annotation Term="RedfishYang.leaf" String="matched-packets">
 																							<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-																							<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+																							<Annotation Term="RedfishYang.description" String="Count of the number of packets matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 																						</Annotation>
 																					</Record>
 																					<Record>
 																						<Annotation Term="RedfishYang.leaf" String="matched-octets">
 																							<Annotation Term="RedfishYang.type" String="oc-yang:counter64"/>
-																							<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry -- the user is expected to be able implement the required aggregation if such a count is needed."/>
+																							<Annotation Term="RedfishYang.description" String="Count of the number of octets (bytes) matching the current ACL entry.  An implementation should provide this counter on a per-interface per-ACL-entry if possible.  If an implementation only supports ACL counters per entry (i.e., not broken out per interface), then the value should be equal to the aggregate count across all interfaces.  An implementation that provides counters per entry per interface is not required to also provide an aggregate count, e.g., per entry - the user is expected to be able implement the required aggregation if such a count is needed."/>
 																						</Annotation>
 																					</Record>
 																				</Collection>
@@ -9027,7 +9029,8 @@
 						<Annotation Term="RedfishYang.reference" String="TBD"/>
 					</Annotation>
 				</Record>
-			</Collection>
+      </Collection>
+      </Annotation>
 			<EntityType Name="openconfig_acl" BaseType="openconfig_acl.openconfig_acl">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/module"/>
 				<NavigationProperty Name="aclContainer" Type="acl.acl" ContainsTarget="true">
@@ -9041,7 +9044,8 @@
 				<Annotation Term="OData.Description" String="A extension of openconfig_acl resource instances."/>
 			</Term>
 			<EnumType Name="YangTypes"/>
-		</Schema>
+    </Schema>
+-->
 		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="openconfig_acl.input_interface_config.v1_0_0">
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<Annotation Term="Redfish.Release" String="TBD"/>
@@ -9118,7 +9122,7 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State information."/>
-			<Annotation Term="OData.LongDescription" String="State information."/>
+			<Annotation Term="OData.LongDescription" String="State information.">
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="input-interface-config"/>
@@ -9126,7 +9130,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="input-interface-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+      </Annotation>
 			<EntityType Name="state" BaseType="openconfig_acl.input_interface_top.input_interface.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 			</EntityType>
@@ -9319,7 +9324,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State information for ACL actions."/>
-			<Annotation Term="OData.LongDescription" String="State information for ACL actions."/>
+      <Annotation Term="OData.LongDescription" String="State information for ACL actions."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="action-config"/>
@@ -9327,7 +9333,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="action-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.action_top.actions.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="forwarding_action" Type="RedfishYang.instance_identifier">
@@ -9458,7 +9465,8 @@
 			<Annotation Term="RedfishYang.key" String="sequence-id"/>
 			<Annotation Term="OData.Description" String="List of ACL entries comprising an ACL set."/>
 			<Annotation Term="OData.LongDescription" String="List of ACL entries comprising an ACL set."/>
-			<Collection>
+      <!--
+      <Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="oc-match:ethernet-header-top">
 						<Annotation Term="RedfishYang.when" String="../../config/type='ACL_L2'">
@@ -9493,7 +9501,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="action-top"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="acl_entry" BaseType="openconfig_acl.access_list_entries_top.acl_entries.acl_entry.acl_entry">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list"/>
 				<Property Name="sequence_id" Type="Edm.String">
@@ -9585,14 +9594,16 @@
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State information for ACL entries."/>
 			<Annotation Term="OData.LongDescription" String="State information for ACL entries."/>
-			<Collection>
+      <!--
+      <Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="access-list-entries-config"/>
 				</Record>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="access-list-entries-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.access_list_entries_top.acl_entries.acl_entry.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="sequence_id" Type="RedfishYang.uint32">
@@ -9697,14 +9708,16 @@
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State Information."/>
 			<Annotation Term="OData.LongDescription" String="State Information."/>
-			<Collection>
+      <!--
+      <Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ethernet-header-config"/>
 				</Record>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ethernet-header-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.access_list_entries_top.acl_entries.acl_entry.l2.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="source_mac" Type="oc_yang.mac_address">
@@ -9817,7 +9830,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State information for IPv4 match fields."/>
-			<Annotation Term="OData.LongDescription" String="State information for IPv4 match fields."/>
+      <Annotation Term="OData.LongDescription" String="State information for IPv4 match fields."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ipv4-protocol-fields-config"/>
@@ -9825,7 +9839,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ipv4-protocol-fields-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.access_list_entries_top.acl_entries.acl_entry.ipv4.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="source_address" Type="oc_inet.ipv4_prefix">
@@ -9954,7 +9969,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state data for IPv6 match fields."/>
-			<Annotation Term="OData.LongDescription" String="Operational state data for IPv6 match fields."/>
+      <Annotation Term="OData.LongDescription" String="Operational state data for IPv6 match fields."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ipv6-protocol-fields-config"/>
@@ -9962,7 +9978,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ipv6-protocol-fields-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.access_list_entries_top.acl_entries.acl_entry.ipv6.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="source_address" Type="oc_inet.ipv6_prefix">
@@ -10077,7 +10094,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State data."/>
-			<Annotation Term="OData.LongDescription" String="State data."/>
+      <Annotation Term="OData.LongDescription" String="State data."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="transport-fields-config"/>
@@ -10085,7 +10103,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="transport-fields-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.access_list_entries_top.acl_entries.acl_entry.transport.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="source_port" Type="oc_pkt_match_types.port_num_range">
@@ -10156,7 +10175,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State information."/>
-			<Annotation Term="OData.LongDescription" String="State information."/>
+      <Annotation Term="OData.LongDescription" String="State information."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="input-interface-config"/>
@@ -10164,7 +10184,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="input-interface-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.access_list_entries_top.acl_entries.acl_entry.input_interface.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 			</EntityType>
@@ -10304,7 +10325,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State information for ACL actions."/>
-			<Annotation Term="OData.LongDescription" String="State information for ACL actions."/>
+      <Annotation Term="OData.LongDescription" String="State information for ACL actions."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="action-config"/>
@@ -10312,7 +10334,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="action-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.access_list_entries_top.acl_entries.acl_entry.actions.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="forwarding_action" Type="RedfishYang.instance_identifier">
@@ -10521,7 +10544,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Access list state information."/>
-			<Annotation Term="OData.LongDescription" String="Access list state information."/>
+      <Annotation Term="OData.LongDescription" String="Access list state information."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="acl-set-config"/>
@@ -10529,7 +10553,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="acl-set-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_set_top.acl_sets.acl_set.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="name" Type="Edm.String">
@@ -10578,7 +10603,8 @@
 			<Annotation Term="RedfishYang.key" String="sequence-id"/>
 			<Annotation Term="OData.Description" String="List of ACL entries comprising an ACL set."/>
 			<Annotation Term="OData.LongDescription" String="List of ACL entries comprising an ACL set."/>
-			<Collection>
+      <!--
+      <Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="oc-match:ethernet-header-top">
 						<Annotation Term="RedfishYang.when" String="../../config/type='ACL_L2'">
@@ -10613,7 +10639,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="action-top"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="acl_entry" BaseType="openconfig_acl.acl_set_top.acl_sets.acl_set.acl_entries.acl_entry.acl_entry">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list"/>
 				<Property Name="sequence_id" Type="Edm.String">
@@ -10704,7 +10731,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State information for ACL entries."/>
-			<Annotation Term="OData.LongDescription" String="State information for ACL entries."/>
+      <Annotation Term="OData.LongDescription" String="State information for ACL entries."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="access-list-entries-config"/>
@@ -10712,7 +10740,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="access-list-entries-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_set_top.acl_sets.acl_set.acl_entries.acl_entry.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="sequence_id" Type="RedfishYang.uint32">
@@ -10816,7 +10845,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State Information."/>
-			<Annotation Term="OData.LongDescription" String="State Information."/>
+      <Annotation Term="OData.LongDescription" String="State Information."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ethernet-header-config"/>
@@ -10824,7 +10854,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ethernet-header-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_set_top.acl_sets.acl_set.acl_entries.acl_entry.l2.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="source_mac" Type="oc_yang.mac_address">
@@ -10937,7 +10968,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State information for IPv4 match fields."/>
-			<Annotation Term="OData.LongDescription" String="State information for IPv4 match fields."/>
+      <Annotation Term="OData.LongDescription" String="State information for IPv4 match fields."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ipv4-protocol-fields-config"/>
@@ -10945,7 +10977,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ipv4-protocol-fields-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_set_top.acl_sets.acl_set.acl_entries.acl_entry.ipv4.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="source_address" Type="oc_inet.ipv4_prefix">
@@ -11074,7 +11107,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state data for IPv6 match fields."/>
-			<Annotation Term="OData.LongDescription" String="Operational state data for IPv6 match fields."/>
+      <Annotation Term="OData.LongDescription" String="Operational state data for IPv6 match fields."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ipv6-protocol-fields-config"/>
@@ -11082,7 +11116,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ipv6-protocol-fields-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_set_top.acl_sets.acl_set.acl_entries.acl_entry.ipv6.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="source_address" Type="oc_inet.ipv6_prefix">
@@ -11197,7 +11232,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State data."/>
-			<Annotation Term="OData.LongDescription" String="State data."/>
+      <Annotation Term="OData.LongDescription" String="State data."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="transport-fields-config"/>
@@ -11205,7 +11241,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="transport-fields-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_set_top.acl_sets.acl_set.acl_entries.acl_entry.transport.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="source_port" Type="oc_pkt_match_types.port_num_range">
@@ -11276,7 +11313,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State information."/>
-			<Annotation Term="OData.LongDescription" String="State information."/>
+      <Annotation Term="OData.LongDescription" String="State information."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="input-interface-config"/>
@@ -11284,7 +11322,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="input-interface-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_set_top.acl_sets.acl_set.acl_entries.acl_entry.input_interface.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 			</EntityType>
@@ -11424,7 +11463,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State information for ACL actions."/>
-			<Annotation Term="OData.LongDescription" String="State information for ACL actions."/>
+      <Annotation Term="OData.LongDescription" String="State information for ACL actions."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="action-config"/>
@@ -11432,7 +11472,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="action-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_set_top.acl_sets.acl_set.acl_entries.acl_entry.actions.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="forwarding_action" Type="RedfishYang.instance_identifier">
@@ -11616,7 +11657,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state data for per-interface ACL entries."/>
-			<Annotation Term="OData.LongDescription" String="Operational state data for per-interface ACL entries."/>
+      <Annotation Term="OData.LongDescription" String="Operational state data for per-interface ACL entries."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-acl-entries-config"/>
@@ -11624,7 +11666,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-acl-entries-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.interface_acl_entries_top.acl_entries.acl_entry.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="sequence_id" Type="Edm.String">
@@ -11826,7 +11869,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state data for interface ingress ACLs."/>
-			<Annotation Term="OData.LongDescription" String="Operational state data for interface ingress ACLs."/>
+      <Annotation Term="OData.LongDescription" String="Operational state data for interface ingress ACLs."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-ingress-acl-config"/>
@@ -11834,7 +11878,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-ingress-acl-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.interface_ingress_acl_top.ingress_acl_sets.ingress_acl_set.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="set_name" Type="Edm.String">
@@ -11903,7 +11948,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state data for per-interface ACL entries."/>
-			<Annotation Term="OData.LongDescription" String="Operational state data for per-interface ACL entries."/>
+      <Annotation Term="OData.LongDescription" String="Operational state data for per-interface ACL entries."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-acl-entries-config"/>
@@ -11911,7 +11957,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-acl-entries-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.interface_ingress_acl_top.ingress_acl_sets.ingress_acl_set.acl_entries.acl_entry.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="sequence_id" Type="Edm.String">
@@ -12141,7 +12188,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state data for interface egress ACLs."/>
-			<Annotation Term="OData.LongDescription" String="Operational state data for interface egress ACLs."/>
+      <Annotation Term="OData.LongDescription" String="Operational state data for interface egress ACLs."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-egress-acl-config"/>
@@ -12149,7 +12197,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-egress-acl-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.interface_egress_acl_top.egress_acl_sets.egress_acl_set.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="set_name" Type="Edm.String">
@@ -12218,7 +12267,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state data for per-interface ACL entries."/>
-			<Annotation Term="OData.LongDescription" String="Operational state data for per-interface ACL entries."/>
+      <Annotation Term="OData.LongDescription" String="Operational state data for per-interface ACL entries."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-acl-entries-config"/>
@@ -12226,7 +12276,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-acl-entries-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.interface_egress_acl_top.egress_acl_sets.egress_acl_set.acl_entries.acl_entry.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="sequence_id" Type="Edm.String">
@@ -12370,7 +12421,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.key" String="id"/>
 			<Annotation Term="OData.Description" String="List of interfaces on which ACLs are set."/>
-			<Annotation Term="OData.LongDescription" String="List of interfaces on which ACLs are set."/>
+      <Annotation Term="OData.LongDescription" String="List of interfaces on which ACLs are set."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="oc-if:interface-ref"/>
@@ -12381,7 +12433,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-egress-acl-top"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="interface" BaseType="openconfig_acl.acl_interfaces_top.interfaces.interface.interface">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list"/>
 				<Property Name="id" Type="Edm.String">
@@ -12447,7 +12500,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state for ACL per-interface data."/>
-			<Annotation Term="OData.LongDescription" String="Operational state for ACL per-interface data."/>
+      <Annotation Term="OData.LongDescription" String="Operational state for ACL per-interface data."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="acl-interfaces-config"/>
@@ -12455,7 +12509,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="acl-interfaces-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_interfaces_top.interfaces.interface.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="id" Type="oc_if.interface_id">
@@ -12718,7 +12773,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state data for per-interface ACL entries."/>
-			<Annotation Term="OData.LongDescription" String="Operational state data for per-interface ACL entries."/>
+      <Annotation Term="OData.LongDescription" String="Operational state data for per-interface ACL entries."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-acl-entries-config"/>
@@ -12726,7 +12782,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-acl-entries-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_interfaces_top.interfaces.interface.ingress_acl_sets.ingress_acl_set.acl_entries.acl_entry.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="sequence_id" Type="Edm.String">
@@ -12905,7 +12962,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state data for interface egress ACLs."/>
-			<Annotation Term="OData.LongDescription" String="Operational state data for interface egress ACLs."/>
+      <Annotation Term="OData.LongDescription" String="Operational state data for interface egress ACLs."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-egress-acl-config"/>
@@ -12913,7 +12971,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-egress-acl-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_interfaces_top.interfaces.interface.egress_acl_sets.egress_acl_set.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="set_name" Type="Edm.String">
@@ -12982,7 +13041,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state data for per-interface ACL entries."/>
-			<Annotation Term="OData.LongDescription" String="Operational state data for per-interface ACL entries."/>
+      <Annotation Term="OData.LongDescription" String="Operational state data for per-interface ACL entries."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-acl-entries-config"/>
@@ -12990,7 +13050,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-acl-entries-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_interfaces_top.interfaces.interface.egress_acl_sets.egress_acl_set.acl_entries.acl_entry.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="sequence_id" Type="Edm.String">
@@ -13148,15 +13209,17 @@
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="OData.Description" String="Top level enclosing container for ACL model config and operational state data."/>
-			<Annotation Term="OData.LongDescription" String="Top level enclosing container for ACL model config and operational state data."/>
-			<Collection>
+      <Annotation Term="OData.LongDescription" String="Top level enclosing container for ACL model config and operational state data."/>
+      <!--
+      <Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="acl-set-top"/>
 				</Record>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="acl-interfaces-top"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="acl" BaseType="openconfig_acl.acl_top.acl.acl">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<NavigationProperty Name="configContainer" Type="config.config" ContainsTarget="true">
@@ -13200,7 +13263,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Global operational state data for ACLs."/>
-			<Annotation Term="OData.LongDescription" String="Global operational state data for ACLs."/>
+      <Annotation Term="OData.LongDescription" String="Global operational state data for ACLs."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="acl-config"/>
@@ -13208,7 +13272,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="acl-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_top.acl.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="counter_capability" Type="RedfishYang.instance_identifier">
@@ -13322,7 +13387,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Access list state information."/>
-			<Annotation Term="OData.LongDescription" String="Access list state information."/>
+      <Annotation Term="OData.LongDescription" String="Access list state information."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="acl-set-config"/>
@@ -13330,7 +13396,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="acl-set-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_top.acl.acl_sets.acl_set.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="name" Type="Edm.String">
@@ -13378,7 +13445,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.key" String="sequence-id"/>
 			<Annotation Term="OData.Description" String="List of ACL entries comprising an ACL set."/>
-			<Annotation Term="OData.LongDescription" String="List of ACL entries comprising an ACL set."/>
+      <Annotation Term="OData.LongDescription" String="List of ACL entries comprising an ACL set."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="oc-match:ethernet-header-top">
@@ -13414,7 +13482,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="action-top"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="acl_entry" BaseType="openconfig_acl.acl_top.acl.acl_sets.acl_set.acl_entries.acl_entry.acl_entry">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list"/>
 				<Property Name="sequence_id" Type="Edm.String">
@@ -13505,7 +13574,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State information for ACL entries."/>
-			<Annotation Term="OData.LongDescription" String="State information for ACL entries."/>
+      <Annotation Term="OData.LongDescription" String="State information for ACL entries."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="access-list-entries-config"/>
@@ -13513,7 +13583,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="access-list-entries-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_top.acl.acl_sets.acl_set.acl_entries.acl_entry.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="sequence_id" Type="RedfishYang.uint32">
@@ -13617,7 +13688,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State Information."/>
-			<Annotation Term="OData.LongDescription" String="State Information."/>
+      <Annotation Term="OData.LongDescription" String="State Information."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ethernet-header-config"/>
@@ -13625,7 +13697,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ethernet-header-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_top.acl.acl_sets.acl_set.acl_entries.acl_entry.l2.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="source_mac" Type="oc_yang.mac_address">
@@ -13738,7 +13811,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State information for IPv4 match fields."/>
-			<Annotation Term="OData.LongDescription" String="State information for IPv4 match fields."/>
+      <Annotation Term="OData.LongDescription" String="State information for IPv4 match fields."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ipv4-protocol-fields-config"/>
@@ -13746,7 +13820,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ipv4-protocol-fields-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_top.acl.acl_sets.acl_set.acl_entries.acl_entry.ipv4.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="source_address" Type="oc_inet.ipv4_prefix">
@@ -13875,7 +13950,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state data for IPv6 match fields."/>
-			<Annotation Term="OData.LongDescription" String="Operational state data for IPv6 match fields."/>
+      <Annotation Term="OData.LongDescription" String="Operational state data for IPv6 match fields."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ipv6-protocol-fields-config"/>
@@ -13883,7 +13959,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ipv6-protocol-fields-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_top.acl.acl_sets.acl_set.acl_entries.acl_entry.ipv6.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="source_address" Type="oc_inet.ipv6_prefix">
@@ -13998,7 +14075,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State data."/>
-			<Annotation Term="OData.LongDescription" String="State data."/>
+      <Annotation Term="OData.LongDescription" String="State data."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="transport-fields-config"/>
@@ -14006,7 +14084,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="transport-fields-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_top.acl.acl_sets.acl_set.acl_entries.acl_entry.transport.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="source_port" Type="oc_pkt_match_types.port_num_range">
@@ -14077,7 +14156,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State information."/>
-			<Annotation Term="OData.LongDescription" String="State information."/>
+      <Annotation Term="OData.LongDescription" String="State information."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="input-interface-config"/>
@@ -14085,7 +14165,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="input-interface-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_top.acl.acl_sets.acl_set.acl_entries.acl_entry.input_interface.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 			</EntityType>
@@ -14225,7 +14306,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State information for ACL actions."/>
-			<Annotation Term="OData.LongDescription" String="State information for ACL actions."/>
+      <Annotation Term="OData.LongDescription" String="State information for ACL actions."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="action-config"/>
@@ -14233,7 +14315,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="action-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_top.acl.acl_sets.acl_set.acl_entries.acl_entry.actions.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="forwarding_action" Type="RedfishYang.instance_identifier">
@@ -14334,7 +14417,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.key" String="id"/>
 			<Annotation Term="OData.Description" String="List of interfaces on which ACLs are set."/>
-			<Annotation Term="OData.LongDescription" String="List of interfaces on which ACLs are set."/>
+      <Annotation Term="OData.LongDescription" String="List of interfaces on which ACLs are set."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="oc-if:interface-ref"/>
@@ -14345,7 +14429,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-egress-acl-top"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="interface" BaseType="openconfig_acl.acl_top.acl.interfaces.interface.interface">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list"/>
 				<Property Name="id" Type="Edm.String">
@@ -14411,7 +14496,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state for ACL per-interface data."/>
-			<Annotation Term="OData.LongDescription" String="Operational state for ACL per-interface data."/>
+      <Annotation Term="OData.LongDescription" String="Operational state for ACL per-interface data."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="acl-interfaces-config"/>
@@ -14419,7 +14505,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="acl-interfaces-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_top.acl.interfaces.interface.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="id" Type="oc_if.interface_id">
@@ -14605,7 +14692,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state data for interface ingress ACLs."/>
-			<Annotation Term="OData.LongDescription" String="Operational state data for interface ingress ACLs."/>
+      <Annotation Term="OData.LongDescription" String="Operational state data for interface ingress ACLs."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-ingress-acl-config"/>
@@ -14613,7 +14701,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-ingress-acl-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_top.acl.interfaces.interface.ingress_acl_sets.ingress_acl_set.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="set_name" Type="Edm.String">
@@ -14682,7 +14771,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state data for per-interface ACL entries."/>
-			<Annotation Term="OData.LongDescription" String="Operational state data for per-interface ACL entries."/>
+      <Annotation Term="OData.LongDescription" String="Operational state data for per-interface ACL entries."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-acl-entries-config"/>
@@ -14690,7 +14780,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-acl-entries-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_top.acl.interfaces.interface.ingress_acl_sets.ingress_acl_set.acl_entries.acl_entry.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="sequence_id" Type="Edm.String">
@@ -14869,7 +14960,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state data for interface egress ACLs."/>
-			<Annotation Term="OData.LongDescription" String="Operational state data for interface egress ACLs."/>
+      <Annotation Term="OData.LongDescription" String="Operational state data for interface egress ACLs."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-egress-acl-config"/>
@@ -14877,7 +14969,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-egress-acl-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_top.acl.interfaces.interface.egress_acl_sets.egress_acl_set.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="set_name" Type="Edm.String">
@@ -14946,7 +15039,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state data for per-interface ACL entries."/>
-			<Annotation Term="OData.LongDescription" String="Operational state data for per-interface ACL entries."/>
+      <Annotation Term="OData.LongDescription" String="Operational state data for per-interface ACL entries."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-acl-entries-config"/>
@@ -14954,7 +15048,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-acl-entries-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl_top.acl.interfaces.interface.egress_acl_sets.egress_acl_set.acl_entries.acl_entry.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="sequence_id" Type="Edm.String">
@@ -15070,7 +15165,8 @@
 			<Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="OData.Description" String="Top level enclosing container for ACL model config and operational state data."/>
-			<Annotation Term="OData.LongDescription" String="Top level enclosing container for ACL model config and operational state data."/>
+      <Annotation Term="OData.LongDescription" String="Top level enclosing container for ACL model config and operational state data."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="acl-set-top"/>
@@ -15078,7 +15174,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="acl-interfaces-top"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="acl" BaseType="openconfig_acl.acl.acl">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<NavigationProperty Name="configContainer" Type="config.config" ContainsTarget="true">
@@ -15122,7 +15219,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Global operational state data for ACLs."/>
-			<Annotation Term="OData.LongDescription" String="Global operational state data for ACLs."/>
+      <Annotation Term="OData.LongDescription" String="Global operational state data for ACLs."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="acl-config"/>
@@ -15130,7 +15228,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="acl-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="counter_capability" Type="RedfishYang.instance_identifier">
@@ -15244,7 +15343,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Access list state information."/>
-			<Annotation Term="OData.LongDescription" String="Access list state information."/>
+      <Annotation Term="OData.LongDescription" String="Access list state information."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="acl-set-config"/>
@@ -15252,7 +15352,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="acl-set-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl.acl_sets.acl_set.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="name" Type="Edm.String">
@@ -15300,7 +15401,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.key" String="sequence-id"/>
 			<Annotation Term="OData.Description" String="List of ACL entries comprising an ACL set."/>
-			<Annotation Term="OData.LongDescription" String="List of ACL entries comprising an ACL set."/>
+      <Annotation Term="OData.LongDescription" String="List of ACL entries comprising an ACL set."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="oc-match:ethernet-header-top">
@@ -15336,7 +15438,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="action-top"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="acl_entry" BaseType="openconfig_acl.acl.acl_sets.acl_set.acl_entries.acl_entry.acl_entry">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list"/>
 				<Property Name="sequence_id" Type="Edm.String">
@@ -15427,7 +15530,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State information for ACL entries."/>
-			<Annotation Term="OData.LongDescription" String="State information for ACL entries."/>
+      <Annotation Term="OData.LongDescription" String="State information for ACL entries."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="access-list-entries-config"/>
@@ -15435,7 +15539,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="access-list-entries-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl.acl_sets.acl_set.acl_entries.acl_entry.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="sequence_id" Type="RedfishYang.uint32">
@@ -15539,7 +15644,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State Information."/>
-			<Annotation Term="OData.LongDescription" String="State Information."/>
+      <Annotation Term="OData.LongDescription" String="State Information."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ethernet-header-config"/>
@@ -15547,7 +15653,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ethernet-header-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl.acl_sets.acl_set.acl_entries.acl_entry.l2.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="source_mac" Type="oc_yang.mac_address">
@@ -15660,7 +15767,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State information for IPv4 match fields."/>
-			<Annotation Term="OData.LongDescription" String="State information for IPv4 match fields."/>
+      <Annotation Term="OData.LongDescription" String="State information for IPv4 match fields."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ipv4-protocol-fields-config"/>
@@ -15668,7 +15776,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ipv4-protocol-fields-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl.acl_sets.acl_set.acl_entries.acl_entry.ipv4.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="source_address" Type="oc_inet.ipv4_prefix">
@@ -15797,7 +15906,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state data for IPv6 match fields."/>
-			<Annotation Term="OData.LongDescription" String="Operational state data for IPv6 match fields."/>
+      <Annotation Term="OData.LongDescription" String="Operational state data for IPv6 match fields."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ipv6-protocol-fields-config"/>
@@ -15805,7 +15915,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="ipv6-protocol-fields-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl.acl_sets.acl_set.acl_entries.acl_entry.ipv6.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="source_address" Type="oc_inet.ipv6_prefix">
@@ -15920,7 +16031,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State data."/>
-			<Annotation Term="OData.LongDescription" String="State data."/>
+      <Annotation Term="OData.LongDescription" String="State data."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="transport-fields-config"/>
@@ -15928,7 +16040,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="transport-fields-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl.acl_sets.acl_set.acl_entries.acl_entry.transport.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="source_port" Type="oc_pkt_match_types.port_num_range">
@@ -15999,7 +16112,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State information."/>
-			<Annotation Term="OData.LongDescription" String="State information."/>
+      <Annotation Term="OData.LongDescription" String="State information."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="input-interface-config"/>
@@ -16007,7 +16121,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="input-interface-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl.acl_sets.acl_set.acl_entries.acl_entry.input_interface.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 			</EntityType>
@@ -16147,7 +16262,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="State information for ACL actions."/>
-			<Annotation Term="OData.LongDescription" String="State information for ACL actions."/>
+      <Annotation Term="OData.LongDescription" String="State information for ACL actions."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="action-config"/>
@@ -16155,7 +16271,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="action-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl.acl_sets.acl_set.acl_entries.acl_entry.actions.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="forwarding_action" Type="RedfishYang.instance_identifier">
@@ -16256,7 +16373,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.key" String="id"/>
 			<Annotation Term="OData.Description" String="List of interfaces on which ACLs are set."/>
-			<Annotation Term="OData.LongDescription" String="List of interfaces on which ACLs are set."/>
+      <Annotation Term="OData.LongDescription" String="List of interfaces on which ACLs are set."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="oc-if:interface-ref"/>
@@ -16267,7 +16385,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-egress-acl-top"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="interface" BaseType="openconfig_acl.acl.interfaces.interface.interface">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list"/>
 				<Property Name="id" Type="Edm.String">
@@ -16333,7 +16452,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state for ACL per-interface data."/>
-			<Annotation Term="OData.LongDescription" String="Operational state for ACL per-interface data."/>
+      <Annotation Term="OData.LongDescription" String="Operational state for ACL per-interface data."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="acl-interfaces-config"/>
@@ -16341,7 +16461,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="acl-interfaces-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl.interfaces.interface.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="id" Type="oc_if.interface_id">
@@ -16527,7 +16648,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state data for interface ingress ACLs."/>
-			<Annotation Term="OData.LongDescription" String="Operational state data for interface ingress ACLs."/>
+      <Annotation Term="OData.LongDescription" String="Operational state data for interface ingress ACLs."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-ingress-acl-config"/>
@@ -16535,7 +16657,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-ingress-acl-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl.interfaces.interface.ingress_acl_sets.ingress_acl_set.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="set_name" Type="Edm.String">
@@ -16604,7 +16727,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state data for per-interface ACL entries."/>
-			<Annotation Term="OData.LongDescription" String="Operational state data for per-interface ACL entries."/>
+      <Annotation Term="OData.LongDescription" String="Operational state data for per-interface ACL entries."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-acl-entries-config"/>
@@ -16612,7 +16736,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-acl-entries-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl.interfaces.interface.ingress_acl_sets.ingress_acl_set.acl_entries.acl_entry.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="sequence_id" Type="Edm.String">
@@ -16791,7 +16916,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state data for interface egress ACLs."/>
-			<Annotation Term="OData.LongDescription" String="Operational state data for interface egress ACLs."/>
+      <Annotation Term="OData.LongDescription" String="Operational state data for interface egress ACLs."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-egress-acl-config"/>
@@ -16799,7 +16925,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-egress-acl-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl.interfaces.interface.egress_acl_sets.egress_acl_set.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="set_name" Type="Edm.String">
@@ -16868,7 +16995,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.config" EnumMember="RedfishYang.ConfigPermission/false"/>
 			<Annotation Term="OData.Description" String="Operational state data for per-interface ACL entries."/>
-			<Annotation Term="OData.LongDescription" String="Operational state data for per-interface ACL entries."/>
+      <Annotation Term="OData.LongDescription" String="Operational state data for per-interface ACL entries."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-acl-entries-config"/>
@@ -16876,7 +17004,8 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="interface-acl-entries-state"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="state" BaseType="openconfig_acl.acl.interfaces.interface.egress_acl_sets.egress_acl_set.acl_entries.acl_entry.state.state">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 				<Property Name="sequence_id" Type="Edm.String">
@@ -16990,4 +17119,3 @@
 		</Schema>
 	</edmx:DataServices>
 </edmx:Edmx>
-
