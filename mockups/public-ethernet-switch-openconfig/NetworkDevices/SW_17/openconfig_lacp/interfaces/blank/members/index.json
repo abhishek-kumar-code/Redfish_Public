@@ -1,0 +1,14 @@
+{
+    "@odata.type": "#openconfig_lacp.lacp.interfaces.interface.membersCollection.membersCollection",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_lacp/interfaces/blank/members",
+
+    "Name": "Interface Collection",
+    "Members@odata.count": 1,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_lacp/interfaces/blank/members/a_member"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#openconfig_lacp.interfaces.interface.membersCollection.membersCollection",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

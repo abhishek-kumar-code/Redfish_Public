@@ -1,0 +1,59 @@
+{
+    "@odata.type": "#openconfig_interfaces.interfaces.interface.v1_0_0.interface",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_interfaces/interfaces/MixModePort",
+    "Id": "MixModePort",
+    "Name": "2/2/2",
+    "Description": "Mix the L2 functions with the L3 ones, by creating a TRUNK port that supports the Layer 2 switched VLAN",
+
+    "config": {
+        "description": "cust=CustA:v=X~2", 
+        "name": "2/2/2", 
+        "mtu": 9112
+    }, 
+    "ethernet": {
+        "vlan": {
+            "config": {
+                "interface-mode": "TRUNK",
+                "trunk-vlans": [
+                    "15.*"
+                ]
+            }
+        }
+    }, 
+    "hold-time": {
+        "config": {
+            "down": 2000, 
+            "up": 2000
+        }
+    }, 
+    "subinterfaces": {
+        "subinterface": {
+            "3791": {
+                "index": "3791", 
+                "vlan": {
+                    "config": {
+                        "vlan-id": "1000.100"
+                    }
+                }, 
+                "config": {
+                    "index": 3791, 
+                    "description": "custA"
+                }, 
+                "ipv4": {
+                    "address": {
+                        "192.0.2.1": {
+                            "ip": "192.0.2.1", 
+                            "config": {
+                                "ip": "192.0.2.1", 
+                                "prefix-length": 30
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+
+    "@odata.context": "/redfish/v1/$metadata#ietf_interfaces.interfaces.interfaces",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

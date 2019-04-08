@@ -1,0 +1,19 @@
+{
+    "@odata.type": "#openconfig_network_instance.network_instances.network_instance.tables.table.v1_0_0.table",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_network_instance/network_instances/a_network_instance/tables/a_table",
+    "Id": "a_table",
+    
+    "address-family": "AddressFamily",
+    "protocol": "Protocol",
+    "config": {
+        "address-family": "",
+        "protocol": ""
+    },
+    "state": {
+        "address-family": "",
+        "protocol": ""
+    },
+
+    "@odata.context": "/redfish/v1/$metadata#openconfig_network_instance.network_instances.network_instance.tables.table.table",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

@@ -1,0 +1,22 @@
+{
+    "@odata.type": "#openconfig_network_instance.network_instances.network_instance.table_connections.table_connection.v1_0_0.table_connection",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_network_instance/network_instances/a_network_instance/table_connections/a_table_connection",
+    "Id": "a_table_connection",
+    
+    "src-table_connection": "Src_table_connection",
+    "dst-table_connection": "Dst_table_connection",
+    "address-family": "AddressFamily",
+    "config": {
+        "src-table_connection": "",
+        "address-family": "",
+        "dst-table_connection": ""
+    },
+    "state": {
+        "src-table_connection": "",
+        "address-family": "",
+        "dst-table_connection": ""
+    },
+
+    "@odata.context": "/redfish/v1/$metadata#openconfig_network_instance.network_instances.network_instance.table_connections.table_connection.table_connection",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

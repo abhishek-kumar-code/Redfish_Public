@@ -1,0 +1,21 @@
+{
+    "@odata.type": "#openconfig_network_instance.network_instances.network_instance.interfaces.interface.v1_0_0.interface",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_network_instance/network_instances/a_network_instance/interfaces/a_interface",
+    "Id": "a_interface",
+    
+    "id": "a_interface",
+    "state": {
+        "id": "",
+        "associated-address-families": [],
+        "interface": "",
+        "subinterface": ""
+    },
+    "config": {
+        "id": "",
+        "associated-address-families": [],
+        "interface": "",
+        "subinterface": ""
+    },
+    "@odata.context": "/redfish/v1/$metadata#openconfig_network_instance.network_instances.network_instance.interfaces.interface.interface",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

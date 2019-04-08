@@ -1,0 +1,24 @@
+{
+    "@odata.type": "#openconfig_network_instance.network_instances.network_instance.route_limits.route_limit.v1_0_0.route_limit",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_network_instance/network_instances/a_network_instance/route_limits/a_route_limit",
+    "Id": "a_route_limit",
+    
+    "afi": "Route limit1",
+    "config": {
+        "afi": "",
+        "maximum": 0,
+        "alarm-threshold": 0,
+        "warning-only": false
+    },
+    "state": {
+        "threshold-exceeded": false,
+        "maximum": 0,
+        "alarm-threshold": 0,
+        "afi": "",
+        "warning-only": false,
+        "installed-routes": 0
+    },
+
+    "@odata.context": "/redfish/v1/$metadata#openconfig_network_instance.network_instances.network_instance.route_limits.route_limit.route_limit",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

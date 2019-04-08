@@ -1,0 +1,23 @@
+{
+    "@odata.type": "#ActionInfo.v1_0_2.ActionInfo",
+    "Id": "ResetActionInfo",
+    "Name": "ResetActionInfo",
+    "Parameters": [
+        {
+            "Name": "ResetType",
+            "Required": false,
+            "DataType": "String",
+            "AllowableValues": [
+                "On",
+                "ForceOff",
+                "ForceRestart",
+                "ForceOn",
+                "PowerCycle"
+            ]
+        }
+    ],
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_17/ResetActionInfo",
+    "@Redfish.Copyright": "Copyright 2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+}

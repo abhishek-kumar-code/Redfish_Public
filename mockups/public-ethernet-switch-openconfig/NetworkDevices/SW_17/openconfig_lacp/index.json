@@ -1,0 +1,18 @@
+{
+    "@odata.type": "#openconfig_lacp.lacp.v1_0_0.lacp",
+    "@odata.context": "/redfish/v1/$metadata#openconfig_lacp.lacp.lacp",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_lacp",
+    "Id": "openconfig_lacp",
+    
+    "lacp": {
+          "config": {
+            "system_priority": 32768
+        },
+        "state": {
+            "system_priority": 32768
+        },
+        "interfaces": {
+            "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_lacp/interfaces"
+        }
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "@odata.type": "#openconfig_interfaces.interfaces.interface.v1_0_0.interface",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_interfaces/interfaces/TenGig",
+    "Id": "TenGig",
+    "Name": "TenGigE0/4/2/0",
+    "description": "Ethernet interface on slot 1",
+
+    "TenGigE0/4/2/0": {
+        "hold-time": {
+            "config": {
+                "up": 2000
+            }
+        },
+        "config": {
+                    "description": "type=eth:cid=1042:remote=P2#Te0/0/0",
+                    "name": "TenGigE0/4/2/0",
+                    "mtu": 9188
+        },
+        "subinterfaces": {
+            "subinterface": {
+                "4": {
+                    "index": "4",
+                    "config": {
+                        "index": 4,
+                        "description": "autogen=default-ipv4-subint"
+                    },
+                    "ipv4": {
+                        "address": {
+                            "192.0.2.100": {
+                                "ip": "192.0.2.100",
+                                "config": {
+                                    "ip": "192.0.2.100",
+                                    "prefix-length": 31
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "@odata.context": "/redfish/v1/$metadata#ietf_interfaces.interfaces",
+    "@Redfish.Copyright": "Copyright 2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

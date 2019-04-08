@@ -1,0 +1,23 @@
+{
+    "@odata.type": "#openconfig_network_instance.network_instances.network_instance.vlans.vlan.v1_0_0.vlan",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_network_instance/network_instances/a_network_instance/vlans/a_vlan",
+    "Id": "a_vlan",
+    
+    "vlan-id": "Vlan1",
+    "config": {
+        "vlan-id": 0,
+        "name": "",
+        "status": "ACTIVE"
+    },
+    "state": {
+        "vlan-id": 0,
+        "name": "",
+        "status": "ACTIVE"
+    },
+    "members": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_network_instance/network_instances/a_network_instance/vlans/a_vlan/members"
+    },
+
+    "@odata.context": "/redfish/v1/$metadata#openconfig_network_instance.network_instances.network_instance.vlans.vlan.vlan",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

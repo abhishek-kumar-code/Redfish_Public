@@ -1,0 +1,29 @@
+{
+    "@odata.type": "#openconfig_network_instance.network_instances.network_instance.protocols.protocol.v1_0_0.protocol",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_network_instance/network_instances/a_network_instance/protocols/a_protocol",
+    "Id": "a_protocol",
+    
+    "name": "Name",
+    "identifier": "Identifier",
+    "config": {
+        "default-metric": 0,
+        "identifier": "",
+        "name": "",
+        "enabled": false
+    },
+    "state": {
+        "default-metric": 0,
+        "identifier": "",
+        "name": "",
+        "enabled": false
+    },
+    "static-routes": {
+        "static": {}
+    },
+    "local-aggregates": {
+        "aggregate": {}
+    },
+
+    "@odata.context": "/redfish/v1/$metadata#openconfig_network_instance.network_instances.network_instance.protocols.protocol.protocol",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

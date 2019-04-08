@@ -1,0 +1,14 @@
+{
+    "@odata.type": "#openconfig_network_instance.network_instances.network_instance.entriesCollection.entriesCollection",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_network_instance/network_instances/a_network_instance/entries",
+
+    "Name": "entries Collection",
+    "Members@odata.count": 1,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_network_instance/network_instances/a_network_instance/entries/a_entry"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#openconfig_network_instance.network_instances.network_instance.tablesCollection.tablesCollection",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

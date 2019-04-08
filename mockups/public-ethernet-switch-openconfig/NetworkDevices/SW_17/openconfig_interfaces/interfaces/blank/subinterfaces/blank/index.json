@@ -1,0 +1,41 @@
+{
+    "@odata.type": "#openconfig_interfaces.interfaces.interfaces.interface.subinterfaces.subinterface.v1_0_0.subinterface",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_interfaces/interfaces/blank/subinterfaces/blank",
+
+    "index": "blank",
+    "config": {
+        "index": 0,
+        "enabled": 1,
+        "description": ""
+    },
+    "state": {
+        "name": "",
+        "index": 0,
+        "description": "",
+        "ifindex": 0,
+        "admin-status": "",
+        "last-change": 0,
+        "oper-status": "",
+        "enabled": 1,
+        "counters": {
+            "out-unicast-pkts": 0,
+            "in-multicast-pkts": 0,
+            "in-fcs-errors": 0,
+            "in-discards": 0,
+            "in-errors": 0,
+            "carrier-transitions": 0,
+            "in-broadcast-pkts": 0,
+            "out-multicast-pkts": 0,
+            "out-broadcast-pkts": 0,
+            "out-errors": 0,
+            "out-octets": 0,
+            "in-unknown-protos": 0,
+            "last-clear": 0,
+            "in-octets": 0,
+            "in-unicast-pkts": 0,
+            "out-discards": 0
+        }
+    },
+    "@odata.context": "/redfish/v1/$metadata#openconfig_interfaces.interfaces.interface.subinsterfaces.subinterface.subinterface",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

@@ -1,0 +1,57 @@
+{
+    "@odata.type": "#NetworkDevice.v1_0_0.NetworkDevice",
+    "Id": "SW_17",
+    "Name": "Ethernet Switch",
+    "NetworkDeviceType": "BaselineEthernetSwitch",
+    "AssetTag": "xxx",
+    "Manufacturer": "Manufacturer Name",
+    "Model": "Model Name",
+    "SKU": "67B",
+    "SerialNumber": "2M220100SL",
+    "PartNumber": "76-88883",
+    "FirmwareVersion": "1.2.4",
+    "Status": {
+        "@odata.type": "#Resource.Status",
+        "State": "Enabled",
+        "Health": "OK",
+        "HealthRollup": "OK"
+    },
+    "LogServices": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_17/LogServices"
+    },
+    "Acl": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_acl"
+    },
+    "Interfaces": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_interfaces"
+    },
+    "Lacp": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_lacp"
+    },
+    "Network_Instance": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_network_instance"
+    },
+    "Links": {
+        "@odata.type": "#NetworkDevice.v1_0_0.Links",
+        "Chassis": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/EthernetSwitch_15"
+            }
+        ],
+        "ManagedBy": [
+            {
+                "@odata.id": "/redfish/v1/Managers/EthernetSwitchManager"
+            }
+        ]
+    },
+    "Actions": {
+        "@odata.type": "#NetworkDevice.v1_0_0.Actions",
+        "#NetworkDevice.Reset": {
+            "target": "/redfish/v1/NetworkDevices/SW_17/Actions/NetworkDevice.Reset",
+            "@Redfish.ActionInfo": "/redfish/v1/NetworkDevices/SW_17/ResetActionInfo"
+        }
+    },
+    "@odata.context": "/redfish/v1/$metadata#NetworkDevice.NetworkDevice",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_17",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

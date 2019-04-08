@@ -1,0 +1,30 @@
+{
+    "@odata.type": "#openconfig_interfaces.interfaces.interface.v1_0_0.interface",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_interfaces/interfaces/trunk1",
+    "Id": "trunk1",
+    "Name": "GigabitEthernet3/20",
+    "Description": "Trunk with multiple VLANs",
+
+    "ethernet": {
+        "vlan": {
+            "config": {
+                "interface-mode": "TRUNK",
+                "trunk-vlans": [
+                    2, 
+                    69, 
+                    243, 
+                    "282..292", 
+                    "388..397", 
+                    559
+                ]
+            }
+        }
+    }, 
+    "config": {
+        "description": "core-switch#Gig2/47", 
+        "name": "GigabitEthernet3/20"
+    }, 
+ 
+    "@odata.context": "/redfish/v1/$metadata#ietf_interfaces.interfaces.interfaces",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

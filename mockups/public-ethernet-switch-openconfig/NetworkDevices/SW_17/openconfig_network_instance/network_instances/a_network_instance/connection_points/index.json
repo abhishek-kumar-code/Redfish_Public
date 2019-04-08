@@ -1,12 +1,12 @@
 {
     "@odata.type": "#openconfig_network_instance.network_instances.network_instance.connection_pointsCollection.connection_pointsCollection",
-    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_network_instance/network_instances/a_network_instance/connection_points",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_network_instance/network_instances/a_network_instance/connection_points",
 
     "Name": "Connection Points Collection",
     "Members@odata.count": 1,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_network_instance/network_instances/a_network_instance/connection_points/a_conn_pt"
+            "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_network_instance/network_instances/a_network_instance/connection_points/a_conn_pt"
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#openconfig_network_instance.network_instances.network_instance.connection_pointsCollection.connection_pointsCollection",

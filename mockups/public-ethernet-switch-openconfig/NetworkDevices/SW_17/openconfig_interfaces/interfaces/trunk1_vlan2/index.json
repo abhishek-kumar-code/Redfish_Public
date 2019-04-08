@@ -1,0 +1,44 @@
+{
+    "@odata.type": "#openconfig_interfaces.interfaces.interface.v1_0_0.interface",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_interfaces/interfaces/trunk1_vlan2",
+    "Id": "trunk1_vlan2",
+    "Name": "VLAN2",
+    "Description": "Trunk with multiple VLANs",
+
+    "config": {
+        "name": "VLAN2"
+    }, 
+    "routed-vlan": {
+        "config": {
+            "vlan": 2
+        }, 
+        "ipv4": {
+            "address": {
+                "10.0.4.3": {
+                    "ip": "10.0.4.3", 
+                    "vrrp": {
+                        "vrrp-group": {
+                            "2": {
+                                "config": {
+                                    "priority": 210, 
+                                    "virtual-address": [
+                                        "10.0.4.1"
+                                    ], 
+                                    "virtual-router-id": 2
+                                }, 
+                                "virtual-router-id": "2"
+                            }
+                        }
+                    }, 
+                    "config": {
+                        "ip": "10.0.4.3", 
+                        "prefix-length": 24
+                    }
+                }
+            }
+        }
+    },
+
+    "@odata.context": "/redfish/v1/$metadata#ietf_interfaces.interfaces.interfaces",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

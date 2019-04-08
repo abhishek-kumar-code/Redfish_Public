@@ -1,0 +1,35 @@
+{
+    "@odata.type": "#openconfig_acl.acl.acl_sets.acl_set.v1_0_0.acl_set",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_17/openconfig_acl/acl_sets/foo_ACL_IPV4",
+    "Id": "foo_ACL_IPV4",
+
+    "name": "foo",
+    "type": "ACL_IPV4",
+    "config": {
+        "name": "foo",
+        "type": "ACL_IPV4"
+    },
+    "acl-entries": {
+        "acl-entry": {
+            "100": {
+                "sequence-id": "100",
+                "config": {
+                    "sequence-id": 100
+                },
+                "ipv4": {
+                    "config": {
+                        "destination-address": "0.0.0.0/0",
+                        "source-address": "0.0.0.0/0",
+                        "hop-limit": 5,
+                        "dscp": 0,
+                        "protocol": 4
+                    }
+                }
+            }
+        }
+    },
+    
+    "@odata.context": "/redfish/v1/$metadata#openconfig_acl.acl.acl",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+
+}
