@@ -1,0 +1,33 @@
+{
+    "@odata.type": "#openconfig_network_instance.network_instances.interface/connection_points.connection_point.members.member.v1_0_0.member",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_network_instance/network_instances/a_network_instance/connection_points/a_conn_pt/members/a_member",
+    "Id": "a_member",
+
+    "interface": "a_member",
+    "state": {
+        "aggregatable": false,
+        "port-num": 0,
+        "counters": {
+            "lacp-rx-errors": 0,
+            "lacp-unknown-errors": 0,
+            "lacp-tx-errors": 0,
+            "lacp-errors": 0,
+            "lacp-in-pkts": 0,
+            "lacp-out-pkts": 0
+        },
+        "interface": "",
+        "activity": "",
+        "collecting": false,
+        "partner-id": "",
+        "synchronization": "",
+        "system-id": "",
+        "partner-key": 0,
+        "timeout": "",
+        "distributing": false,
+        "partner-port-num": 0,
+        "oper-key": 0
+    },
+    
+    "@odata.context": "/redfish/v1/$metadata#openconfig_network_instance.network_instances.network_instance.connection_points.connection_point.members.member.member",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}
