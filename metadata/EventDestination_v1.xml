@@ -49,7 +49,8 @@
         </Annotation>
         <Annotation Term="Capabilities.DeleteRestrictions">
           <Record>
-            <PropertyValue Property="Deletable" Bool="false"/>
+            <PropertyValue Property="Deletable" Bool="true"/>
+            <Annotation Term="OData.Description" String="An Event Destination can be deleted when a client no longer needs to receive event notifications."/>
           </Record>
         </Annotation>
         <Annotation Term="Redfish.Uris">
