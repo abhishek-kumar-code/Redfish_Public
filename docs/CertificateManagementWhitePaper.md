@@ -95,12 +95,14 @@ The parameters for the action specify many of the common fields that are put int
 The `KeyPairAlgorithm` and `KeyCurveId` are both strings where the values are based on the contents of the Trusted Computing Group (TCG) Algorithm Registry.  The `TPM_ALG_ID` and `TPM_ECC_CURVE` tables respectively contain the set of possible values for the two parameters.  Services are not required to support the entire contents of the table, however, the following are recommended to be supported.
 
 Recommended `TPM_ALG_ID` values:
+
 | Value           | Description |
 | ---             | ---         |
 | `TPM_ALG_RSA`   | The RSA algorithm. |
 | `TPM_ALG_ECDSA` | Signature algorithm using elliptic curve cryptography (ECC). |
 
 Recommended `TPM_ECC_CURVE` values:
+
 | Value               | Description |
 | ---                 | ---         |
 | `TPM_ECC_NIST_P256` | The NIST P-256 curve. |
