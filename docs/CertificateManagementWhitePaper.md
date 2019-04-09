@@ -88,8 +88,8 @@ The parameters for the action specify many of the common fields that are put int
 | `UnstructuredName`      | `unstructuredName`                 | The unstructured name of the subject. |
 | `ContactPerson`         | `name`                             | The name of the user making the request. |
 | `KeyPairAlgorithm`      | N/A                                | The type of key pair for use with signing algorithms. |
-| `KeyBitLength`          | N/A                                | The length of the key in bits, if needed based on the value of the 'KeyPairAlgorithm' parameter. |
-| `KeyCurveId`            | N/A                                | The curve ID to be used with the key, if needed based on the value of the 'KeyPairAlgorithm' parameter. |
+| `KeyBitLength`          | N/A                                | The length of the key in bits, if needed based on the value of the `KeyPairAlgorithm` parameter. |
+| `KeyCurveId`            | N/A                                | The curve ID to be used with the key, if needed based on the value of the `KeyPairAlgorithm` parameter. |
 | `CertificateCollection` | N/A                                | A link to the certificate collection where the certificate will be installed. |
 
 The `KeyPairAlgorithm` and `KeyCurveId` are both strings where the values are based on the contents of the Trusted Computing Group (TCG) Algorithm Registry.  The `TPM_ALG_ID` and `TPM_ECC_CURVE` tables respectively contain the set of possible values for the two parameters.  Services are not required to support the entire contents of the table, however, the following are recommended to be supported.
