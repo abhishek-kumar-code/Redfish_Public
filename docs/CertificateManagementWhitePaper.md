@@ -151,6 +151,16 @@ Example Generate CSR response:
 ### Replace Certificate
 
 
+## Certificates
+
+
+
+### Resources with Certificates
+
+
+
+## Certificate Locations
+
 
 * Certificate service
     * Go over use cases for the different actions (when you'd use Replace vs simply POSTing to the certificate collection)
