@@ -22,10 +22,10 @@ DMTF is a not-for-profit association of industry members dedicated to promoting 
 The DMTF acknowledges the following individuals for their contributions to this document:
 
 
-# Introduction
+## Introduction
 
 
-# Model explanation
+## Model explanation
 
 If a Redfish service supports certificate management, the Service Root resource will contain the `CertificateService` property.  It will also support the [`Certificates` property](#resources-with-certificates) in various Resources to show where certificates can be installed.
 
@@ -34,7 +34,7 @@ Within the [Certificate Service](#certificate-service), a client will find the a
 The following sections detail how these things are reported by a Redfish service.
 
 
-## Certificate Service
+### Certificate Service
 
 The Certificate Service contains a set of actions for service level management of certificates.  There are currently two actions defined for this:
 * [Generate CSR](#generate-csr) (Certificate Signing Request)
@@ -64,7 +64,7 @@ Example Certificate Service Resource:
 ```
 
 
-### Generate CSR
+#### Generate CSR
 
 The Generate CSR (Certificate Signing Request) action is used to create a signing request for a new certificate.  The response of the action contains the CSR as a Privacy Enhanced Mail (PEM) encoded string.  The CSR is then given to a CA (Certificate Authority) by the client, which then produces a signed certificate.
 
@@ -148,18 +148,18 @@ Example Generate CSR response:
 ```
 
 
-### Replace Certificate
+#### Replace Certificate
 
 
-## Certificates
-
-
-
-### Resources with Certificates
+### Certificates
 
 
 
-## Certificate Locations
+#### Resources with Certificates
+
+
+
+### Certificate Locations
 
 
 * Certificate service
@@ -175,7 +175,7 @@ Example Generate CSR response:
         * Useful for auditing
 
 
-# Best practices - Peter S
+## Best practices - Peter S
 
 * Need to find NIST white papers for how certificates should be managed; make pointers to them
     * Authenticity
@@ -185,7 +185,7 @@ Example Generate CSR response:
     * How signing works
 
 
-# Types of certificates - Chris D
+## Types of certificates - Chris D
 
 * Different format types (PKCS7, PKCS12, etc)
     * How do they map into the data model
@@ -193,7 +193,7 @@ Example Generate CSR response:
     * End devices may just have a binary encoded certificate
 
 
-# Client workflows - Mike R
+## Client workflows - Mike R
 
 * Installing (from CSR generation to applying the certificate)
     * Point to next two workflows for the final step to avoid duplicating text
@@ -205,6 +205,9 @@ Example Generate CSR response:
             * Current use case is when switching between LDAP and AD where the service may use the same certificate and effectively migrate it when disabling one and enabling the other
 * Removing certificates (what happens when a collection becomes empty)
     * May have a side effect of regenerating a default certificate
+
+
+## Appendix
 
 
 ### References
