@@ -45,8 +45,8 @@
                     "type": "object",
                     "description": "This object contains definitions for the Redfish Actions available for this resource.",
                     "properties": {
-                       "target": {
-                           "type": "string",
+                        "target": {
+                            "type": "string",
                             "description": "**** TBD ****"
                         }
                     }
@@ -62,5 +62,5 @@
             }
         }
     },
-    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

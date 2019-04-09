@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2015 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Chassis/Members/$entity",
     "@odata.id": "/redfish/v1/Chassis/PCIeSwitchMgrHW",
     "@odata.type": "#Chassis.v1_0_1.Chassis",
@@ -12,8 +12,7 @@
     "SerialNumber": "SN1703737",
     "PartNumber": "",
     "AssetTag": "CustomerWritableThingy",
-	"PowerState": "On",
-	
+    "PowerState": "On",
     "Status": {
         "State": "Enabled",
         "Health": "OK"

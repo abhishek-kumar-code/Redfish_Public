@@ -1,6 +1,5 @@
-
 {
-    "@Redfish.Copyright": "Copyright 2016-2018 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2016-2019 DMTF. All rights reserved.",
     "@odata.id": "/redfish/v1/Systems/cpu-memory-example/MemoryDomains/1/MemoryChunks/1",
     "@odata.type": "#MemoryChunks.v1_0_0.MemoryChunks",
     "Name": "Memory Chunk - Whole System",
@@ -10,18 +9,26 @@
     "IsMirrorEnabled": false,
     "IsSpare": false,
     "InterleaveSets": [
-        {"Memory" : {
-            "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/1"
-        }},
-        {"Memory" : {
-            "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/2"
-        }},
-        {"Memory" : {
-            "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/3"
-        }},
-        {"Memory" : {
-            "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/4"
-        }}
+        {
+            "Memory": {
+                "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/1"
+            }
+        },
+        {
+            "Memory": {
+                "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/2"
+            }
+        },
+        {
+            "Memory": {
+                "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/3"
+            }
+        },
+        {
+            "Memory": {
+                "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/4"
+            }
+        }
     ],
     "@Redfish.Settings": {
         "@odata.type": "#Settings.v1_0_0.Settings",
@@ -38,4 +45,3 @@
     },
     "Oem": {}
 }
-

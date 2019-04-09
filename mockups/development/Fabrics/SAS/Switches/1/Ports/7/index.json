@@ -1,28 +1,29 @@
 {
-	"@odata.context": "/redfish/v1/$metadata#Port.Port",
-	"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/7",
-	"@odata.type": "#Port.v1_0_0.Port",
-	"Id": "7",
-	"Name": "SAS Port 7",
-	"Description": "SAS Port 7",
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-	"PortId": "7",
+    "@odata.context": "/redfish/v1/$metadata#Port.Port",
+    "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/7",
+    "@odata.type": "#Port.v1_0_0.Port",
+    "Id": "7",
+    "Name": "SAS Port 7",
+    "Description": "SAS Port 7",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "PortId": "7",
     "PortProtocol": "SAS",
-	"PortType": "BidirectionalPort",
-	"CurrentSpeedGbps": 48,
-	"Width": 4,
-	"MaxSpeedGbps": 48,
-	"Actions": {
-		"Oem": {}
-	},
+    "PortType": "BidirectionalPort",
+    "CurrentSpeedGbps": 48,
+    "Width": 4,
+    "MaxSpeedGbps": 48,
+    "Actions": {
+        "Oem": {}
+    },
     "Links": {
         "AssociatedEndpoints": [
-             {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Enclosure1"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Enclosure1"
+            }
         ]
     },
-	"Oem": {}
+    "Oem": {}
 }
-

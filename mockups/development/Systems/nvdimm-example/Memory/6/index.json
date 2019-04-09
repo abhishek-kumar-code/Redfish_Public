@@ -1,5 +1,5 @@
- {
-    "@Redfish.Copyright":"Copyright 2016-2018 DMTF. All rights reserved.",    
+{
+    "@Redfish.Copyright": "Copyright 2016-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Memory.Memory",
     "@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/6",
     "@odata.type": "#Memory.v1_2_0.Memory",
@@ -9,7 +9,7 @@
     "MemoryDeviceType": "DDR4",
     "BaseModuleType": "LRDIMM",
     "MemoryMedia": [
-		"NAND"		
+        "NAND"
     ],
     "CapacityMiB": 8192,
     "DataWidthBits": 64,
@@ -59,8 +59,8 @@
     },
     "OperatingSpeedMhz": 2400,
     "PersistentRegionSizeLimitMiB": 8192,
-    "PersistentRegionNumberLimit" : 16,
-    "PersistentRegionSizeMaxMiB" : 8192,
+    "PersistentRegionNumberLimit": 16,
+    "PersistentRegionSizeMaxMiB": 8192,
     "AllocationIncrementMiB": 1,
     "AllocationAlignmentMiB": 8,
     "Regions": [
@@ -108,7 +108,7 @@
             ],
             "Passphrase@Redfish.AllowableValues": "string"
         },
-	"#Memory.SetPassphrase": {
+        "#Memory.SetPassphrase": {
             "target": "/redfish/v1/Systems/nvdimm-example/Memory/6/Actions/Memory.SetPassphrase",
             "RegionId@Redfish.AllowableValues": [
                 "1"

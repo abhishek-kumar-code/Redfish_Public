@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.id": "/redfish/v1/Systems/storage-example/Storage/SATAEmbedded",
     "@odata.type": "#Storage.v1_0_0.Storage",
     "Id": "1",
@@ -38,19 +38,28 @@
         }
     ],
     "Drives": [
-        {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.1"},
-        {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.2"},
-        {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.3"},
-        {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.4"}
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.2"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.3"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.4"
+        }
     ],
     "Volumes": {
         "@odata.id": "/redfish/v1/Systems/storage-example/Storage/SATAEmbedded/Volumes"
     },
-    "Links": { 
+    "Links": {
         "Enclosures": [
-            {"@odata.id": "/redfish/v1/Chassis/StorageBackplane"}
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageBackplane"
+            }
         ]
     },
-    "Actions": {
-    }
+    "Actions": {}
 }

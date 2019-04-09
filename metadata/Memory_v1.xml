@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Memory  v1.7.0-->
+<!--# Redfish Schema:  Memory  v1.7.1-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
-<!--# Copyright 2014-2018 DMTF.                                                            -->
+<!--# Copyright 2014-2019 DMTF.                                                            -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
@@ -828,6 +828,12 @@
       <EntityType Name="Memory" BaseType="Memory.v1_0_4.Memory"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_0_6">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_0_5.Memory"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2016.3"/>
@@ -861,6 +867,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
       <EntityType Name="Memory" BaseType="Memory.v1_1_3.Memory"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_1_5">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_1_4.Memory"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_2_0">
@@ -937,6 +949,12 @@
       <EntityType Name="Memory" BaseType="Memory.v1_2_2.Memory"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_2_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_2_3.Memory"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2017.2"/>
@@ -984,6 +1002,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
       <EntityType Name="Memory" BaseType="Memory.v1_3_2.Memory"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_3_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_3_3.Memory"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_4_0">
@@ -1045,6 +1069,12 @@
       <EntityType Name="Memory" BaseType="Memory.v1_4_2.Memory"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_4_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_4_3.Memory"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_5_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2018.1"/>
@@ -1071,6 +1101,12 @@
       <EntityType Name="Memory" BaseType="Memory.v1_5_1.Memory"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_5_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_5_2.Memory"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_6_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2018.2"/>
@@ -1082,6 +1118,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
       <EntityType Name="Memory" BaseType="Memory.v1_6_0.Memory"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_6_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_6_1.Memory"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_7_0">
@@ -1118,6 +1160,12 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum number of incorrect passphase access attempts allowed before access to data is locked. A value of zero shall indicate that there is no limit to the number of attempts."/>
         </Property>
       </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_7_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_7_0.Memory"/>
     </Schema>
 
   </edmx:DataServices>

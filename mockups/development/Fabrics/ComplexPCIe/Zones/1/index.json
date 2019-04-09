@@ -1,23 +1,28 @@
 {
-	"@odata.context": "/redfish/v1/$metadata#Zone.Zone",
-	"@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Zones/1",
-	"@odata.type": "#Zone.v1_0_0.Zone",
-	"Id": "1",
-	"Name": "PCIe Zone 1",
-	"Description": "PCIe Zone 1",
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-	"Links": {
-		"Endpoints": [
-            {"@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Endpoints/HostRootComplex1"},
-            {"@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Endpoints/NICPort2"}
+    "@odata.context": "/redfish/v1/$metadata#Zone.Zone",
+    "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Zones/1",
+    "@odata.type": "#Zone.v1_0_0.Zone",
+    "Id": "1",
+    "Name": "PCIe Zone 1",
+    "Description": "PCIe Zone 1",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Links": {
+        "Endpoints": [
+            {
+                "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Endpoints/HostRootComplex1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Endpoints/NICPort2"
+            }
         ],
         "InvolvedSwitches": [
-            {"@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Switches/1"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Switches/1"
+            }
         ]
-	},
-	"Oem": {}
+    },
+    "Oem": {}
 }
-

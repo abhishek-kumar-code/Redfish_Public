@@ -204,11 +204,11 @@
                 }
             ],
             "Location": {
-              "PartLocation": {
-                "ServiceLabel": "PSU 2",
-                "LocationType": "Bay",
-                "LocationOrdinalValue": 1
-              }
+                "PartLocation": {
+                    "ServiceLabel": "PSU 2",
+                    "LocationType": "Bay",
+                    "LocationOrdinalValue": 1
+                }
             }
         },
         {
@@ -219,11 +219,11 @@
                 "State": "Absent"
             },
             "Location": {
-              "PartLocation": {
-                "ServiceLabel": "PSU 3",
-                "LocationType": "Bay",
-                "LocationOrdinalValue": 2
-              }
+                "PartLocation": {
+                    "ServiceLabel": "PSU 3",
+                    "LocationType": "Bay",
+                    "LocationOrdinalValue": 2
+                }
             }
         }
     ],
@@ -252,5 +252,5 @@
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#Power.Power",
     "@odata.id": "/redfish/v1/Chassis/1/Power",
-    "@Redfish.Copyright":"Copyright 2014-2018 DMTF. All rights reserved."
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved."
 }

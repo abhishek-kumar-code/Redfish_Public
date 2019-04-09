@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright":"Copyright 2016-2018 DMTF. All rights reserved.",    
+    "@Redfish.Copyright": "Copyright 2016-2019 DMTF. All rights reserved.",
     "@odata.id": "/redfish/v1/Systems/nvdimm-example/MemoryDomains/1/MemoryChunks/1",
     "@odata.type": "#MemoryChunks.v1_0_0.MemoryChunks",
     "Name": "Memory Chunk - All Standard DIMMs",
@@ -9,12 +9,16 @@
     "IsMirrorEnabled": false,
     "IsSpare": false,
     "InterleaveSets": [
-        {"Memory": {
-            "@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/3"
-        }},
-        {"Memory" :{
-            "@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/4"
-        }}
+        {
+            "Memory": {
+                "@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/3"
+            }
+        },
+        {
+            "Memory": {
+                "@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/4"
+            }
+        }
     ],
     "@Redfish.Settings": {
         "@odata.type": "#Settings.v1_0_0.Settings",

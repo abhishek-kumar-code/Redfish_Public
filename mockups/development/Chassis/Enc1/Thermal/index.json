@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright":"Copyright 2014-2016 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
     "@odata.id": "/redfish/v1/Chassis/Enc1/Thermal",
     "@odata.type": "#Thermal.v1_1_0.Thermal",
@@ -26,10 +26,18 @@
             "MaxReadingRangeTemp": 200,
             "PhysicalContext": "Intake",
             "RelatedItem": [
-                {"@odata.id": "/redfish/v1/Systems/cpu-memory-example" },
-                {"@odata.id": "/redfish/v1/Chassis/Enc1" },
-                {"@odata.id": "/redfish/v1/Chassis/Blade1" },
-                {"@odata.id": "/redfish/v1/Chassis/Blade2" }
+                {
+                    "@odata.id": "/redfish/v1/Systems/cpu-memory-example"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enc1"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Blade1"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Blade2"
+                }
             ]
         }
     ],
@@ -51,12 +59,18 @@
             "LowerThresholdFatal": 42,
             "MinReadingRange": 0,
             "MaxReadingRange": 5000,
-            "Redundancy" : [
-                {"@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#/Redundancy/0"}
+            "Redundancy": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#/Redundancy/0"
+                }
             ],
-            "RelatedItem" : [
-                {"@odata.id": "/redfish/v1/Systems/cpu-memory-example" },
-                {"@odata.id": "/redfish/v1/Chassis/Enc1" }
+            "RelatedItem": [
+                {
+                    "@odata.id": "/redfish/v1/Systems/cpu-memory-example"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enc1"
+                }
             ]
         },
         {
@@ -76,12 +90,18 @@
             "LowerThresholdFatal": 42,
             "MinReadingRange": 0,
             "MaxReadingRange": 5000,
-            "Redundancy" : [
-                {"@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#/Redundancy/0"}
+            "Redundancy": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#/Redundancy/0"
+                }
             ],
-            "RelatedItem" : [
-                {"@odata.id": "/redfish/v1/Systems/cpu-memory-example" },
-                {"@odata.id": "/redfish/v1/Chassis/Enc1" }
+            "RelatedItem": [
+                {
+                    "@odata.id": "/redfish/v1/Systems/cpu-memory-example"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enc1"
+                }
             ]
         }
     ],
@@ -91,8 +111,12 @@
             "MemberId": "0",
             "Name": "BaseBoard System Fans",
             "RedundancySet": [
-                { "@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#/Fans/0" },
-                { "@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#/Fans/1" }
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#/Fans/0"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#/Fans/1"
+                }
             ],
             "Mode": "N+1",
             "Status": {

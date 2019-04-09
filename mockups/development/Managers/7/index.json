@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2015 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Manager.Manager",
     "@odata.id": "/redfish/v1/Managers/7",
     "@odata.type": "#Manager.v1_0_0.Manager",
@@ -14,8 +14,15 @@
     },
     "FirmwareVersion": "1.06",
     "Links": {
-        "ManagerForChassis": [ { "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2" } ], "Oem": {}
+        "ManagerForChassis": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2"
+            }
+        ],
+        "Oem": {}
     },
-    "Actions": {"Oem": {}},
+    "Actions": {
+        "Oem": {}
+    },
     "Oem": {}
 }

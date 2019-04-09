@@ -1,11 +1,11 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#NetworkAdapter.NetworkAdapter",
     "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/FC",
     "@odata.type": "#NetworkAdapter.v1_2_0.NetworkAdapter",
     "Id": "E300",
     "Name": "FC Adapter",
-    "Description" :"FC Adapter - May be missing Device ID (PCI ID type unique ID) field",
+    "Description": "FC Adapter - May be missing Device ID (PCI ID type unique ID) field",
     "Manufacturer": "BEST FC Adapter Co",
     "Model": "FC-1000",
     "SerialNumber": "BESTCO00023234FC",
@@ -52,7 +52,7 @@
             "target": "/redfish/v1/Chassis/1/NetworkAdapters/FC/Actions/NetworkAdapter.ResetSettingsToDefault"
         },
         "Oem": {
-            "BESTFCAdapterCoCardTemperature" : "Normal"
+            "BESTFCAdapterCoCardTemperature": "Normal"
         }
     }
 }

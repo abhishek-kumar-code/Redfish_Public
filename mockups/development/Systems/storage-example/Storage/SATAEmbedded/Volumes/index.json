@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.id": "/redfish/v1/Systems/storage-example/Storage/SATAEmbedded/Volumes",
     "@odata.type": "#VolumeCollection.VolumeCollection",
     "Name": "Storage Volume Collection",
@@ -15,7 +15,11 @@
     ],
     "@Redfish.OperationApplyTimeSupport": {
         "@odata.type": "#Settings.v1_2_0.OperationApplyTimeSupport",
-        "SupportedValues": [ "Immediate", "OnReset", "AtMaintenanceWindowStart" ],
+        "SupportedValues": [
+            "Immediate",
+            "OnReset",
+            "AtMaintenanceWindowStart"
+        ],
         "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
         "MaintenanceWindowDurationInSeconds": 600,
         "MaintenanceWindowResource": {

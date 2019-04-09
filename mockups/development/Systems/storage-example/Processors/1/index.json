@@ -1,28 +1,28 @@
 {
-  "@Redfish.Copyright": "Copyright 2016-2018 DMTF. All rights reserved.",
-  "@odata.id": "/redfish/v1/Systems/storage-example/Processors/1",
-  "@odata.type": "#Processor.v1_0_0.Processor",
-  "Name": "Processor",
-  "Id": "1",
-  "Socket": "CPU 1",
-  "ProcessorType": "CPU",
-  "ProcessorArchitecture": "x86",
-  "InstructionSet": "x86-64",
-  "Manufacturer": "Intel(R) Corporation",
-  "Model": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",
-  "ProcessorId": {
-    "VendorId": "GenuineIntel",
-    "IdentificationRegisters": "0x34AC34DC8901274A",
-    "EffectiveFamily": "0x42",
-    "EffectiveModel": "0x61",
-    "Step": "0x1",
-    "MicrocodeInfo": "0x429943"
-  },
-  "MaxSpeedMHz": 3700,
-  "TotalCores": 8,
-  "TotalThreads": 16,
-  "Status": {
-    "State": "Enabled",
-    "Health": "OK"
-  }
+    "@Redfish.Copyright": "Copyright 2016-2019 DMTF. All rights reserved.",
+    "@odata.id": "/redfish/v1/Systems/storage-example/Processors/1",
+    "@odata.type": "#Processor.v1_0_0.Processor",
+    "Name": "Processor",
+    "Id": "1",
+    "Socket": "CPU 1",
+    "ProcessorType": "CPU",
+    "ProcessorArchitecture": "x86",
+    "InstructionSet": "x86-64",
+    "Manufacturer": "Intel(R) Corporation",
+    "Model": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",
+    "ProcessorId": {
+        "VendorId": "GenuineIntel",
+        "IdentificationRegisters": "0x34AC34DC8901274A",
+        "EffectiveFamily": "0x42",
+        "EffectiveModel": "0x61",
+        "Step": "0x1",
+        "MicrocodeInfo": "0x429943"
+    },
+    "MaxSpeedMHz": 3700,
+    "TotalCores": 8,
+    "TotalThreads": 16,
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    }
 }

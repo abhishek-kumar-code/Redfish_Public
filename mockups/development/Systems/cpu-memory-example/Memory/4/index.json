@@ -1,37 +1,39 @@
 {
-	"@Redfish.Copyright":"Copyright 2014-2018 DMTF. All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#Memory.Memory",
-	"@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/4",
-	"@odata.type": "#Memory.v1_4_0.Memory",
-	"Name": "Regular Memory",
-	"Id": "2",
-	"RankCount": 2,
-	"MaxTDPMilliWatts": [12000],
-	"CapacityMiB": 8192,
-	"DataWidthBits": 64,
-	"BusWidthBits": 72,
-	"ErrorCorrection": "MultiBitECC",
-	"MemoryLocation": {
-		"Socket": 1,
-		"MemoryController": 1,
-		"Channel": 2,
-		"Slot": 2
-	},
-	"MemoryType": "DRAM",
-	"MemoryDeviceType": "DDR4",
-	"BaseModuleType": "RDIMM",
-	"MemoryMedia": [
-		"DRAM"
-	],
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-  },
-  "Location": {
-    "PartLocation": {
-      "ServiceLabel": "Socket 4",
-      "LocationType": "Socket",
-      "LocationOrdinalValue": 3
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Memory.Memory",
+    "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/4",
+    "@odata.type": "#Memory.v1_4_0.Memory",
+    "Name": "Regular Memory",
+    "Id": "2",
+    "RankCount": 2,
+    "MaxTDPMilliWatts": [
+        12000
+    ],
+    "CapacityMiB": 8192,
+    "DataWidthBits": 64,
+    "BusWidthBits": 72,
+    "ErrorCorrection": "MultiBitECC",
+    "MemoryLocation": {
+        "Socket": 1,
+        "MemoryController": 1,
+        "Channel": 2,
+        "Slot": 2
+    },
+    "MemoryType": "DRAM",
+    "MemoryDeviceType": "DDR4",
+    "BaseModuleType": "RDIMM",
+    "MemoryMedia": [
+        "DRAM"
+    ],
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Location": {
+        "PartLocation": {
+            "ServiceLabel": "Socket 4",
+            "LocationType": "Socket",
+            "LocationOrdinalValue": 3
+        }
     }
-  }
 }

@@ -16,5 +16,5 @@
     ],
     "@odata.context": "/redfish/v1/$metadata#Storage.Storage",
     "@odata.id": "/redfish/v1/Systems/ComposedSystem/Storage/NVMe",
-    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright":"Copyright 2016-2018 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2016-2019 DMTF. All rights reserved.",
     "@odata.id": "/redfish/v1/Systems/nvdimm-example/MemoryDomains/2/MemoryChunks/7",
     "@odata.type": "#MemoryChunks.v1_0_0.MemoryChunks",
     "Name": "Memory Chunk7 - Block",
@@ -8,7 +8,9 @@
     "AddressRangeType": "Block",
     "InterleaveSets": [
         {
-            "Memory": { "@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/6" },
+            "Memory": {
+                "@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/6"
+            },
             "RegionId": "1"
         }
     ],

@@ -1,8 +1,8 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Storage.Storage",
     "@odata.id": "/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated",
-    "@odata.type": "#Storage.v1_6_0.Storage",
+    "@odata.type": "#Storage.v1_7_0.Storage",
     "Id": "RAIDIntegrated",
     "Name": "Integrated RAID Storage System",
     "Description": "Contoso Internal RAID",
@@ -57,21 +57,35 @@
                 "RAID10",
                 "RAID50",
                 "RAID60"
-            ]
+            ],
+            "ControllerRates": {
+                "RebuildRatePercent": 30,
+                "ConsistencyCheckRatePercent": 15
+            }
         }
     ],
     "Drives": [
-        {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.5"},
-        {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.6"},
-        {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.7"},
-        {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.8"}
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.5"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.6"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.7"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.8"
+        }
     ],
     "Volumes": {
         "@odata.id": "/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated/Volumes"
     },
     "Links": {
         "Enclosures": [
-            {"@odata.id": "/redfish/v1/Chassis/StorageBackplane"}
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageBackplane"
+            }
         ]
     },
     "Actions": {

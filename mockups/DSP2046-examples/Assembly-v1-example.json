@@ -1,5 +1,7 @@
 {
     "@odata.type": "#Assembly.v1_2_0.Assembly",
+    "Id": "Assembly",
+    "Name": "System-related Assembly data",
     "Assemblies": [
         {
             "@odata.id": "/redfish/v1/Chassis/1/Assembly#/Assemblies/0",
@@ -40,6 +42,5 @@
             }
         }
     ],
-    "@odata.context": "/redfish/v1/$metadata#Assembly.Assembly",
     "@odata.id": "/redfish/v1/Chassis/1/Assembly"
 }

@@ -1,13 +1,13 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 DMTF. All rights reserved.",
-	  "@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
-	  "@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Endpoints/Target1",
-	  "@odata.type": "#Endpoint.v1_1_0.Endpoint",
-	  "Id": "Target1",
-	  "Name": "NVMe Drive 1 Volumes",
-	  "Description": "Two volumes created within the NVMe Drive in NVMeChassis 1 Bay 0",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
+    "@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Endpoints/Target1",
+    "@odata.type": "#Endpoint.v1_1_0.Endpoint",
+    "Id": "Target1",
+    "Name": "NVMe Drive 1 Volumes",
+    "Description": "Two volumes created within the NVMe Drive in NVMeChassis 1 Bay 0",
     "EndpointProtocol": "NVMeOverFabrics",
-    "Identifiers":  [
+    "Identifiers": [
         {
             "DurableName": "nqn.corp.com:nvme:nvm-subsys-sn-7642",
             "DurableNameFormat": "NQN"
@@ -18,10 +18,10 @@
         }
     ],
     "ConnectedEntities": [
-       {
+        {
             "EntityType": "NetworkController",
             "EntityRole": "Target",
-			      "EntityLink": {
+            "EntityLink": {
                 "@odata.id": "/redfish/v1/Chassis/NVMeChassis/NetworkAdapters/8fd725a1/NetworkDeviceFunctions/11100"
             }
         },
@@ -41,7 +41,7 @@
         }
     ],
     "IPTransportDetails": [
-		    {
+        {
             "TransportProtocol": "iWARP",
             "IPv4Address": {
                 "Address": "10.3.5.132"

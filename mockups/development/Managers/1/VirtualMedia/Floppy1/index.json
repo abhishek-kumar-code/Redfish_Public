@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright":"Copyright 2014-2016 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#VirtualMedia.VirtualMedia",
     "@odata.id": "/redfish/v1/Managers/1/VirtualMedia/Floppy1",
     "@odata.type": "#VirtualMedia.v1_3_0.VirtualMedia",
@@ -14,18 +14,18 @@
     "ConnectedVia": "URI",
     "Inserted": true,
     "WriteProtected": false,
-    "UserName" : null,
-    "Password" : null,
+    "UserName": null,
+    "Password": null,
     "TransferProtocolType": "HTTPS",
     "TransferProtocolType@Redfish.AllowableValues": [
-      "HTTP",
-      "HTTPS",
-      "CIFS",
-      "NFS",
-      "FTP",
-      "SFTP"
+        "HTTP",
+        "HTTPS",
+        "CIFS",
+        "NFS",
+        "FTP",
+        "SFTP"
     ],
-    "TransferMethod" : "Stream",
+    "TransferMethod": "Stream",
     "Actions": {
         "#VirtualMedia.InsertMedia": {
             "target": "/redfish/v1/Managers/1/VirtualMedia/Floppy1/Actions/VirtualMedia.InsertMedia",
@@ -34,5 +34,5 @@
         "#VirtualMedia.EjectMedia": {
             "target": "/redfish/v1/Managers/1/VirtualMedia/Floppy1/Actions/VirtualMedia.EjectMedia"
         }
-    }    
+    }
 }

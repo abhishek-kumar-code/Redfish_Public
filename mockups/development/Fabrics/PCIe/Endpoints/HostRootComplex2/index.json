@@ -1,11 +1,11 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 DMTF. All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
-	"@odata.id": "/redfish/v1/Fabrics/PCIe/Endpoints/HostRootComplex2",
-	"@odata.type": "#Endpoint.v1_0_0.Endpoint",
-	"Id": "HostRootComplex2",
-	"Name": "Host Root Complex for System 2",
-	"Description": "The PCIe Root Complex for System 3",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
+    "@odata.id": "/redfish/v1/Fabrics/PCIe/Endpoints/HostRootComplex2",
+    "@odata.type": "#Endpoint.v1_0_0.Endpoint",
+    "Id": "HostRootComplex2",
+    "Name": "Host Root Complex for System 2",
+    "Description": "The PCIe Root Complex for System 3",
     "EndpointProtocol": "PCIe",
     "ConnectedEntities": [
         {
@@ -24,9 +24,10 @@
     ],
     "Links": {
         "Ports": [
-            {"@odata.id": "/redfish/v1/Fabrics/PCIe/Switches/1/Ports/Up2"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/PCIe/Switches/1/Ports/Up2"
+            }
         ]
     },
-	"Oem": {}
+    "Oem": {}
 }
-

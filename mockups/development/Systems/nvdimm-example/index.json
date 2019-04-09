@@ -8,7 +8,7 @@
         "Health": "OK",
         "HealthRollup": "OK"
     },
-    "PowerState": "On",	
+    "PowerState": "On",
     "Memory": {
         "@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory"
     },
@@ -18,15 +18,15 @@
     "MemorySummary": {
         "TotalSystemMemoryGiB": 24,
         "TotalSystemPersistentMemoryGiB": 40,
-        "MemoryMirroring" : "Hybrid",		
+        "MemoryMirroring": "Hybrid",
         "Status": {
             "State": "Enabled",
             "Health": "OK",
             "HealthRollup": "OK"
         }
-    },    
+    },
     "Oem": {},
     "Id": "nvdimm-example",
     "@odata.id": "/redfish/v1/Systems/nvdimm-example",
-    "@Redfish.Copyright": "Copyright 2016-2018 DMTF. All rights reserved."
+    "@Redfish.Copyright": "Copyright 2016-2019 DMTF. All rights reserved."
 }

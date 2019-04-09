@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright":"Copyright 2014-2016 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Power.Power",
     "@odata.id": "/redfish/v1/Chassis/1/Power",
     "@odata.type": "#Power.v1_5_0.Power",
@@ -28,12 +28,12 @@
                 "CorrectionInMs": 42
             },
             "RelatedItem": [
-              {
-                "@odata.id": "/redfish/v1/Chassis/1"
-              },
-              {
-                "@odata.id": "/redfish/v1/Systems/1"
-              }
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Systems/1"
+                }
             ],
             "Status": {
                 "State": "Enabled",
@@ -48,11 +48,13 @@
             "PhysicalContext": "CPUSubsystem",
             "PowerConsumedWatts": 275,
             "RelatedItem": [
-                { "@odata.id": "/redfish/v1/Systems/1/Processors" }
+                {
+                    "@odata.id": "/redfish/v1/Systems/1/Processors"
+                }
             ],
             "Status": {
-              "State": "Enabled",
-              "Health": "OK"
+                "State": "Enabled",
+                "Health": "OK"
             },
             "Oem": {}
         },
@@ -63,7 +65,9 @@
             "PhysicalContext": "CPU",
             "PowerConsumedWatts": 150,
             "RelatedItem": [
-                { "@odata.id": "/redfish/v1/Systems/1/Processors/1" }
+                {
+                    "@odata.id": "/redfish/v1/Systems/1/Processors/1"
+                }
             ],
             "Oem": {}
         },
@@ -74,7 +78,9 @@
             "PhysicalContext": "CPU",
             "PowerConsumedWatts": 125,
             "RelatedItem": [
-                { "@odata.id": "/redfish/v1/Systems/1/Processors/2" }
+                {
+                    "@odata.id": "/redfish/v1/Systems/1/Processors/2"
+                }
             ],
             "Oem": {}
         },
@@ -85,7 +91,9 @@
             "PhysicalContext": "MemorySubsystem",
             "PowerConsumedWatts": 10,
             "RelatedItem": [
-                { "@odata.id": "/redfish/v1/Systems/1/Memory" }
+                {
+                    "@odata.id": "/redfish/v1/Systems/1/Memory"
+                }
             ],
             "Oem": {}
         },
@@ -96,7 +104,9 @@
             "PhysicalContext": "Memory",
             "PowerConsumedWatts": 5,
             "RelatedItem": [
-                { "@odata.id": "/redfish/v1/Systems/1/Memory/1" }
+                {
+                    "@odata.id": "/redfish/v1/Systems/1/Memory/1"
+                }
             ],
             "Oem": {}
         },
@@ -107,7 +117,9 @@
             "PhysicalContext": "Memory",
             "PowerConsumedWatts": 5,
             "RelatedItem": [
-                { "@odata.id": "/redfish/v1/Systems/1/Memory/2" }
+                {
+                    "@odata.id": "/redfish/v1/Systems/1/Memory/2"
+                }
             ],
             "Oem": {}
         },
@@ -118,7 +130,9 @@
             "PhysicalContext": "CoolingSubsystem",
             "PowerConsumedWatts": 20,
             "RelatedItem": [
-              { "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans" }
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans"
+                }
             ],
             "Oem": {}
         },
@@ -129,7 +143,9 @@
             "PhysicalContext": "Fan",
             "PowerConsumedWatts": 20,
             "RelatedItem": [
-              { "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/0" }
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/0"
+                }
             ],
             "Oem": {}
         },
@@ -140,7 +156,9 @@
             "PhysicalContext": "Fan",
             "PowerConsumedWatts": 20,
             "RelatedItem": [
-              { "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/1" }
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/1"
+                }
             ],
             "Oem": {}
         }
@@ -166,8 +184,12 @@
             "MaxReadingRange": 20,
             "PhysicalContext": "VoltageRegulator",
             "RelatedItem": [
-                { "@odata.id": "/redfish/v1/Systems/1" },
-                { "@odata.id": "/redfish/v1/Chassis/1" }
+                {
+                    "@odata.id": "/redfish/v1/Systems/1"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1"
+                }
             ]
         },
         {
@@ -188,8 +210,12 @@
             "MaxReadingRange": 20,
             "PhysicalContext": "VoltageRegulator",
             "RelatedItem": [
-                { "@odata.id": "/redfish/v1/Systems/1" },
-                { "@odata.id": "/redfish/v1/Chassis/1" }
+                {
+                    "@odata.id": "/redfish/v1/Systems/1"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1"
+                }
             ]
         }
     ],
@@ -226,18 +252,22 @@
             ],
             "IndicatorLED": "Off",
             "RelatedItem": [
-              { "@odata.id": "/redfish/v1/Chassis/1" }
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1"
+                }
             ],
             "Redundancy": [
-              { "@odata.id": "/redfish/v1/Chassis/1/Power#/Redundancy/0" }
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1/Power#/Redundancy/0"
+                }
             ],
             "Location": {
-              "PartLocation": {
-                "ServiceLabel": "PSU 1",
-                "LocationType": "Bay",
-                "LocationOrdinalValue": 0
-              }
-            }        
+                "PartLocation": {
+                    "ServiceLabel": "PSU 1",
+                    "LocationType": "Bay",
+                    "LocationOrdinalValue": 0
+                }
+            }
         },
         {
             "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerSupplies/1",
@@ -282,18 +312,22 @@
             ],
             "IndicatorLED": "Off",
             "RelatedItem": [
-                { "@odata.id": "/redfish/v1/Chassis/1" }
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1"
+                }
             ],
             "Redundancy": [
-                { "@odata.id": "/redfish/v1/Chassis/1/Power#/Redundancy/0" }
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1/Power#/Redundancy/0"
+                }
             ],
             "Location": {
-              "PartLocation": {
-                "ServiceLabel": "PSU 2",
-                "LocationType": "Bay",
-                "LocationOrdinalValue": 1
-              }
-            }                
+                "PartLocation": {
+                    "ServiceLabel": "PSU 2",
+                    "LocationType": "Bay",
+                    "LocationOrdinalValue": 1
+                }
+            }
         },
         {
             "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerSupplies/2",
@@ -303,12 +337,12 @@
                 "State": "Absent"
             },
             "Location": {
-              "PartLocation": {
-                "ServiceLabel": "PSU 3",
-                "LocationType": "Bay",
-                "LocationOrdinalValue": 2
-              }
-            }                
+                "PartLocation": {
+                    "ServiceLabel": "PSU 3",
+                    "LocationType": "Bay",
+                    "LocationOrdinalValue": 2
+                }
+            }
         }
     ],
     "Redundancy": [
@@ -320,8 +354,12 @@
             "MaxNumSupported": 2,
             "MinNumNeeded": 1,
             "RedundancySet": [
-                { "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerSupplies/0" },
-                { "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerSupplies/1" }
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerSupplies/0"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerSupplies/1"
+                }
             ],
             "Status": {
                 "State": "Offline",

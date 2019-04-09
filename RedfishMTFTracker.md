@@ -84,6 +84,8 @@ The links in the Tutorials/Education side bar will be reflected on the developer
 
 Here the Pub column means has it been published yet.  The intent is to publish all of these presentations on the Tutorials/Education side bar of dmtf.org/standards/Redfish and reflected on the Developer Hub Education Page (http://redfish.dmtf.org/education) 
 
+| Subject             | Presenter | Rec? | Pub? | Doc   |
+| ---                 | ---       | ---  | ---  | ---   |
 | Why Redfish         | Jeff A    | Y    | N    | 84013 |
 | Architecture        | Jeff H    | Y    | N    | 84151 |
 | Common Prop         | Jeff H    | Y    | N    | 84152 |

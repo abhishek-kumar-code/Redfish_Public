@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#NetworkPort.NetworkPort",
     "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/FC/NetworkPorts/1",
     "@odata.type": "#NetworkPort.v1_2_0.NetworkPort",
@@ -8,13 +8,16 @@
     "PhysicalPortNumber": "2",
     "LinkStatus": "Up",
     "FCFabricName": "10:00:B0:5A:DD:BB:74:FB",
-    "VendorId" : "BestBigServerVendor",
+    "VendorId": "BestBigServerVendor",
     "CurrentLinkSpeedMbps": 32000,
     "FCPortConnectionType": "PublicLoop",
     "SupportedLinkCapabilities": [
         {
             "LinkNetworkTechnology": "FibreChannel",
-            "CapableLinkSpeedMbps": [ 16000, 32000 ],
+            "CapableLinkSpeedMbps": [
+                16000,
+                32000
+            ],
             "AutoSpeedNegotiation": true
         }
     ],

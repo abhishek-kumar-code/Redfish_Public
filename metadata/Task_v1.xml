@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Task  v1.4.0-->
+<!--# Redfish Schema:  Task  v1.4.1-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
-<!--# Copyright 2014-2018 DMTF.                                                            -->
+<!--# Copyright 2014-2019 DMTF.                                                            -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
@@ -37,8 +37,8 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Task" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="This resource contains information about a specific Task scheduled by or being executed by a Redfish service's Task Service."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a task for a Redfish implementation."/>
+        <Annotation Term="OData.Description" String="This resource contains information about a specific Task scheduled by or being executed by a Redfish service's Task Service.  Tasks are used to represent operations that take more time than a client typically wants to wait."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a Task for a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -206,6 +206,12 @@
       <EntityType Name="Task" BaseType="Task.v1_0_5.Task"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Task.v1_0_7">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference.  It was also updated to correct the description of the resource."/>
+      <EntityType Name="Task" BaseType="Task.v1_0_6.Task"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Task.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2017.1"/>
@@ -251,6 +257,12 @@
       <EntityType Name="Task" BaseType="Task.v1_1_2.Task"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Task.v1_1_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference.  It was also updated to correct the description of the resource."/>
+      <EntityType Name="Task" BaseType="Task.v1_1_3.Task"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Task.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2018.1"/>
@@ -277,6 +289,12 @@
       <EntityType Name="Task" BaseType="Task.v1_2_1.Task"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Task.v1_2_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference.  It was also updated to correct the description of the resource."/>
+      <EntityType Name="Task" BaseType="Task.v1_2_2.Task"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Task.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2018.2"/>
@@ -286,7 +304,7 @@
         <Property Name="Payload" Type="Task.v1_3_0.Payload" Nullable="false">
           <Annotation Term="OData.Description" String="The HTTP and JSON payload details for this task."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain information detailing the HTTP and JSON payload information for executing this task. This object shall not be included in the response if the HidePayload property is set to True."/>
-        </Property>	
+        </Property>
         <Property Name="HidePayload" Type="Edm.Boolean" Nullable="false">
          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
          <Annotation Term="OData.Description" String="Indicates that the contents of the Payload should be hidden from view after the Task has been created.  When set to True, the Payload object will not be returned on GET."/>
@@ -329,6 +347,12 @@
       <EntityType Name="Task" BaseType="Task.v1_3_0.Task"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Task.v1_3_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference.  It was also updated to correct the description of the resource."/>
+      <EntityType Name="Task" BaseType="Task.v1_3_1.Task"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Task.v1_4_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2018.3"/>
@@ -342,6 +366,12 @@
           <Annotation Term="Measures.Unit" String="%"/>
         </Property>
       </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Task.v1_4_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference.  It was also updated to correct the description of the resource."/>
+      <EntityType Name="Task" BaseType="Task.v1_4_0.Task"/>
     </Schema>
 
   </edmx:DataServices>

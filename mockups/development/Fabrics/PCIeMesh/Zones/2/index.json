@@ -1,24 +1,34 @@
 {
-	"@odata.context": "/redfish/v1/$metadata#Zone.Zone",
-	"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Zones/2",
-	"@odata.type": "#Zone.v1_0_0.Zone",
-	"Id": "2",
-	"Name": "PCIe Zone 2",
-	"Description": "PCIe Zone 2",
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-	"Links": {
-		"Endpoints": [
-            {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/HostRootComplex2"},
-            {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/FCPort1"},
-            {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/FCPort2"},
-			{"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/SimulatedPCIeFunction-SFD"}
+    "@odata.context": "/redfish/v1/$metadata#Zone.Zone",
+    "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Zones/2",
+    "@odata.type": "#Zone.v1_0_0.Zone",
+    "Id": "2",
+    "Name": "PCIe Zone 2",
+    "Description": "PCIe Zone 2",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Links": {
+        "Endpoints": [
+            {
+                "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/HostRootComplex2"
+            },
+            {
+                "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/FCPort1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/FCPort2"
+            },
+            {
+                "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/SimulatedPCIeFunction-SFD"
+            }
         ],
         "InvolvedSwitches": [
-            {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/3"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/3"
+            }
         ]
-	},
-	"Oem": {}
+    },
+    "Oem": {}
 }

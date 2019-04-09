@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Power  v1.5.2-->
+<!--# Redfish Schema:  Power  v1.5.3-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
-<!--# Copyright 2014-2018 DMTF.                                                            -->
+<!--# Copyright 2014-2019 DMTF.                                                            -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
@@ -571,6 +571,12 @@
       <EntityType Name="Power" BaseType="Power.v1_0_7.Power"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_0_9">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <EntityType Name="Power" BaseType="Power.v1_0_8.Power"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2016.1"/>
@@ -683,6 +689,12 @@
       <EntityType Name="Power" BaseType="Power.v1_1_5.Power"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_1_7">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <EntityType Name="Power" BaseType="Power.v1_1_6.Power"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2016.2"/>
@@ -732,6 +744,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation. It was also created to fix PowerMetrics/PowerMetric description, not to use abbreviated terms."/>
       <EntityType Name="Power" BaseType="Power.v1_2_5.Power"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_2_7">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <EntityType Name="Power" BaseType="Power.v1_2_6.Power"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_3_0">
@@ -854,6 +872,12 @@
       <EntityType Name="Power" BaseType="Power.v1_3_3.Power"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_3_5">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <EntityType Name="Power" BaseType="Power.v1_3_4.Power"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_4_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2017.2"/>
@@ -884,6 +908,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation. It was also created to fix PowerMetrics/PowerMetric description, not to use abbreviated terms."/>
       <EntityType Name="Power" BaseType="Power.v1_4_2.Power"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_4_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <EntityType Name="Power" BaseType="Power.v1_4_3.Power"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_5_0">
@@ -942,6 +972,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation. It was also created to fix PowerMetrics/PowerMetric description, not to use abbreviated terms."/>
       <EntityType Name="Power" BaseType="Power.v1_5_1.Power"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_5_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <EntityType Name="Power" BaseType="Power.v1_5_2.Power"/>
     </Schema>
 
   </edmx:DataServices>

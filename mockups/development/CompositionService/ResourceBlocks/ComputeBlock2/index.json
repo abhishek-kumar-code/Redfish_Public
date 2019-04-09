@@ -1,11 +1,13 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
     "@odata.context": "/redfish/v1/$metadata#ResourceBlock.ResourceBlock",
     "@odata.type": "#ResourceBlock.v1_0_0.ResourceBlock",
     "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2",
     "Id": "ComputeBlock2",
     "Name": "Compute Block 2",
-    "ResourceBlockType": [ "Compute" ],
+    "ResourceBlockType": [
+        "Compute"
+    ],
     "Status": {
         "State": "Enabled",
         "Health": "OK"

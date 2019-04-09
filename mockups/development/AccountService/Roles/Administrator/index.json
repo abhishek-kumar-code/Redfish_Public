@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright":"Copyright 2014-2018 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Role.Role",
     "@odata.id": "/redfish/v1/AccountService/Roles/Administrator",
     "@odata.type": "#Role.v1_0_0.Role",
@@ -8,11 +8,11 @@
     "Description": "Admin User Role",
     "IsPredefined": true,
     "AssignedPrivileges": [
-	"Login",
-	"ConfigureManager",
-	"ConfigureUsers",
-	"ConfigureSelf",
-	"ConfigureComponents"
+        "Login",
+        "ConfigureManager",
+        "ConfigureUsers",
+        "ConfigureSelf",
+        "ConfigureComponents"
     ],
     "OemPrivileges": [
         "OemClearLog",

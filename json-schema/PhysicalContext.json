@@ -1,7 +1,7 @@
 {
     "$id": "http://redfish.dmtf.org/schemas/v1/PhysicalContext.json",
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
-    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
     "definitions": {
         "PhysicalContext": {
             "enum": [
@@ -24,7 +24,9 @@
                 "Backplane",
                 "SystemBoard",
                 "PowerSupply",
+                "PowerSubsystem",
                 "VoltageRegulator",
+                "Rectifier",
                 "StorageDevice",
                 "NetworkingDevice",
                 "ComputeBay",
@@ -78,8 +80,10 @@
                 "Motor": "A motor.",
                 "NetworkBay": "Within a networking bay.",
                 "NetworkingDevice": "A networking device.",
+                "PowerSubsystem": "The entire power subsystem.",
                 "PowerSupply": "A power supply.",
                 "PowerSupplyBay": "Within a power supply bay.",
+                "Rectifier": "A rectifier device.",
                 "Room": "The room.",
                 "StorageBay": "Within a storage bay.",
                 "StorageDevice": "A storage device.",
@@ -108,6 +112,8 @@
                 "Memory": "2017.1",
                 "MemorySubsystem": "2018.3",
                 "Motor": "2018.3",
+                "PowerSubsystem": "2019.1",
+                "Rectifier": "2019.1",
                 "Transformer": "2018.3"
             },
             "type": "string"

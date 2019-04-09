@@ -5,7 +5,10 @@
     "IndicatorLED": "Lit",
     "StatusIndicator": "OK",
     "Model": "Drive Model string",
-    "Status": { "State": "Enabled", "Health": "OK" },
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
     "CapacityBytes": 899527000000,
     "Protocol": "SATA",
     "MediaType": "HDD",
@@ -15,9 +18,10 @@
     "NegotiatedSpeedGbs": 6,
     "Links": {
         "Volumes": [
-            {"@odata.id": "/redfish/v1/Systems/storage-example/Storage/SATAEmbedded/Volumes/1"}
+            {
+                "@odata.id": "/redfish/v1/Systems/storage-example/Storage/SATAEmbedded/Volumes/1"
+            }
         ]
     },
-    "Actions": {
-    }
+    "Actions": {}
 }

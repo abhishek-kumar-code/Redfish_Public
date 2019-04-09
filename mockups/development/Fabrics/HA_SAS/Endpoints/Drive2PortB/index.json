@@ -1,11 +1,11 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 DMTF. All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
-	"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Drive1PortB",
-	"@odata.type": "#Endpoint.v1_0_0.Endpoint",
-	"Id": "Drive1PortB",
-	"Name": "SAS Drive",
-	"Description": "The SAS Drive's Port B in Enclosure 2 Bay 0",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
+    "@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Drive1PortB",
+    "@odata.type": "#Endpoint.v1_0_0.Endpoint",
+    "Id": "Drive1PortB",
+    "Name": "SAS Drive",
+    "Description": "The SAS Drive's Port B in Enclosure 2 Bay 0",
     "EndpointProtocol": "SAS",
     "ConnectedEntities": [
         {
@@ -19,13 +19,16 @@
     ],
     "Links": {
         "MutuallyExclusiveEndpoints": [
-            {"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Enclosure2PortB"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Enclosure2PortB"
+            }
         ],
         "Ports": [
-            {"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Switches/2/Ports/8"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/HA_SAS/Switches/2/Ports/8"
+            }
         ],
         "Oem": {}
     },
-	"Oem": {}
+    "Oem": {}
 }
-

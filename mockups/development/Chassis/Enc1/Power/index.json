@@ -1,192 +1,194 @@
 {
-  "@Redfish.Copyright": "Copyright 2014-2016 DMTF. All rights reserved.",
-  "@odata.context": "/redfish/v1/$metadata#Power.Power",
-  "@odata.id": "/redfish/v1/Chassis/Enc1/Power",
-  "@odata.type": "#Power.v1_4_0.Power",
-  "Id": "Power",
-  "Name": "Power",
-  "Oem": {},
-  "PowerControl": [
-    {
-      "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerControl/0",
-      "MemberId": "0",
-      "Name": "System Input Power (top-level Chassis)",
-      "Oem": {},
-      "PhysicalContext": "Chassis",
-      "PowerAllocatedWatts": 9000,
-      "PowerAvailableWatts": 1500,
-      "PowerCapacityWatts": 10000,
-      "PowerConsumedWatts": 8000,
-      "PowerLimit": {
-        "CorrectionInMs": 2000,
-        "LimitException": "NoAction",
-        "LimitInWatts": 9000
-      },
-      "PowerRequestedWatts": 8500,
-      "RelatedItem": [
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Power.Power",
+    "@odata.id": "/redfish/v1/Chassis/Enc1/Power",
+    "@odata.type": "#Power.v1_4_0.Power",
+    "Id": "Power",
+    "Name": "Power",
+    "Oem": {},
+    "PowerControl": [
         {
-          "@odata.id": "/redfish/v1/Chassis/Enc1"
-        }
-      ],
-      "Status": {
-        "Health": "OK",
-        "State": "Enabled"
-      }
-    },
-    {
-      "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerControl/1",
-      "MemberId": "1",
-      "Name": "Chassis Input Power (Blade 1)",
-      "Oem": {},
-      "PhysicalContext": "Chassis",
-      "PowerAllocatedWatts": 500,
-      "PowerAvailableWatts": 150,
-      "PowerCapacityWatts": 600,
-      "PowerConsumedWatts": 300,
-      "PowerLimit": {
-        "CorrectionInMs": 2000,
-        "LimitException": "NoAction",
-        "LimitInWatts": 500
-      },
-      "PowerRequestedWatts": 450,
-      "RelatedItem": [
-        {
-          "@odata.id": "/redfish/v1/Chassis/Blade1"
-        }
-      ],
-      "Status": {
-        "Health": "OK",
-        "State": "Enabled"
-      }
-    },
-    {
-      "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerControl/2",
-      "MemberId": "2",
-      "Name": "Chassis Input Power (Blade 2)",
-      "Oem": { },
-      "PhysicalContext": "Chassis",
-      "PowerAllocatedWatts": 500,
-      "PowerAvailableWatts": 150,
-      "PowerCapacityWatts": 600,
-      "PowerConsumedWatts": 300,
-      "PowerLimit": {
-        "CorrectionInMs": 2000,
-        "LimitException": "NoAction",
-        "LimitInWatts": 500
-      },
-      "PowerRequestedWatts": 450,
-      "RelatedItem": [
-        {
-          "@odata.id": "/redfish/v1/Chassis/Blade2"
-        }
-      ],
-      "Status": {
-        "Health": "OK",
-        "State": "Enabled"
-      }
-    },
-    {
-      "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/3",
-      "MemberId": "3",
-      "Name": "Cooling Sub-System Power",
-      "PhysicalContext": "CoolingSubsystem",
-      "PowerConsumedWatts": 400,
-      "RelatedItem": [
-        { "@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#/Fans" }
-      ],
-      "Oem": { }
-    }
-  ],
-  "PowerSupplies": [
-    {
-      "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerSupplies/0",
-      "FirmwareVersion": "1.00",
-      "LastPowerOutputWatts": 400,
-      "LineInputVoltage": 48,
-      "Manufacturer": "ManufacturerName",
-      "MemberId": "0",
-      "Model": "499253-B21",
-      "Name": "Power Supply Bay 1",
-      "Oem": {},
-      "PartNumber": "1z0000001A3a",
-      "PowerCapacityWatts": 400,
-      "PowerSupplyType": "AC",
-      "Redundancy": [
-        {
-          "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/Redundancy/0"
-        }
-      ],
-      "RelatedItem": [
-        {
-          "@odata.id": "/redfish/v1/Chassis/Enc1"
-        }
-      ],
-      "SerialNumber": "1z0000001",
-      "SparePartNumber": "0000001A3a",
-      "Status": {
-        "Health": "Warning",
-        "State": "Disabled"
-      }
-    },
-    {
-      "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerSupplies/1",
-      "FirmwareVersion": "1.00",
-      "LastPowerOutputWatts": 400,
-      "LineInputVoltage": 48,
-      "Manufacturer": "ManufacturerName",
-      "MemberId": "1",
-      "Model": "499253-B21",
-      "Name": "Power Supply Bay 2",
-      "Oem": {},
-      "PartNumber": "1z0000001A3a",
-      "PowerCapacityWatts": 400,
-      "PowerSupplyType": "AC",
-      "Redundancy": [
-        {
-          "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/Redundancy/0"
-        }
-      ],
-      "RelatedItem": [
-        {
-          "@odata.id": "/redfish/v1/Chassis/Enc1"
-        }
-      ],
-      "SerialNumber": "1z0000001",
-      "SparePartNumber": "0000001A3a",
-      "Status": {
-        "Health": "Warning",
-        "State": "Disabled"
-      }
-    },
-    {
-      "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerSupplies/2",
-      "MemberId": "2",
-      "Name": "Power Supply Bay 3",
-      "Status": {
-        "State": "Absent"
-      }
-    }
-  ],
-  "Redundancy": [
-    {
-      "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/Redundancy/0",
-      "MaxNumSupported": 2,
-      "MemberId": "0",
-      "MinNumNeeded": 1,
-      "Mode": "Failover",
-      "Name": "PowerSupply Redundancy Group 1",
-      "RedundancySet": [
-        {
-          "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerSupplies/0"
+            "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerControl/0",
+            "MemberId": "0",
+            "Name": "System Input Power (top-level Chassis)",
+            "Oem": {},
+            "PhysicalContext": "Chassis",
+            "PowerAllocatedWatts": 9000,
+            "PowerAvailableWatts": 1500,
+            "PowerCapacityWatts": 10000,
+            "PowerConsumedWatts": 8000,
+            "PowerLimit": {
+                "CorrectionInMs": 2000,
+                "LimitException": "NoAction",
+                "LimitInWatts": 9000
+            },
+            "PowerRequestedWatts": 8500,
+            "RelatedItem": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enc1"
+                }
+            ],
+            "Status": {
+                "Health": "OK",
+                "State": "Enabled"
+            }
         },
         {
-          "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerSupplies/1"
+            "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerControl/1",
+            "MemberId": "1",
+            "Name": "Chassis Input Power (Blade 1)",
+            "Oem": {},
+            "PhysicalContext": "Chassis",
+            "PowerAllocatedWatts": 500,
+            "PowerAvailableWatts": 150,
+            "PowerCapacityWatts": 600,
+            "PowerConsumedWatts": 300,
+            "PowerLimit": {
+                "CorrectionInMs": 2000,
+                "LimitException": "NoAction",
+                "LimitInWatts": 500
+            },
+            "PowerRequestedWatts": 450,
+            "RelatedItem": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Blade1"
+                }
+            ],
+            "Status": {
+                "Health": "OK",
+                "State": "Enabled"
+            }
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerControl/2",
+            "MemberId": "2",
+            "Name": "Chassis Input Power (Blade 2)",
+            "Oem": {},
+            "PhysicalContext": "Chassis",
+            "PowerAllocatedWatts": 500,
+            "PowerAvailableWatts": 150,
+            "PowerCapacityWatts": 600,
+            "PowerConsumedWatts": 300,
+            "PowerLimit": {
+                "CorrectionInMs": 2000,
+                "LimitException": "NoAction",
+                "LimitInWatts": 500
+            },
+            "PowerRequestedWatts": 450,
+            "RelatedItem": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Blade2"
+                }
+            ],
+            "Status": {
+                "Health": "OK",
+                "State": "Enabled"
+            }
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/3",
+            "MemberId": "3",
+            "Name": "Cooling Sub-System Power",
+            "PhysicalContext": "CoolingSubsystem",
+            "PowerConsumedWatts": 400,
+            "RelatedItem": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#/Fans"
+                }
+            ],
+            "Oem": {}
         }
-      ],
-      "Status": {
-        "Health": "OK",
-        "State": "Offline"
-      }
-    }
-  ]
+    ],
+    "PowerSupplies": [
+        {
+            "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerSupplies/0",
+            "FirmwareVersion": "1.00",
+            "LastPowerOutputWatts": 400,
+            "LineInputVoltage": 48,
+            "Manufacturer": "ManufacturerName",
+            "MemberId": "0",
+            "Model": "499253-B21",
+            "Name": "Power Supply Bay 1",
+            "Oem": {},
+            "PartNumber": "1z0000001A3a",
+            "PowerCapacityWatts": 400,
+            "PowerSupplyType": "AC",
+            "Redundancy": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/Redundancy/0"
+                }
+            ],
+            "RelatedItem": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enc1"
+                }
+            ],
+            "SerialNumber": "1z0000001",
+            "SparePartNumber": "0000001A3a",
+            "Status": {
+                "Health": "Warning",
+                "State": "Disabled"
+            }
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerSupplies/1",
+            "FirmwareVersion": "1.00",
+            "LastPowerOutputWatts": 400,
+            "LineInputVoltage": 48,
+            "Manufacturer": "ManufacturerName",
+            "MemberId": "1",
+            "Model": "499253-B21",
+            "Name": "Power Supply Bay 2",
+            "Oem": {},
+            "PartNumber": "1z0000001A3a",
+            "PowerCapacityWatts": 400,
+            "PowerSupplyType": "AC",
+            "Redundancy": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/Redundancy/0"
+                }
+            ],
+            "RelatedItem": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enc1"
+                }
+            ],
+            "SerialNumber": "1z0000001",
+            "SparePartNumber": "0000001A3a",
+            "Status": {
+                "Health": "Warning",
+                "State": "Disabled"
+            }
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerSupplies/2",
+            "MemberId": "2",
+            "Name": "Power Supply Bay 3",
+            "Status": {
+                "State": "Absent"
+            }
+        }
+    ],
+    "Redundancy": [
+        {
+            "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/Redundancy/0",
+            "MaxNumSupported": 2,
+            "MemberId": "0",
+            "MinNumNeeded": 1,
+            "Mode": "Failover",
+            "Name": "PowerSupply Redundancy Group 1",
+            "RedundancySet": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerSupplies/0"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerSupplies/1"
+                }
+            ],
+            "Status": {
+                "Health": "OK",
+                "State": "Offline"
+            }
+        }
+    ]
 }

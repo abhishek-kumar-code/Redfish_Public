@@ -2,15 +2,18 @@
     "$id": "http://redfish.dmtf.org/schemas/v1/Sensor.json",
     "$ref": "#/definitions/Sensor",
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
-    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
     "definitions": {
         "Sensor": {
             "anyOf": [
                 {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/idRef"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/idRef"
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.v1_0_0.json#/definitions/Sensor"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.v1_0_1.json#/definitions/Sensor"
                 }
             ],
             "deletable": false,
@@ -26,6 +29,9 @@
             "anyOf": [
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.v1_0_0.json#/definitions/SensorExcerpt"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.v1_0_1.json#/definitions/SensorExcerpt"
                 }
             ]
         },
@@ -33,6 +39,9 @@
             "anyOf": [
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.v1_0_0.json#/definitions/SensorPowerExcerpt"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.v1_0_1.json#/definitions/SensorPowerExcerpt"
                 }
             ]
         }

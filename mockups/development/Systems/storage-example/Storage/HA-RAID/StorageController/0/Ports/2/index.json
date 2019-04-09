@@ -1,0 +1,22 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#Port.Port",
+    "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID/StorageController/0/Ports/2",
+    "@odata.type": "#Port.v1_0_0.Port",
+    "Id": "2",
+    "Name": "SAS Port 2",
+    "Description": "SAS Port 2",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "PortId": "2",
+    "PortProtocol": "SAS",
+    "PortType": "BidirectionalPort",
+    "CurrentSpeedGbps": 24,
+    "Width": 4,
+    "MaxSpeedGbps": 48,
+    "Actions": {
+        "Oem": {}
+    },
+    "Oem": {}
+}

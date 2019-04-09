@@ -1,11 +1,11 @@
 {
-    "@Redfish.Copyright": "Copyright © 2014-2015 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.id": "/redfish/v1/Chassis/PCIeSwitch4/Power",
     "@odata.context": "/redfish/v1/$metadata#Power.Power",
     "@odata.type": "#Power.v1_0_0.Power",
     "Id": "Power",
     "Name": "Power",
-	"PowerControl": [
+    "PowerControl": [
         {
             "@odata.id": "/redfish/v1/Chassis/PCIeSwitch4/Power#/PowerControl/0",
             "MemberId": "0",
@@ -70,6 +70,6 @@
                 }
             ]
         }
-	],
+    ],
     "Oem": {}
 }

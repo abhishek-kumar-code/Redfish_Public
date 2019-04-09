@@ -1,11 +1,11 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 DMTF. All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
-	"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Initiator1PortA",
-	"@odata.type": "#Endpoint.v1_0_0.Endpoint",
-	"Id": "Initiator1PortA",
-	"Name": "SAS RAID Controller 1",
-	"Description": "SAS RAID Controller 1",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
+    "@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Initiator1PortA",
+    "@odata.type": "#Endpoint.v1_0_0.Endpoint",
+    "Id": "Initiator1PortA",
+    "Name": "SAS RAID Controller 1",
+    "Description": "SAS RAID Controller 1",
     "EndpointProtocol": "SAS",
     "ConnectedEntities": [
         {
@@ -19,9 +19,10 @@
     ],
     "Links": {
         "Ports": [
-            {"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Switches/1/Ports/1"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/HA_SAS/Switches/1/Ports/1"
+            }
         ]
     },
-	"Oem": {}
+    "Oem": {}
 }
-

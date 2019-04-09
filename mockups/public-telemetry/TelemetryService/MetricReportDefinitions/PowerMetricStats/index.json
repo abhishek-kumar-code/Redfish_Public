@@ -1,8 +1,9 @@
 {
-    "@odata.type": "#MetricReportDefinition.v1_1_0.MetricReportDefinition",
+    "@odata.type": "#MetricReportDefinition.v1_2_0.MetricReportDefinition",
     "Id": "PowerMetricStats",
     "Name": "Transmit Power Metric Statistics",
     "MetricReportDefinitionType": "Periodic",
+    "MetricReportDefinitionEnabled": true,
     "Schedule": {
         "RecurrenceInterval": "T00:00:000.001",
         "Lifetime": "00-00-05T00:00:00"
@@ -20,11 +21,17 @@
     "Wildcards": [
         {
             "Name": "PWild",
-            "Values": [ "0" ]
+            "Values": [
+                "0"
+            ]
         },
         {
             "Name": "TWild",
-            "Values": [ "Tray_1", "Tray_2", "Tray_3" ]
+            "Values": [
+                "Tray_1",
+                "Tray_2",
+                "Tray_3"
+            ]
         }
     ],
     "Metrics": [
@@ -50,7 +57,14 @@
             ]
         }
     ],
+    "Links": {
+        "Triggers": [
+            {
+                "@odata.is": "/redfish/v1/TelemetryService/Triggers/PlatformPowerCapTriggers"
+            }
+        ]
+    },
     "@odata.context": "/redfish/v1/$metadata#MetricReportDefinition.MetricReportDefinition",
-    "@odata.id": "/redfish/v1/TelemetryService/MetricReports/PowerMetricStats",
-    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PowerMetricStats",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

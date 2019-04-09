@@ -1,33 +1,33 @@
 {
-  "@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
-  "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
-  "@odata.id": "/redfish/v1/Chassis/1/Sensors/0",
-  "@odata.type": "#Sensor.v1_0_0.Sensor",
-  "Id": "0",
-  "Name": "Liquid Inlet Supply Pressure",
-  "Oem": {},
-  "PhysicalContext": "LiquidInlet",
-  "Reading": 310264,
-  "ReadingRangeMax": 700000,
-  "ReadingRangeMin": 0,
-  "ReadingType": "Pressure",
-  "ReadingUnits": "Pa",
-  "Status": {
-    "Health": "OK",
-    "State": "Enabled"
-  },
-  "Thresholds": {
-    "LowerCaution": {
-      "Reading": 100000
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
+    "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+    "@odata.id": "/redfish/v1/Chassis/1/Sensors/0",
+    "@odata.type": "#Sensor.v1_0_0.Sensor",
+    "Id": "0",
+    "Name": "Liquid Inlet Supply Pressure",
+    "Oem": {},
+    "PhysicalContext": "LiquidInlet",
+    "Reading": 310264,
+    "ReadingRangeMax": 700000,
+    "ReadingRangeMin": 0,
+    "ReadingType": "Pressure",
+    "ReadingUnits": "Pa",
+    "Status": {
+        "Health": "OK",
+        "State": "Enabled"
     },
-    "LowerCritical": {
-      "Reading": 35000
-    },
-    "UpperCaution": {
-      "Reading": 415000
-    },
-    "UpperCritical": {
-      "Reading": 550000
+    "Thresholds": {
+        "LowerCaution": {
+            "Reading": 100000
+        },
+        "LowerCritical": {
+            "Reading": 35000
+        },
+        "UpperCaution": {
+            "Reading": 415000
+        },
+        "UpperCritical": {
+            "Reading": 550000
+        }
     }
-  }
 }

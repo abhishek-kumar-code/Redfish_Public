@@ -1,47 +1,47 @@
 {
-  "@Redfish.Copyright": "Copyright 2016 DMTF. All rights reserved.",
-  "@odata.context": "/redfish/v1/$metadata#Bios.Bios",
-  "@odata.id": "/redfish/v1/Systems/1/Bios",
-  "@odata.type": "#Bios.v1_0_0.Bios",
-  "Id": "Bios",
-  "Name": "BIOS Configuration Current Settings",
-  "Description": "BIOS Configuration Current Settings",
-  "AttributeRegistry": "BiosAttributeRegistryP89.v1_0_0",
-  "@Redfish.Settings": {
-    "@odata.type": "#Settings.v1_0_0.Settings",
-    "ETag": "someetag",
-    "Messages": [
-      {
-        "MessageId": "Base.1.0.PropertyNotWritable",
-        "RelatedProperties": [
-          "#/Attributes/ProcTurboMode"
-        ]
-      }
-    ],
-    "SettingsObject": {
-      "@odata.id": "/redfish/v1/Systems/1/Bios/SD"
+    "@Redfish.Copyright": "Copyright 2016-2019 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Bios.Bios",
+    "@odata.id": "/redfish/v1/Systems/1/Bios",
+    "@odata.type": "#Bios.v1_0_0.Bios",
+    "Id": "Bios",
+    "Name": "BIOS Configuration Current Settings",
+    "Description": "BIOS Configuration Current Settings",
+    "AttributeRegistry": "BiosAttributeRegistryP89.v1_0_0",
+    "@Redfish.Settings": {
+        "@odata.type": "#Settings.v1_0_0.Settings",
+        "ETag": "someetag",
+        "Messages": [
+            {
+                "MessageId": "Base.1.0.PropertyNotWritable",
+                "RelatedProperties": [
+                    "#/Attributes/ProcTurboMode"
+                ]
+            }
+        ],
+        "SettingsObject": {
+            "@odata.id": "/redfish/v1/Systems/1/Bios/SD"
+        },
+        "Time": "2012-03-07T14:44.30-05:00"
     },
-    "Time": "2012-03-07T14:44.30-05:00"
-  },
-  "Actions": {
-    "#Bios.ResetBios": {
-      "target": "/redfish/v1/Systems/1/Bios/Actions/Bios.ResetBios"
+    "Actions": {
+        "#Bios.ResetBios": {
+            "target": "/redfish/v1/Systems/1/Bios/Actions/Bios.ResetBios"
+        },
+        "#Bios.ChangePassword": {
+            "target": "/redfish/v1/Systems/1/Bios/Actions/Bios.ChangePassword"
+        }
     },
-    "#Bios.ChangePassword": {
-      "target": "/redfish/v1/Systems/1/Bios/Actions/Bios.ChangePassword"
+    "Attributes": {
+        "AdminPhone": "",
+        "BootMode": "Uefi",
+        "EmbeddedSata": "Raid",
+        "NicBoot1": "NetworkBoot",
+        "NicBoot2": "Disabled",
+        "PowerProfile": "MaxPerf",
+        "ProcCoreDisable": 0,
+        "ProcHyperthreading": "Enabled",
+        "ProcTurboMode": "Enabled",
+        "UsbControl": "UsbEnabled",
+        "ConsoleBaudRate": "115200"
     }
-  },
-  "Attributes": {
-    "AdminPhone": "",
-    "BootMode": "Uefi",
-    "EmbeddedSata": "Raid",
-    "NicBoot1": "NetworkBoot",
-    "NicBoot2": "Disabled",
-    "PowerProfile": "MaxPerf",
-    "ProcCoreDisable": 0,
-    "ProcHyperthreading": "Enabled",
-    "ProcTurboMode": "Enabled",
-    "UsbControl": "UsbEnabled",
-    "ConsoleBaudRate": "115200"
-  }
 }

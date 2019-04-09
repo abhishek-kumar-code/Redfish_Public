@@ -1,51 +1,54 @@
 {
-	"@Redfish.Copyright": "Copyright 2014-2016 DMTF. All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#Switch.Switch",
-	"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/2",
-	"@odata.type": "#Switch.v1_0_0.Switch",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Switch.Switch",
+    "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/2",
+    "@odata.type": "#Switch.v1_0_0.Switch",
     "Id": "1",
-	"Name": "PCIe Switch",
+    "Name": "PCIe Switch",
     "SwitchType": "PCIe",
     "Manufacturer": "PCIe Switch Guys",
     "Model": "XKE-PCIe",
     "SKU": "97LANEPCI",
     "SerialNumber": "MYSERIALNUMBER2",
     "PartNumber": "1776-1883",
-	"DomainID": 43458,
-	"IsManaged": true,
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK",
-		"HealthRollup": "Warning"
-	},
-	"TotalSwitchWidth": 97,
-	"PowerState": "On",
-	"Ports": {
-		"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/2/Ports"
-	},
-	"Links": {
-		"Chassis": {"@odata.id": "/redfish/v1/Chassis/PCIeSwitch2"},
-		"ManagedBy": [
-			{"@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"}
-		],
-		"Oem": {}
-	},
-	"Actions": {
-		"#Switch.Reset": {
-			"target": "/redfish/v1/Fabrics/PCIeMesh/Switches/2/Actions/Switch.Reset",
-			"ResetType@Redfish.AllowableValues": [
-				"On",
-				"ForceOff",
-				"GracefulShutdown",
-				"ForceRestart",
-				"Nmi",
-				"GracefulRestart",
-				"ForceOn",
-				"PushPowerButton"
-			]
-		},
-		"Oem": {}
-	},
-	"Oem": {}
+    "DomainID": 43458,
+    "IsManaged": true,
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK",
+        "HealthRollup": "Warning"
+    },
+    "TotalSwitchWidth": 97,
+    "PowerState": "On",
+    "Ports": {
+        "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/2/Ports"
+    },
+    "Links": {
+        "Chassis": {
+            "@odata.id": "/redfish/v1/Chassis/PCIeSwitch2"
+        },
+        "ManagedBy": [
+            {
+                "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"
+            }
+        ],
+        "Oem": {}
+    },
+    "Actions": {
+        "#Switch.Reset": {
+            "target": "/redfish/v1/Fabrics/PCIeMesh/Switches/2/Actions/Switch.Reset",
+            "ResetType@Redfish.AllowableValues": [
+                "On",
+                "ForceOff",
+                "GracefulShutdown",
+                "ForceRestart",
+                "Nmi",
+                "GracefulRestart",
+                "ForceOn",
+                "PushPowerButton"
+            ]
+        },
+        "Oem": {}
+    },
+    "Oem": {}
 }
-

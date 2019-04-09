@@ -1,25 +1,34 @@
 {
-	"@odata.context": "/redfish/v1/$metadata#Zone.Zone",
-	"@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Zones/3",
-	"@odata.type": "#Zone.v1_0_0.Zone",
-	"Id": "3",
-	"Name": "PCIe Zone 3",
-	"Description": "PCIe Zone 3",
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-	"Links": {
-		"Endpoints": [
-            {"@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Endpoints/HostRootComplex2"},
-            {"@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Endpoints/GPGPU"},
-            {"@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Endpoints/FCPort1"}
+    "@odata.context": "/redfish/v1/$metadata#Zone.Zone",
+    "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Zones/3",
+    "@odata.type": "#Zone.v1_0_0.Zone",
+    "Id": "3",
+    "Name": "PCIe Zone 3",
+    "Description": "PCIe Zone 3",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Links": {
+        "Endpoints": [
+            {
+                "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Endpoints/HostRootComplex2"
+            },
+            {
+                "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Endpoints/GPGPU"
+            },
+            {
+                "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Endpoints/FCPort1"
+            }
         ],
         "InvolvedSwitches": [
-            {"@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Switches/1"},
-            {"@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Switches/2"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Switches/1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Switches/2"
+            }
         ]
-	},
-	"Oem": {}
+    },
+    "Oem": {}
 }
-

@@ -1,34 +1,42 @@
 {
-    "@Redfish.Copyright":"Copyright \u00a9 2014-2015 DMTF. All rights reservd.",
-    "@odata.id":"/redfish/v1/Chassis/NVMeChassis",
-    "@odata.context":"/redfish/v1/$metadata#Chassis.Chassis",
-    "@odata.type":"#Chassis.v1_2_0.Chassis",
-    "Id":"NVMeChassis",
-    "Name":"External Enclosure 1",
-    "SKU":"",
-    "Manufacturer":"Manufacturer Name",
-    "AssetTag":"External Enclosure",
-    "Model":"External Enclosure",
-    "ChassisType":"StorageEnclosure",
-    "IndicatorLED":"Lit",
-    "Status":{
-        "State":"Enabled",
-        "Health":"OK"
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reservd.",
+    "@odata.id": "/redfish/v1/Chassis/NVMeChassis",
+    "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
+    "@odata.type": "#Chassis.v1_2_0.Chassis",
+    "Id": "NVMeChassis",
+    "Name": "External Enclosure 1",
+    "SKU": "",
+    "Manufacturer": "Manufacturer Name",
+    "AssetTag": "External Enclosure",
+    "Model": "External Enclosure",
+    "ChassisType": "StorageEnclosure",
+    "IndicatorLED": "Lit",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
     },
     "Links": {
         "ManagedBy": [
-            {"@odata.id":"/redfish/v1/Managers/5"}
+            {
+                "@odata.id": "/redfish/v1/Managers/5"
+            }
         ],
         "ComputerSystems": [
-            {"@odata.id": "/redfish/v1/Systems/host-interface-example"}
+            {
+                "@odata.id": "/redfish/v1/Systems/host-interface-example"
+            }
         ],
         "Storage": [
-            {"@odata.id":"/redfish/v1/Systems/host-interface-example/Storage/NVMeSubsystem"}
+            {
+                "@odata.id": "/redfish/v1/Systems/host-interface-example/Storage/NVMeSubsystem"
+            }
         ],
         "Drives": [
-            {"@odata.id":"/redfish/v1/Chassis/NVMeChassis/Drives/Disk.Bay.0"}
+            {
+                "@odata.id": "/redfish/v1/Chassis/NVMeChassis/Drives/Disk.Bay.0"
+            }
         ],
         "Oem": {}
     },
-    "Oem": { }
+    "Oem": {}
 }

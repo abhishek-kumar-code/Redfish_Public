@@ -5,7 +5,9 @@
     "Name": "Regular Memory",
     "Id": "1",
     "RankCount": 1,
-    "MaxTDPMilliWatts": [ 12000 ],
+    "MaxTDPMilliWatts": [
+        12000
+    ],
     "CapacityMiB": 8192,
     "DataWidthBits": 64,
     "BusWidthBits": 72,
@@ -30,10 +32,10 @@
         "@odata.id": "/redfish/v1/Systems/1/Memory/1/Metrics"
     },
     "Location": {
-      "PartLocation": {
-        "ServiceLabel": "Socket 1_A",
-        "LocationType": "Socket",
-        "LocationOrdinalValue": 0
-      }
+        "PartLocation": {
+            "ServiceLabel": "Socket 1_A",
+            "LocationType": "Socket",
+            "LocationOrdinalValue": 0
+        }
     }
 }

@@ -1,0 +1,31 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
+    "@odata.context": "/redfish/v1/$metadata#Volume.Volume",
+    "@odata.type": "#Volume.v1_3_1.Volume",
+    "@odata.id": "/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated/Volumes/Capabilities",
+    "Id": "Capabilities",
+    "Name": "Capabilities for Volumes",
+    "Name@Redfish.RequiredOnCreate": false,
+    "Name@Redfish.SetOnlyOnCreate": true,
+    "Encrypted@Redfish.OptionalOnCreate": true,
+    "Encrypted@Redfish.UpdatableAfterCreate": true,
+    "VolumeType@Redfish.OptionalOnCreate": true,
+    "VolumeType@Redfish.AllowableValues": [
+        "RawDevice",
+        "NonRedundant"
+    ],
+    "RAIDType@Redfish.OptionalOnCreate": true,
+    "RAIDType@Redfish.AllowableValues": [
+        "RAID0"
+    ],
+    "CapacityBytes@Redfish.OptionalOnCreate": true,
+    "CapacityBytes@Redfish.UpdatableAfterCreate": true,
+    "Links@Redfish.OptionalOnCreate": true,
+    "Links": {
+        "Drives@Redfish.OptionalOnCreate": true,
+        "Drives@Redfish.UpdatableAfterCreate": false,
+        "Drives@Redfish.AllowableValues": [
+            {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.8"}
+        ]
+    }
+}

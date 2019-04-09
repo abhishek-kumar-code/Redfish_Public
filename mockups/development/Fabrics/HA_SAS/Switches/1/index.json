@@ -1,19 +1,19 @@
 {
-	"@Redfish.Copyright": "Copyright 2014-2016 DMTF. All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#Switch.Switch",
-	"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Switches/1",
-	"@odata.type": "#Switch.v1_0_0.Switch",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Switch.Switch",
+    "@odata.id": "/redfish/v1/Fabrics/HA_SAS/Switches/1",
+    "@odata.type": "#Switch.v1_0_0.Switch",
     "Id": "1",
-	"Name": "SAS Switch",
+    "Name": "SAS Switch",
     "SwitchType": "SAS",
     "Manufacturer": "Manufacturer Name",
     "Model": "Model Name",
     "SKU": "67B",
     "SerialNumber": "2M220100SL",
     "PartNumber": "76-88883",
-	"Ports": {
-		"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Switches/1/Ports"
-	},
+    "Ports": {
+        "@odata.id": "/redfish/v1/Fabrics/HA_SAS/Switches/1/Ports"
+    },
     "Redundancy": [
         {
             "@odata.id": "/redfish/v1/Fabrics/HA_SAS/Switches/1#/Redundancy/0",
@@ -35,21 +35,20 @@
             ]
         }
     ],
-	"Links": {
-		"Chassis": {},
-		"ManagedBy": [],
-		"Oem": {}
-	},
-	"Actions": {
-		"#Switch.Reset": {
-			"target": "/redfish/v1/Fabrics/HA_SAS/Switches/1/Actions/Switch.Reset",
-			"ResetType@Redfish.AllowableValues": [
-				"ForceRestart",
-				"GracefulRestart"
-			]
-		},
-		"Oem": {}
-	},
-	"Oem": {}
+    "Links": {
+        "Chassis": {},
+        "ManagedBy": [],
+        "Oem": {}
+    },
+    "Actions": {
+        "#Switch.Reset": {
+            "target": "/redfish/v1/Fabrics/HA_SAS/Switches/1/Actions/Switch.Reset",
+            "ResetType@Redfish.AllowableValues": [
+                "ForceRestart",
+                "GracefulRestart"
+            ]
+        },
+        "Oem": {}
+    },
+    "Oem": {}
 }
-

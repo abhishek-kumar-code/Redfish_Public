@@ -1,0 +1,35 @@
+{
+    "@odata.type": "#ActionInfo.v1_0_3.ActionInfo",
+    "Id": "RekeyActionInfo",
+    "Name": "Rekey Action Info",
+    "Parameters": [
+        {
+            "Name": "KeyPairAlgorithm",
+            "Required": true,
+            "DataType": "String",
+            "AllowableValues": [
+                "TPM_ALG_RSA",
+                "TPM_ALG_ECDSA"
+            ]
+        },
+        {
+            "Name": "KeyBitLength",
+            "Required": false,
+            "DataType": "Number"
+        },
+        {
+            "Name": "KeyCurveId",
+            "Required": false,
+            "DataType": "String",
+            "AllowableValues": [
+                "TPM_ECC_NIST_P256",
+                "TPM_ECC_NIST_P384",
+                "TPM_ECC_NIST_P521"
+            ]
+        }
+    ],
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
+    "@odata.id": "/redfish/v1/Managers/BMC/NetworkProtocol/HTTPS/Certificates/1/RekeyActionInfo",
+    "@Redfish.Copyright": "Copyright 2018-2019 DMTF. All rights reserved."
+}

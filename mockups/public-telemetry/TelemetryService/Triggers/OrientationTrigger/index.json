@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Triggers.v1_0_0.Triggers",
+    "@odata.type": "#Triggers.v1_1_0.Triggers",
     "Id": "OrientationTrigger",
     "Name": "Trigger when orientation becomes incline",
     "MetricType": "Discrete",
@@ -17,7 +17,10 @@
     "MetricProperties": [
         "/redfish/v1/Chassis/1#/Oem/Contoso/Orientation"
     ],
+    "Links": {
+        "MetricReportDefinitions": []
+    },
     "@odata.context": "/redfish/v1/$metadata#Triggers.Triggers",
     "@odata.id": "/redfish/v1/TelemetryService/Triggers/OrientationTrigger",
-    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

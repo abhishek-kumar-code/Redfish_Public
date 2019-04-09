@@ -1,30 +1,30 @@
 {
-	"@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#JobCollection.JobCollection",
-	"@odata.type": "#JobCollection.JobCollection",
-	"Name": "Job Collection",
-	"Members@odata.count": 7,
-	"Members": [{
-			"@odata.id": "/redfish/v1/JobService/Jobs/RebootRack/Steps/Blue"
-		},
-		{
-			"@odata.id": "/redfish/v1/JobService/Jobs/RebootRack/Steps/Green"
-		},
-		{
-			"@odata.id": "/redfish/v1/JobService/Jobs/RebootRack/Steps/Indigo"
-		},
-		{
-			"@odata.id": "/redfish/v1/JobService/Jobs/RebootRack/Steps/Orange"
-		},
-		{
-			"@odata.id": "/redfish/v1/JobService/Jobs/RebootRack/Steps/Red"
-		},
-		{
-			"@odata.id": "/redfish/v1/JobService/Jobs/RebootRack/Steps/Violet"
-		},
-		{
-			"@odata.id": "/redfish/v1/JobService/Jobs/RebootRack/Steps/Yellow"
-		}
-
-	]
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#JobCollection.JobCollection",
+    "@odata.type": "#JobCollection.JobCollection",
+    "Name": "Job Collection",
+    "Members@odata.count": 7,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/JobService/Jobs/RebootRack/Steps/Blue"
+        },
+        {
+            "@odata.id": "/redfish/v1/JobService/Jobs/RebootRack/Steps/Green"
+        },
+        {
+            "@odata.id": "/redfish/v1/JobService/Jobs/RebootRack/Steps/Indigo"
+        },
+        {
+            "@odata.id": "/redfish/v1/JobService/Jobs/RebootRack/Steps/Orange"
+        },
+        {
+            "@odata.id": "/redfish/v1/JobService/Jobs/RebootRack/Steps/Red"
+        },
+        {
+            "@odata.id": "/redfish/v1/JobService/Jobs/RebootRack/Steps/Violet"
+        },
+        {
+            "@odata.id": "/redfish/v1/JobService/Jobs/RebootRack/Steps/Yellow"
+        }
+    ]
 }
