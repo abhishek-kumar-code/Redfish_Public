@@ -147,7 +147,7 @@
 					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
 					<Annotation Term="OData.Description" String="Navigation property that points to a resource of state."/>
 					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
-				</NavigationProperty>
+				</Property>
 				<NavigationProperty Name="hold_time" Type="openconfig_interfaces.interfaces.interface.v1_0_0.hold_timeType">
 					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
 					<Annotation Term="OData.Description" String="Navigation property that points to a resource of hold_time."/>
@@ -452,7 +452,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
 			  <Annotation Term="OData.Description" String="Top-level container for hold-time settings to enable dampening advertisements of interface transitions."/>
 			  <Annotation Term="OData.LongDescription" String="Top-level container for hold-time settings to enable dampening advertisements of interface transitions."/>
-				<Property Name="config" Type="openconfig_interfaces.interfaces.interface.v1_0_0.hold_timeConfigType"
+        <Property Name="config" Type="openconfig_interfaces.interfaces.interface.v1_0_0.hold_timeConfigType">
 					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
 					<Annotation Term="OData.Description" String="Navigation property that points to a resource of config."/>
 					<Annotation Term="OData.LongDescription" String="Automatically generated."/>

@@ -125,7 +125,8 @@
 			<Annotation Term="Redfish.Release" String="TBD"/>
 			<Annotation Term="RedfishYang.key" String="name"/>
 			<Annotation Term="OData.Description" String="Network instances configured on the local system."/>
-			<Annotation Term="OData.LongDescription" String="Network instances configured on the local system."/>
+      <Annotation Term="OData.LongDescription" String="Network instances configured on the local system."/>
+      <!--
 			<Collection>
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="l2ni-instance">
@@ -144,10 +145,11 @@
 				<Record>
 					<Annotation Term="RedfishYang.uses" String="oc-vlan:vlan-top"/>
 				</Record>
-			</Collection>
+      </Collection>
+-->
 			<EntityType Name="network_instance" BaseType="openconfig_network_instance.network_instances.network_instance.network_instance">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list"/>
-				<Property Name="name" Type="Edm.String">
+        <Property Name="name" Type="Edm.String">
 					<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
 					<Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/leafref">
 						<Annotation Term="RedfishYang.path" String="../config/name"/>
@@ -155,7 +157,7 @@
 					<Annotation Term="OData.Description" String="A unique name identifying the network instance."/>
 					<Annotation Term="OData.LongDescription" String="A unique name identifying the network instance."/>
 					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-				</Property>
+        </Property>
         <Property Name="config" Type="openconfig_network_instance.network_instances.network_instance.v1_0_0.configType" Nullable="false">
 					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
 					<Annotation Term="OData.Description" String="config property."/>
@@ -170,14 +172,13 @@
 					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
 					<Annotation Term="OData.Description" String="Navigation property that points to a resource of fdb."/>
 					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
-				<Property>
+        </Property>
 				<NavigationProperty Name="interfaces" Type="openconfig_lacp.lacp.interfacesCollection.interfacesCollection" ContainsTarget="true">
 					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
 					<Annotation Term="OData.Description" String="Navigation property that points to a resource of interfaces."/>
 					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
 					<Annotation Term="OData.AutoExpandReferences"/>
-				</NavigationProperty>
-
+        </NavigationProperty>
 				<NavigationProperty Name="encapsulationContainer" Type="encapsulation.encapsulation" ContainsTarget="true">
 					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
 					<Annotation Term="OData.Description" String="Navigation property that points to a resource of encapsulation."/>
@@ -231,7 +232,7 @@
 					<Annotation Term="OData.Description" String="Navigation property that points to a resource of vlans."/>
 					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
 					<Annotation Term="OData.AutoExpandReferences"/>
-				</NavigationProperty>
+        </NavigationProperty>
       </EntityType>
 
       <ComplexType Name="configType">
@@ -388,8 +389,8 @@
 					<Annotation Term="OData.Description" String="mac_table property."/>
 					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
 				</Property>
-     </ComplexType>
-     <ComplexType Name="fdbConfigType">
+      </ComplexType>
+      <ComplexType Name="fdbConfigType">
 				<Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
 			  <Annotation Term="OData.AdditionalProperties" Bool="false"/>
 			  <Annotation Term="OData.Description" String="Configuration parameters relating to the FDB."/>
@@ -453,7 +454,7 @@
           <Annotation Term="OData.AutoExpandReferences"/>
 					<Annotation Term="OData.Description" String="collection of entries."/>
 					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
-				</NavigationProperty>
+				</Property>
       </ComplexType>
 		</Schema>
     
@@ -539,7 +540,7 @@
 					<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
 					<Annotation Term="OData.Description" String="Navigation property that points to a resource of interface."/>
 					<Annotation Term="OData.LongDescription" String="Automatically generated."/>
-				</NavigationProperty>
+				</Property>
       </EntityType>
 
 			<ComplexType Name="configType">
