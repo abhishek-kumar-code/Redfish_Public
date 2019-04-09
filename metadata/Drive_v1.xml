@@ -638,5 +638,26 @@
       </ComplexType>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_7_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+
+      <EntityType Name="Drive" BaseType="Drive.v1_6_0.Drive">
+        <Property Name="WriteCacheState" Type="Drive.v1_7_0.WriteCacheState">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The write cache state for the drive."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify the current state of the drive write cache if available."/>
+        </Property>      
+      </EntityType>
+
+      <EnumType Name="WriteCacheState">
+        <Member Name="Enabled">
+          <Annotation Term="OData.Description" String="Write caching is enabled for the drive."/>
+        </Member>
+        <Member Name="Disabled">
+          <Annotation Term="OData.Description" String="Write caching is disabled for the drive."/>
+        </Member>
+      </EnumType>
+
+    </Schema>
   </edmx:DataServices>
 </edmx:Edmx>

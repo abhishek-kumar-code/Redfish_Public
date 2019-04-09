@@ -1,7 +1,7 @@
 {
     "@odata.context": "/redfish/v1/$metadata#Chassis/Members/Drives/Members/$entity",
     "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.6",
-    "@odata.type": "#Drive.v1_0_0.Drive",
+    "@odata.type": "#Drive.v1_7_0.Drive",
     "IndicatorLED": "Off",
     "Model": null,
     "Revision": null,
@@ -21,6 +21,7 @@
     "AssetTag": null,
     "CapableSpeedGbs": null,
     "NegotiatedSpeedGbs": null,
+    "WriteCacheState": null,
     "Links": {
         "Volumes": []
     },

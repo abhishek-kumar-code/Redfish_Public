@@ -1,7 +1,7 @@
 {
     "@odata.context": "/redfish/v1/$metadata#Chassis/Members/Drives/Members/$entity",
     "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.3",
-    "@odata.type": "#Drive.v1_0_0.Drive",
+    "@odata.type": "#Drive.v1_7_0.Drive",
     "IndicatorLED": "Lit",
     "Model": "ST9146802SS",
     "Revision": "S20A",
@@ -26,6 +26,7 @@
     "AssetTag": "",
     "CapableSpeedGbs": 12,
     "NegotiatedSpeedGbs": 12,
+    "WriteCacheState": "Enabled",
     "Links": {
         "Volumes": []
     },
