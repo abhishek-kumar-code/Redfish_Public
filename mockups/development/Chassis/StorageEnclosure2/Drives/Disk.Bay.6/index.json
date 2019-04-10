@@ -21,7 +21,7 @@
     "AssetTag": null,
     "CapableSpeedGbs": null,
     "NegotiatedSpeedGbs": null,
-    "WriteCacheState": null,
+    "WriteCacheEnabled": null,
     "Links": {
         "Volumes": []
     },
